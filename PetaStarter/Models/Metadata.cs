@@ -25,12 +25,12 @@ namespace DeMonte
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Passport Issued ON")]        
+        [Display(Name = "Passport Issued On")]        
         public DateTime DateIssue;
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Passport Expiry ON")]
+        [Display(Name = "Passport Expiry On")]
         public DateTime DateExpiry;
     }
 
