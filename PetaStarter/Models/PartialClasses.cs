@@ -15,6 +15,15 @@ namespace DeMonte
     {
     }
 
+    [MetadataType(typeof(VoucherMetadata))]
+    public partial class Voucher
+    {
+    }
+
+    [MetadataType(typeof(ReceiptMetadata))]
+    public partial class Receipt
+    {
+    }
     //[MetadataType(typeof(ConfigMetadata))]
     //public partial class Config
     //{
