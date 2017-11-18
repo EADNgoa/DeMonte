@@ -195,6 +195,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ReceiptController.cs" />
+    <Compile Include="Controllers\VoucherController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EAController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -351,6 +353,10 @@
     <Content Include="Views\Shared\_ReportsLayout.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Manage.cshtml" />
+    <Content Include="Views\Voucher\Index.cshtml" />
+    <Content Include="Views\Voucher\Manage.cshtml" />
+    <Content Include="Views\Receipt\Index.cshtml" />
+    <Content Include="Views\Receipt\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

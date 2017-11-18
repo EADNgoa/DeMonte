@@ -1,0 +1,80 @@
+﻿@model PagedList.IPagedList<Receipt>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Receipt";
+}
+
+<center>
+    <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
+    
+    @using (Html.BeginForm("Index", "Receipt", FormMethod.Get))
+    {        
+        <div class="row section-to-Not-print">
+            <div>
+                <table>
+                    <tr style="text-align:center">
+                        <td>&nbsp; Receipt Name:</td>
+                        <td> @Html.TextBox("PropName", ViewBag.CurrentFilter as string, new { @class = "form-control" })</td>
+
+                        <td class="col-lg-1"></td>
+                        <td><input type="submit" value="Search" class="btn btn-default" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+</center>
+
+<p>
+    @Html.ActionLink("Create New", "Manage")
+</p>
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().TDate)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Name)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Amount)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChequeNo)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChqDate)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DrawnOn)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().RoomNo)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BillNo)</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChequeNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChqDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrawnOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillNo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Manage", new { id = item.ReceiptID})
+        </td>
+    </tr>
+}
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -25,15 +25,83 @@ namespace DeMonte
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Passport Issued ON")]        
+        [Display(Name = "Passport Issued On")]        
         public DateTime DateIssue;
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "Passport Expiry ON")]
+        [Display(Name = "Passport Expiry On")]
         public DateTime DateExpiry;
     }
 
+
+    public class VoucherMetadata
+    {
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "TDate")]
+        public DateTime TDate;
+
+        [Display(Name = "PayTo")]
+        [Required]
+        [StringLength(100, MinimumLength = 3)]
+        public string PayTo;
+
+        [Display(Name = "Amount")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Amount;
+
+        [Display(Name = "OnAccountOf")]
+        [StringLength(350, MinimumLength = 3)]
+        public string OnAccountOf;
+
+        [Display(Name = "ChequeNo")]
+        [StringLength(20, MinimumLength = 3)]
+        public string ChequeNo;
+
+        [Display(Name = "DrawnOn")]
+        [StringLength(50, MinimumLength = 3)]
+        public string DrawnOn;
+
+    }
+    public class ReceiptMetadata
+    {
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "TDate")]
+        public DateTime TDate;
+
+        [Display(Name = "Name")]
+        [Required]
+        [StringLength(150, MinimumLength = 3)]
+        public string Name;
+
+        [Display(Name = "Amount")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Amount;
+
+        [Display(Name = "ChequeNo")]
+        [StringLength(20, MinimumLength = 3)]
+        public string ChequeNo;
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "ChqDate")]
+        public DateTime ChqDate;
+
+        [Display(Name = "DrawnOn")]
+        [StringLength(50, MinimumLength = 3)]
+        public string DrawnOn;
+
+        [Display(Name = "RoomNo")]
+        [StringLength(10, MinimumLength = 3)]
+        public string RoomNo;
+
+        [Display(Name = "BillNo")]
+        public int BillNo;
+    }
     //public class EmpTypeMetadata
     //{
     //    [Display(Name = "Employee Type")]
