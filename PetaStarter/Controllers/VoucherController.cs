@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Net;
 namespace DeMonte.Controllers
 {
     public class VoucherController : EAController
@@ -32,6 +32,19 @@ namespace DeMonte.Controllers
         {
             return base.BaseSave<Voucher>(voucher,voucher.VoucherID > 0);
         }
+
+        // GET: Vouchers/Details
+        public ActionResult Details(int? id)
+        {
+
+            return View(base.BaseCreateEdit<Voucher>(id, "VoucherID"));
+        }
+
+        // GET: Voucher/Details
+        //      public ActionResult Details([Bind(Include = "VoucherID,TDate,PayTo,Amount,OnAccountOf,ChequeNo,DrawnOn")] Voucher voucher)
+        //     {
+        //        return base.B
+        //     }
 
         protected override void Dispose(bool disposing)
         {
