@@ -33,6 +33,11 @@ namespace DeMonte.Controllers
             return base.BaseSave<Receipt>(receipt,receipt.ReceiptID > 0);
         }
 
+        public ActionResult Details(int? id)
+        {
+            return View(base.BaseCreateEdit<Receipt>(id, "ReceiptID"));
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
