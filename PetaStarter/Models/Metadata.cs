@@ -7,6 +7,7 @@ using System.Web;
 
 namespace DeMonte
 {
+   
     public class CustomerMetadata
     {
         [Display(Name = "Name")]
@@ -39,10 +40,10 @@ namespace DeMonte
     {
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "TDate")]
+        [Display(Name = "Date")]
         public DateTime TDate;
 
-        [Display(Name = "PayTo")]
+        [Display(Name = "Pay To")]
         [Required]
         [StringLength(100, MinimumLength = 3)]
         public string PayTo;
@@ -52,15 +53,15 @@ namespace DeMonte
         [Range(0.0, Double.MaxValue)]
         public decimal Amount;
 
-        [Display(Name = "OnAccountOf")]
+        [Display(Name = "On Account Of")]
         [StringLength(350, MinimumLength = 3)]
         public string OnAccountOf;
 
-        [Display(Name = "ChequeNo")]
+        [Display(Name = "Cheque No.")]
         [StringLength(20, MinimumLength = 3)]
         public string ChequeNo;
 
-        [Display(Name = "DrawnOn")]
+        [Display(Name = "Drawn On")]
         [StringLength(50, MinimumLength = 3)]
         public string DrawnOn;
 
@@ -69,7 +70,7 @@ namespace DeMonte
     {
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "TDate")]
+        [Display(Name = "Date")]
         public DateTime TDate;
 
         [Display(Name = "Name")]
@@ -82,24 +83,24 @@ namespace DeMonte
         [Range(0.0, Double.MaxValue)]
         public decimal Amount;
 
-        [Display(Name = "ChequeNo")]
+        [Display(Name = "Cheque No.")]
         [StringLength(20, MinimumLength = 3)]
         public string ChequeNo;
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
-        [Display(Name = "ChqDate")]
+        [Display(Name = "Cheque Date")]
         public DateTime ChqDate;
 
-        [Display(Name = "DrawnOn")]
+        [Display(Name = "Drawn On")]
         [StringLength(50, MinimumLength = 3)]
         public string DrawnOn;
 
-        [Display(Name = "RoomNo")]
+        [Display(Name = "Room No.")]
         [StringLength(10, MinimumLength = 3)]
         public string RoomNo;
 
-        [Display(Name = "BillNo")]
+        [Display(Name = "Bill No.")]
         public int BillNo;
     }
     //public class EmpTypeMetadata

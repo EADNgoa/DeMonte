@@ -357,6 +357,7 @@
     <Content Include="Views\Voucher\Manage.cshtml" />
     <Content Include="Views\Receipt\Index.cshtml" />
     <Content Include="Views\Receipt\Manage.cshtml" />
+    <Content Include="Views\Voucher\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

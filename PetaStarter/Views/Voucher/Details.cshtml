@@ -1,0 +1,98 @@
+﻿@model DeMonte.Voucher
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="section-to-print">
+<h2>THE FOUR LEAF CLOVER</h2>
+<h4>(HOLIDAY HOME)</h4>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+       <dt></dt>
+        
+       
+        <dd class="pull-right">
+            VOUCHER NO:     @Html.DisplayFor(model => model.VoucherID)
+        </dd>
+      
+        <dt class="pull-right">
+         DATE:   @Html.DisplayFor(model => model.TDate)
+          
+        </dt>
+        
+      
+        <dt>
+            @Html.DisplayNameFor(model => model.PayTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PayTo)
+        </dd>
+
+
+        <dt>
+           Rupees
+        </dt>
+
+        <dd>
+          
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OnAccountOf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OnAccountOf)
+        </dd>
+
+        <dt>
+           Cash/Cheque
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChequeNo)
+            </dd>
+        
+            <dt>
+                Drawn On      
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.DrawnOn)
+            </dd>
+
+         <dt>
+              RS
+         </dt>
+          <dd>
+
+          </dd>
+
+
+        <dt>
+            CASHIER
+        </dt>
+        <dd>
+            __________________________
+        </dd>
+        
+
+        <dt>
+            RECEIVER'S SIGNATURE
+        </dt>
+        <dd>
+            __________________________
+        </dd>
+
+    </dl>
+</div>
+  </div>
+<p>
+   
+    @Html.ActionLink("Back to List", "Index")
+    <input type="button" onclick="javascript:window.print();" value="Print" class="eabutton section-to-not-print" />
+</p>
+

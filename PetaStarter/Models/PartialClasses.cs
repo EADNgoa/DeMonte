@@ -24,6 +24,8 @@ namespace DeMonte
     public partial class Receipt
     {
     }
+  
+    
     //[MetadataType(typeof(ConfigMetadata))]
     //public partial class Config
     //{
