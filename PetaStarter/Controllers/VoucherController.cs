@@ -40,11 +40,7 @@ namespace DeMonte.Controllers
             return View(base.BaseCreateEdit<Voucher>(id, "VoucherID"));
         }
 
-        // GET: Voucher/Details
-        //      public ActionResult Details([Bind(Include = "VoucherID,TDate,PayTo,Amount,OnAccountOf,ChequeNo,DrawnOn")] Voucher voucher)
-        //     {
-        //        return base.B
-        //     }
+       
 
         protected override void Dispose(bool disposing)
         {

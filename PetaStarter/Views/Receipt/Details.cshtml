@@ -1,10 +1,10 @@
-﻿@model DeMonte.Voucher
+﻿@model DeMonte.Receipt
 
 @{
     ViewBag.Title = "Details";
 }
 <div class="section-to-print">
-<h2>THE FOUR LEAF CLOVER</h2>
+<h2>THE FOUR LEAF CLOVER </h2>
 <h4>(HOLIDAY HOME)</h4>
 <h5>1751/A, Saipem, Candolim, Bardez Goa, Phone No. 2407789</h5>
 <div>
@@ -15,7 +15,7 @@
         
        
         <dd class="pull-right">
-            VOUCHER NO:     @Html.DisplayFor(model => model.VoucherID)
+            RECEIPT NO:     @Html.DisplayFor(model => model.ReceiptID)
         </dd>
       
         <dt class="pull-right">
@@ -25,36 +25,36 @@
         
       
         <dt>
-           Pay To
+           Received with Thanks from Ms /Mrs
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PayTo)
+            @Html.DisplayFor(model => model.Name)
         </dd>
 
 
         <dt>
-           Rupees
+          the sum of Rupees
         </dt>
 
         <dd>
-          
+          @Html.DisplayFor(model=>model.Amount)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.OnAccountOf)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OnAccountOf)
-        </dd>
-
-        <dt>
-           Cash/Cheque
+           vide Cash/Cheque No.
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ChequeNo)
+        </dd>
+
+        <dt>
+         Cheque date
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChqDate)
             </dd>
         
             <dt>
@@ -62,13 +62,29 @@
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.DrawnOn)
+              
             </dd>
 
-         <dt>
+        <dt>
+           Room No.
+        </dt>
+        <dd>
+          Room No  @Html.DisplayFor(model => model.RoomNo)
+        
+        </dd>
+        <dt>
+            Bill No.
+         </dt>
+             <dd>
+                 Bill No. @Html.DisplayFor(model => model.BillNo)
+             </dd>
+        <dt>
               RS 
          </dt>
-          <dd>  &nbsp;  &nbsp;
-                          &nbsp;   __________________________  &nbsp;  &nbsp; __________________________
+        <dd>
+
+          
+              &nbsp;  &nbsp;   &nbsp;   __________________________  &nbsp;  &nbsp; __________________________
               &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; 
               &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
