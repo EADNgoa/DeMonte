@@ -5,7 +5,7 @@
 }
 <div class="section-to-print">
 <h2>THE FOUR LEAF CLOVER </h2>
-<h4>(HOLIDAY HOME)</h4>
+<h4 style="padding-left:100px" ;>(HOLIDAY HOME)</h4>
 <h5>1751/A, Saipem, Candolim, Bardez Goa, Phone No. 2407789</h5>
 <div>
    
@@ -15,87 +15,101 @@
         
        
         <dd class="pull-right">
-            RECEIPT NO:     @Html.DisplayFor(model => model.ReceiptID)
+            RECEIPT NO:   @Html.DisplayFor(model => model.ReceiptID)
         </dd>
       
         <dt class="pull-right">
          DATE:   @Html.DisplayFor(model => model.TDate)
           
         </dt>
+        </dl>
+
+      <table  >
+          </br>
+         <tr>
+         
         
+              <td>
+                  Received with Thanks from Ms /Mrs  &nbsp;<u>  @Html.DisplayFor(model=>model.Name)</u>
+              </td>
+        </tr> 
+
+        <tr>
+            <td>
+               The sum of Rupees
+            </td>
+            <td>
+                &nbsp;<u> </u>     
+            </td>
+        </tr>
+
+         
+        <tr>
+           
+       
+               <td>
+                   vide Cash/Cheque No.  &nbsp;       <u>   @Html.DisplayFor(model => model.ChequeNo)</u>
+               
+                Cheque date &nbsp;  <u>    @Html.DisplayFor(model => model.ChqDate)</u>
+</td>
+
+        </tr>
+
+          <tr>
+            
+         
+             <td>
+                 Drawn On         &nbsp;   <u>  @Html.DisplayFor(model => model.DrawnOn)</u>
+                &nbsp; On Account of Advance /balance /
+            </td>
+          </tr>
+
+        <tr>
+           
       
-        <dt>
-           Received with Thanks from Ms /Mrs
-        </dt>
+             <td>
+                  Full Payement towards Room Charges for Room No. &nbsp;   <u>     @Html.DisplayFor(model => model.RoomNo)</u> &nbsp; /
+            </td>
+       
+            
+             <td>
+               &nbsp;   Bill No.   &nbsp; <u>    @Html.DisplayFor(model => model.BillNo)</u>
+            </td>
+          </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+          <tr>
 
-
-        <dt>
-          the sum of Rupees
-        </dt>
-
-        <dd>
-          @Html.DisplayFor(model=>model.Amount)
-        </dd>
-
-        <dt>
-           vide Cash/Cheque No.
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ChequeNo)
-        </dd>
-
-        <dt>
-         Cheque date
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ChqDate)
-            </dd>
-        
-            <dt>
-                Drawn On      
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DrawnOn)
-              
-            </dd>
-
-        <dt>
-           Room No.
-        </dt>
-        <dd>
-          Room No  @Html.DisplayFor(model => model.RoomNo)
-        
-        </dd>
-        <dt>
-            Bill No.
-         </dt>
-             <dd>
-                 Bill No. @Html.DisplayFor(model => model.BillNo)
-             </dd>
-        <dt>
+              </table>
+    </br>
+    </br>
+    </br>
+    <table >
+        <tr>
+        <th>
               RS 
-         </dt>
-        <dd>
+         </th>
+              <td>
+             &nbsp; @Html.DisplayFor(model => model.Amount)
+              </td>
+            <td style="padding-left: 150px; padding-right: 5px;">
+               _________________
+            </td>
+            </tr>
 
-          
-              &nbsp;  &nbsp;   &nbsp;   __________________________  &nbsp;  &nbsp; __________________________
-              &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; 
-              &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;   &nbsp;   &nbsp; CASHIER &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
-              &nbsp;RECEIVER'S SIGNATURE 
-          </dd>
+            <tr>
+              <td></td>
+                <td></td>
 
-
+                <td style="padding-left: 120px; padding-right: 5px;">
+                    For THE FOUR LEAF CLOVER
+                    </td>
+                </tr>
+            </tr>
+        
+       
+</table>
        
 
-    </dl>
 </div>
   </div>
 <p>
