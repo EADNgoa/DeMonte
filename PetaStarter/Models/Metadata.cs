@@ -97,7 +97,7 @@ namespace DeMonte
         public string DrawnOn;
 
         [Display(Name = "Room No.")]
-        [StringLength(10, MinimumLength = 3)]
+        [StringLength(10, MinimumLength = 1)]
         public string RoomNo;
 
         [Display(Name = "Bill No.")]

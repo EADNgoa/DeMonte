@@ -4,8 +4,9 @@
     ViewBag.Title = "Details";
 }
 <div class="section-to-print">
+ 
 <h2>THE FOUR LEAF CLOVER</h2>
-<h4>(HOLIDAY HOME)</h4>
+<h4 style="padding-left:100px";>(HOLIDAY HOME)</h4>
 <h5>1751/A, Saipem, Candolim, Bardez Goa, Phone No. 2407789</h5>
 <div>
    
@@ -23,63 +24,88 @@
           
         </dt>
         
-      
-        <dt>
-           Pay To
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PayTo)
-        </dd>
+   
+    </dl>
+    <table>
+        </br>
+        <tr>
 
 
-        <dt>
-           Rupees
-        </dt>
+            <td>
+                PAY TO:  &nbsp;<u>  @Html.DisplayFor(model => model.PayTo)</u>
+            </td>
+        </tr>
 
-        <dd>
-          
-        </dd>
+        <tr>
+            <td>
+                RUPEES:
+            </td>
+            <td>
+                &nbsp;<u></u>
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OnAccountOf)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OnAccountOf)
-        </dd>
+        <tr>
 
-        <dt>
-           Cash/Cheque
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ChequeNo)
-            </dd>
+            <td>
+                ON ACCOUNT OF:  &nbsp;        <u>  @Html.DisplayFor(model => model.OnAccountOf)</u>
+
+               
+            </td>
+
+        </tr>
+
+        <tr>
+
+
+            <td>
+                CASH/CHEQUE:        &nbsp; <u>    @Html.DisplayFor(model => model.ChequeNo)</u>
+                &nbsp; DRAWN ON:   &nbsp;  <u>   @Html.DisplayFor(model => model.DrawnOn)</u>
+            </td>
+        </tr>
+
         
-            <dt>
-                Drawn On      
-            </dt>
-            <dd>
-                @Html.DisplayFor(model => model.DrawnOn)
-            </dd>
-
-         <dt>
-              RS 
-         </dt>
-          <dd>  &nbsp;  &nbsp;
-                          &nbsp;   __________________________  &nbsp;  &nbsp; __________________________
-              &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; 
-              &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;   &nbsp;   &nbsp; CASHIER &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;
-              &nbsp;RECEIVER'S SIGNATURE 
-          </dd>
-
 
        
 
-    </dl>
+    </table>
+    </br>
+    </br>
+    </br>
+    <table>
+        <tr>
+            <th>
+                RS
+            </th>
+            <td>
+                &nbsp; @Html.DisplayFor(model => model.Amount)
+            </td>
+            <td style="padding-left: 150px; padding-right: 5px;">
+                _________________
+            </td>
+            <td style="padding-left: 150px; padding-right: 5px;">
+                _________________
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+
+            <td style="padding-left: 180px; padding-right: 5px;">
+               CASHIER
+            </td>
+            <td style="padding-left: 140px; padding-right: 5px;">
+                RECEIVER'S SIGNATURE
+            </td>
+        </tr>
+        </tr>
+
+
+    </table>
+    
 </div>
   </div>
 <p>
