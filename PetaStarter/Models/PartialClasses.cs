@@ -24,8 +24,28 @@ namespace DeMonte
     public partial class Receipt
     {
     }
-  
-    
+
+    [MetadataType(typeof(BillMetadata))]
+    public partial class Bill
+    {
+    }
+
+    [MetadataType(typeof(RegisterMetadata))]
+    public partial class Register
+    {
+       
+    }
+
+    public class RegisterViewCls
+    {
+        public int RegisterID { get; set; }
+        public int CustomerID { get; set; }
+
+        public int BillID { get; set; }
+        public int EncashmentCash { get; set; }
+        public int Remarks { get; set; }
+    }
+
     //[MetadataType(typeof(ConfigMetadata))]
     //public partial class Config
     //{
@@ -94,12 +114,7 @@ namespace DeMonte
     //{
     //}
 
-    //public class DailyAllowEvent
-    //{
-    //    public string title { get; set; }
-    //    public string start { get; set; }
-    //    public bool allDay { get; set; }
-    //}
+
 
 
     ///// <summary>

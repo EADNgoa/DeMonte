@@ -103,6 +103,62 @@ namespace DeMonte
         [Display(Name = "Bill No.")]
         public int BillNo;
     }
+    public class BillMetadata
+    {
+        [Display(Name = "No of Guest")]
+        public int NoOfGuest;
+
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date Arrival Time")]
+        public DateTime DateArrivalTime;
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date Departure Time")]
+        public DateTime DateDepartureTime;
+
+        [Display(Name = "Charges Per Day")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal ChargesPerDay;
+
+        [Display(Name = "Room No")]
+        public int RoomNo;
+
+        [Display(Name = "Total Days")]
+        [Required]
+        public int TotalDays;
+
+        [Display(Name = "Period To Stay")]
+        [Required]
+        public int PeriodToStay;
+
+        [Display(Name ="Bill/Receipt No")]
+        public int BillReceiptNo;
+        
+        [Display(Name ="Amount GST Tax")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal AmountGSTTax;
+
+        [Display(Name ="Charges Paid Foreign/Indian")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal PaidInForeignIndian;
+
+    }
+    public class RegisterMetadata
+    {
+        [Display(Name = "Encashment Certificate")]
+        public String EncashmentCertificate;
+
+        [Display(Name = "Remarks")]
+        [Required]
+        public string Remarks;
+
+    }
     //public class EmpTypeMetadata
     //{
     //    [Display(Name = "Employee Type")]

@@ -1,16 +1,18 @@
 ﻿CREATE TABLE [dbo].[Bill]
 (
-	[BillID] INT NOT NULL PRIMARY KEY, 
-    [Name] VARCHAR(350) NULL, 
-    [Date] DATE NULL, 
-    [Address] VARCHAR(350) NULL, 
-    [RoomChargesPerDay] DECIMAL(15, 2) NULL, 
+	[BillID] INT NOT NULL PRIMARY KEY Identity, 
+    [CustomerID] INT NULL, 
+	[NoOfGuest] INT NULL, 
+	[DateArrivalTime] DATETIME NULL, 
+	[DateDepartureTime] DATE NULL, 
+    [ChargesPerDay] DECIMAL(15, 2) NULL, 
+	[RoomNo] INT NULL,
     [TotalDays] INT NULL, 
-    [NoOfPerson] INT NULL, 
-    [AdvReceiptNo] INT NULL, 
-    [DateArrival] DATE NULL, 
-    [CheckInTime] TIME NULL, 
-    [RegisterNo] INT NULL, 
-    [DateDeparture] DATE NULL, 
-    [RoomNo] INT NULL
+	[PeriodToStay] INT NULL,
+    [BillReceiptNo] INT NULL, 
+	[AmountGSTTax] DECIMAL(15, 2) NULL, 
+    [PaidInForeignIndian] DECIMAL(15, 2) NULL, 
+    CONSTRAINT [FK_Bill_CustomerID] FOREIGN KEY ([CustomerID]) REFERENCES [Customer]([CustomerID]) 
+  
+   
 )
