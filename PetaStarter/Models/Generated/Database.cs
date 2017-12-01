@@ -183,10 +183,5 @@ namespace DeMonte
 		[Column] public string OnAccountOf { get; set; }
 		[Column] public string ChequeNo { get; set; }
 		[Column] public string DrawnOn { get; set; }
-
-        internal static Voucher Find(int? id)
-        {
-            throw new NotImplementedException();
-        }
-    }
+	}
 }

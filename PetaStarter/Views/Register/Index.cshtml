@@ -1,0 +1,51 @@
+﻿@model PagedList.IPagedList<RegisterViewCls>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Register";
+}
+
+<center>
+    <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
+    
+    @using (Html.BeginForm("Index", "Register", FormMethod.Get))
+    {        
+        <div class="row section-to-Not-print">
+            <div>
+                <table>
+                    <tr style="text-align:center">
+                        <td>&nbsp; customer Name:</td>
+                        <td> @Html.TextBox("PropName", ViewBag.CurrentFilter as string, new { @class = "form-control" })</td>
+
+                        <td class="col-lg-1"></td>
+                        <td><input type="submit" value="Search" class="btn btn-default" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+</center>
+
+<p>
+    @Html.ActionLink("Create New", "Manage")
+</p>
+<table class="table">
+    <tr>
+        <th>Customer Name</th>
+        <th>Address</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        
+        <th></th>
+    </tr>
+
+        
+     
+}
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

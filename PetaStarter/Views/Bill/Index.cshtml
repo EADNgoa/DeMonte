@@ -1,0 +1,100 @@
+﻿@model PagedList.IPagedList<DeMonte.BillDetail>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Bills";
+}
+
+<center>
+    <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
+    
+    @using (Html.BeginForm("Index", "BillDetail", FormMethod.Get))
+    {        
+        <div class="row section-to-Not-print">
+            <div>
+                <table>
+                    <tr style="text-align:center">
+                        <td>&nbsp; Bill Name:</td>
+                        <td> @Html.TextBox("PropName", ViewBag.CurrentFilter as string, new { @class = "form-control" })</td>
+
+                        <td class="col-lg-1"></td>
+                        <td><input type="submit" value="Search" class="btn btn-default" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+</center>
+
+<p>
+    @Html.ActionLink("Create New", "Manage")
+</p>
+<table class="table">
+    <tr>
+       </th>
+    
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().NoOfGuest)     </th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DateArrivalTime) </th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DateDepartureTime)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChargesPerDay)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().RoomNo)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().TotalDays)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().PeriodToStay)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BillReceiptNo)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().AmountGSTTax)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().PaidInForeignIndian)</th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => Customer.Name)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.NoOfGuest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateArrivalTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDepartureTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChargesPerDay)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoomNo)
+        </td>
+          
+    <td>
+        @Html.DisplayFor(modelItem => item.TotalDays)
+    </td>
+       
+    <td>
+        @Html.DisplayFor(modelItem => item.PeriodToStay)
+    </td>
+      
+    <td>
+        @Html.DisplayFor(modelItem => item.BillReceiptNo)
+    </td>
+      
+    <td>
+        @Html.DisplayFor(modelItem => item.AmountGSTTax)
+    </td>
+       
+    <td>
+        @Html.DisplayFor(modelItem => item.PaidInForeignIndian)
+    </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Manage", new { id = item.BillID})
+        </td>
+    </tr>
+}
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

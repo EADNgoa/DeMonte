@@ -21,4 +21,60 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="RoomChargesPerDay" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="68f876d8-e6e1-4b15-82bc-e2efc677a627" ChangeDateTime="11/29/2017 08:38:53">
+    <Property Name="ElementName" Value="[dbo].[Bill].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CustomerID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0bf1be3e-3aa4-42c2-852c-d4fcfe898e2d" ChangeDateTime="11/29/2017 10:00:02">
+    <Property Name="ElementName" Value="[dbo].[FK_Bill_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Bill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Bill_CustomerID]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="42999a9a-d4e4-49fc-bd34-797fb95b009f" ChangeDateTime="11/29/2017 10:04:54">
+    <Property Name="ElementName" Value="[dbo].[FK_Bill_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Bill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Bill_CustomerID]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="623df2bd-f05e-4cb9-b08a-a7032d9c6a96" ChangeDateTime="11/29/2017 16:32:48">
+    <Property Name="ElementName" Value="[dbo].[Bill].[Bill/ReceiptNo]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BillReceiptNo" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="65735852-5311-4872-a72f-207b6f3a32b0" ChangeDateTime="11/29/2017 16:50:07">
+    <Property Name="ElementName" Value="[dbo].[Bill].[ChargesPaidInforeign/Indian]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PaidInforeign/Indian" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="19b42625-99d3-46d4-8040-f4d645467733" ChangeDateTime="11/29/2017 16:52:30">
+    <Property Name="ElementName" Value="[dbo].[Bill].[PaidInforeign/Indian]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PaidInforeignIndian" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9f4b5920-a4ea-4b1c-bba7-eba82bef5cc0" ChangeDateTime="11/29/2017 18:02:32">
+    <Property Name="ElementName" Value="[dbo].[Bill].[PaidInforeignIndian]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PaidInForeignIndian" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="85149c8c-8bc2-42ac-9fbf-864212a964d8" ChangeDateTime="11/30/2017 08:51:03">
+    <Property Name="ElementName" Value="[dbo].[Register].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Register]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RegisterID" />
+  </Operation>
 </Operations>
