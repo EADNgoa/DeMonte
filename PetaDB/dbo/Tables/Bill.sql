@@ -10,8 +10,9 @@
     [TotalDays] INT NULL, 
 	[PeriodToStay] INT NULL,
     [BillReceiptNo] INT NULL, 
-	[AmountGSTTax] DECIMAL(15, 2) NULL, 
     [PaidInForeignIndian] DECIMAL(15, 2) NULL, 
+    [CheckInTime] TIME NULL, 
+    [CheckOutTime] TIME NULL, 
     CONSTRAINT [FK_Bill_CustomerID] FOREIGN KEY ([CustomerID]) REFERENCES [Customer]([CustomerID]) 
   
    

@@ -35,6 +35,35 @@ namespace DeMonte
     {
        
     }
+    [MetadataType(typeof(CustomerMetadata))]
+    public class CustomerViewCls
+    {
+        public int CustomerID { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string PassportNo { get; set; }
+        public DateTime? DateIssue { get; set; }
+        public DateTime? DateExpiry { get; set; }
+        public string PhotograghID { get; set; }
+    }
+
+   
+
+    public class BillViewCls
+    {
+        public int BillID { get; set; }
+        public int? CustomerID { get; set; }
+        public int? NoOfGuest { get; set; }
+        public DateTime? DateArrivalTime { get; set; }
+        public DateTime? DateDepartureTime { get; set; }
+        public decimal? ChargesPerDay { get; set; }
+        public int? RoomNo { get; set; }
+        public int? TotalDays { get; set; }
+        public int? PeriodToStay { get; set; }
+        public int? BillReceiptNo { get; set; }
+        public decimal? AmountGSTTax { get; set; }
+        public decimal? PaidInForeignIndian { get; set; }
+    }
 
     public class RegisterViewCls
     {

@@ -1,0 +1,1 @@
+﻿Select * from Customer b inner join Bill c on b.customerID=c.customerID 
