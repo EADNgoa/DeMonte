@@ -1,5 +1,6 @@
-﻿@model PagedList.IPagedList<DeMonte.BillDetail>
+﻿@model PagedList.IPagedList<BillViewCls>
 @using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Bills";
 }
@@ -7,7 +8,7 @@
 <center>
     <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
     
-    @using (Html.BeginForm("Index", "BillDetail", FormMethod.Get))
+    @using (Html.BeginForm("Index", "BillViewCls", FormMethod.Get))
     {        
         <div class="row section-to-Not-print">
             <div>
@@ -27,30 +28,31 @@
 
 <p>
     @Html.ActionLink("Create New", "Manage")
+   
+      
 </p>
 <table class="table">
     <tr>
-       </th>
-    
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().NoOfGuest)     </th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DateArrivalTime) </th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DateDepartureTime)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChargesPerDay)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().RoomNo)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().TotalDays)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().PeriodToStay)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BillReceiptNo)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().AmountGSTTax)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().PaidInForeignIndian)</th>
+       
+
+        <th>No Of Guest</th>
+       <th>Date Of Arrival</th>
+        <th>Date Of Departure</th>
+        <th>Charges Per Day</th>
+        <th>Room No</th>
+        <th>Total Days</th>
+        <th>Bill/Receipt No</th>
+        <th>Amount GST Tax</th>
+        <th>Paid In Foreign/Indian</th>
+        
+       
 
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => Customer.Name)
-        </td>*@
+       
         <td>
             @Html.DisplayFor(modelItem => item.NoOfGuest)
         </td>
@@ -90,11 +92,8 @@
         <td>
             @Html.ActionLink("Edit", "Manage", new { id = item.BillID})
         </td>
+      
     </tr>
 }
 
 </table>
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

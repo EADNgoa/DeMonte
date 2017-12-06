@@ -80,6 +80,14 @@ namespace DeMonte
 		[Column] public string ProductVersion { get; set; }
 	}
     
+	[TableName("dbo.__RefactorLog")]
+	[PrimaryKey("OperationKey", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class __RefactorLog  
+    {
+		[Column] public Guid OperationKey { get; set; }
+	}
+    
 	[TableName("dbo.AspNetRoles")]
 	[PrimaryKey("Id", AutoIncrement=false)]
 	[ExplicitColumns]
@@ -141,6 +149,25 @@ namespace DeMonte
 		[Column] public DateTime? LastLogin { get; set; }
 	}
     
+	[TableName("dbo.Bill")]
+	[PrimaryKey("BillID")]
+	[ExplicitColumns]
+    public partial class Bill  
+    {
+		[Column] public int BillID { get; set; }
+		[Column] public int? CustomerID { get; set; }
+		[Column] public int? NoOfGuest { get; set; }
+		[Column] public DateTime? DateArrivalTime { get; set; }
+		[Column] public DateTime? DateDepartureTime { get; set; }
+		[Column] public decimal? ChargesPerDay { get; set; }
+		[Column] public int? RoomNo { get; set; }
+		[Column] public int? TotalDays { get; set; }
+		[Column] public int? PeriodToStay { get; set; }
+		[Column] public int? BillReceiptNo { get; set; }
+		[Column] public decimal? AmountGSTTax { get; set; }
+		[Column] public decimal? PaidInForeignIndian { get; set; }
+	}
+    
 	[TableName("dbo.Customer")]
 	[PrimaryKey("CustomerID")]
 	[ExplicitColumns]
@@ -169,6 +196,18 @@ namespace DeMonte
 		[Column] public string DrawnOn { get; set; }
 		[Column] public string RoomNo { get; set; }
 		[Column] public int? BillNo { get; set; }
+	}
+    
+	[TableName("dbo.Register")]
+	[PrimaryKey("RegisterID", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class Register  
+    {
+		[Column] public int RegisterID { get; set; }
+		[Column] public int? CustomerID { get; set; }
+		[Column] public int? BillID { get; set; }
+		[Column] public string EncashmentCertificate { get; set; }
+		[Column] public string Remarks { get; set; }
 	}
     
 	[TableName("dbo.Voucher")]

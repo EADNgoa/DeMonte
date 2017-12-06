@@ -12,7 +12,7 @@ namespace DeMonte.Controllers
         public ActionResult Index(int? page, string PropName)
         {
             if (PropName?.Length > 0) page = 1;
-            return View("Index", base.BaseIndex<Customer>(page, "Customer where Name like '%" + PropName + "%'"));
+            return View("Index", base.BaseIndex<CustomerViewCls>(page, "Customer where Name like '%" + PropName + "%'"));
         }
 
 
@@ -20,7 +20,7 @@ namespace DeMonte.Controllers
         // GET: Clients/Create
         public ActionResult Manage(int? id)
         {
-            return View(base.BaseCreateEdit<Customer>(id, "CustomerID"));
+            return View(base.BaseCreateEdit<CustomerViewCls>(id, "CustomerID"));
         }
 
         // POST: Customer/Create
