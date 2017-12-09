@@ -29,9 +29,9 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "BillID,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays,PeriodToStay,BillReceiptNo,AmountGSTTax,PaidInForeignIndian")] Bill bill)
+        public ActionResult Manage([Bind(Include = "BillID,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays,PeriodToStay,BillReceiptNo,PaidInForeignIndian,CheckInTime,CheckOutTime,CGST,SGST,IGST")] BillViewCls bill)
         {
-          return  base.BaseSave<Bill>(bill, bill.BillID > 0);          
+          return  base.BaseSave<BillViewCls>(bill, bill.BillID > 0);          
         }
 
         protected override void Dispose(bool disposing)

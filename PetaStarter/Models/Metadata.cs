@@ -135,19 +135,81 @@ namespace DeMonte
         [Required]
         public int PeriodToStay;
 
-        [Display(Name ="Bill/Receipt No")]
+        [Display(Name = "Bill/Receipt No")]
         public int BillReceiptNo;
-        
-        [Display(Name ="Amount GST Tax")]
-        [Required]
-        [Range(0.0, Double.MaxValue)]
-        public decimal AmountGSTTax;
 
-        [Display(Name ="Charges Paid Foreign/Indian")]
+
+        [Display(Name = "Charges Paid Foreign/Indian")]
         [Required]
-        [Range(0.0, Double.MaxValue)]
         public decimal PaidInForeignIndian;
 
+        [Display(Name = "Check In Time")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString ="{HH: mm }", ApplyFormatInEditMode = true)]
+        public decimal CheckInTime;
+
+        [Display(Name = "Check Out Time")]
+        [DataType(DataType.Time)]
+        [DisplayFormat(DataFormatString = "{HH: mm }", ApplyFormatInEditMode = true)]
+        public decimal CheckOutTime;
+
+
+        [Display(Name = "CGST")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal CGST;
+
+        [Display(Name = "SGST")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal SGST;
+
+        [Display(Name = "IGST")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal IGST;
+
+    }
+    public class BillDetailMetadata
+    {
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date")]
+        public DateTime Date;
+
+        [Display(Name = "Extra Person")]
+        [Required]
+        public string ExtraPerson;
+
+        [Display(Name = "GST")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal GST;
+
+        [Display(Name = "Others 1")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Other1;
+
+        [Display(Name = "Other2")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Other2;
+
+        [Display(Name = "Other3")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Other3;
+
+        [Display(Name = "Other4")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Other4;
+
+        [Display(Name = "Total")]
+        [Required]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Total;
     }
     public class RegisterMetadata
     {

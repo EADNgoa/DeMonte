@@ -8,7 +8,7 @@
 <center>
     <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
     
-    @using (Html.BeginForm("Index", "BillViewCls", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Bill", FormMethod.Get))
     {        
         <div class="row section-to-Not-print">
             <div>
@@ -41,11 +41,14 @@
         <th>Charges Per Day</th>
         <th>Room No</th>
         <th>Total Days</th>
+        <th>Period To Stay</th>
         <th>Bill/Receipt No</th>
-        <th>Amount GST Tax</th>
         <th>Paid In Foreign/Indian</th>
-        
-       
+        <th>Check In Time</th>
+        <th>Check Out Time</th>
+       <th>CGST</th>
+        <th>SGST</th>
+        <th>IGST</th>
 
         <th></th>
     </tr>
@@ -80,15 +83,27 @@
     <td>
         @Html.DisplayFor(modelItem => item.BillReceiptNo)
     </td>
-      
-    <td>
-        @Html.DisplayFor(modelItem => item.AmountGSTTax)
-    </td>
        
     <td>
         @Html.DisplayFor(modelItem => item.PaidInForeignIndian)
     </td>
 
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckInTime)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.CheckOutTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CGST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SGST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IGST)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Manage", new { id = item.BillID})
         </td>
