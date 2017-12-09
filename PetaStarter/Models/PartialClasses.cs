@@ -35,6 +35,12 @@ namespace DeMonte
     {
        
     }
+    [MetadataType(typeof(BillDetailMetadata))]
+    public partial class BillDetail
+    {
+
+    }
+
     [MetadataType(typeof(CustomerMetadata))]
     public class CustomerViewCls
     {
@@ -44,27 +50,46 @@ namespace DeMonte
         public string PassportNo { get; set; }
         public DateTime? DateIssue { get; set; }
         public DateTime? DateExpiry { get; set; }
-        public string PhotograghID { get; set; }
+        public HttpPostedFileBase PhotograghID { get; set; }
     }
 
-   
 
+    [MetadataType(typeof(BillMetadata))]
     public class BillViewCls
     {
         public int BillID { get; set; }
-        public int? CustomerID { get; set; }
-        public int? NoOfGuest { get; set; }
+        public int CustomerID { get; set; }
+        public int NoOfGuest { get; set; }
         public DateTime? DateArrivalTime { get; set; }
         public DateTime? DateDepartureTime { get; set; }
-        public decimal? ChargesPerDay { get; set; }
-        public int? RoomNo { get; set; }
-        public int? TotalDays { get; set; }
-        public int? PeriodToStay { get; set; }
-        public int? BillReceiptNo { get; set; }
-        public decimal? AmountGSTTax { get; set; }
-        public decimal? PaidInForeignIndian { get; set; }
+        public decimal ChargesPerDay { get; set; }
+        public int RoomNo { get; set; }
+        public int TotalDays { get; set; }
+        public int PeriodToStay { get; set; }
+        public int BillReceiptNo { get; set; }
+        public decimal PaidInForeignIndian { get; set; }
+        public DateTime? CheckInTime{ get; set; }
+        public DateTime? CheckOutTime { get; set; }
+        public decimal CGST { get; set; }
+        public decimal SGST { get; set; }
+        public decimal IGST { get; set; }
     }
-
+    [MetadataType(typeof(BillDetailMetadata))]
+    public class BillDetailViewCls
+    {
+        public int BillDetailID { get; set; }
+        public int BillID { get; set; }
+        public DateTime? Date {get;set;}
+        public decimal ExtraPerson{ get; set; }
+        public decimal GST { get; set;}
+        public decimal Miscelleneous{ get ; set; }
+        public decimal Other1 { get ; set; }
+        public decimal Other2 { get; set; }
+        public decimal Other3 { get; set; }
+        public decimal Other4 { get; set; }
+        public decimal Total { get; set; }
+    }
+    [MetadataType(typeof(RegisterMetadata))]
     public class RegisterViewCls
     {
         public int RegisterID { get; set; }
