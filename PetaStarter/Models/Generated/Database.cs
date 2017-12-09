@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `DefaultConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=DeMonteDB;Integrated Security=True`
+//     Connection String:      `Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=DeMonteDB.sql;Integrated Security=True`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -164,8 +164,30 @@ namespace DeMonte
 		[Column] public int? TotalDays { get; set; }
 		[Column] public int? PeriodToStay { get; set; }
 		[Column] public int? BillReceiptNo { get; set; }
-		[Column] public decimal? AmountGSTTax { get; set; }
-		[Column] public decimal? PaidInForeignIndian { get; set; }
+		[Column] public decimal? PaidInforeignIndian { get; set; }
+		[Column] public DateTime? CheckInTime { get; set; }
+		[Column] public DateTime? CheckOutTime { get; set; }
+		[Column] public decimal? CGST { get; set; }
+		[Column] public decimal? SGST { get; set; }
+		[Column(" IGST")] public decimal? _IGST { get; set; }
+	}
+    
+	[TableName("dbo.BillDetail")]
+	[PrimaryKey("BillDetailID", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class BillDetail  
+    {
+		[Column] public int BillDetailID { get; set; }
+		[Column] public int? BillID { get; set; }
+		[Column] public DateTime? Date { get; set; }
+		[Column] public decimal? ExtraPerson { get; set; }
+		[Column] public decimal? GST { get; set; }
+		[Column] public decimal? Miscelleneous { get; set; }
+		[Column] public decimal? Others1 { get; set; }
+		[Column] public decimal? Other2 { get; set; }
+		[Column] public decimal? Other3 { get; set; }
+		[Column] public decimal? Other4 { get; set; }
+		[Column] public decimal? Total { get; set; }
 	}
     
 	[TableName("dbo.Customer")]

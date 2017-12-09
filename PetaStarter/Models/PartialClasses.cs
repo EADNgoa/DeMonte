@@ -50,7 +50,7 @@ namespace DeMonte
         public string PassportNo { get; set; }
         public DateTime? DateIssue { get; set; }
         public DateTime? DateExpiry { get; set; }
-        public string PhotograghID { get; set; }
+        public HttpPostedFileBase PhotograghID { get; set; }
     }
 
 
