@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<BillDetailViewCls>
+﻿@model PagedList.IPagedList<DeMonte.BillDetailViewCls>
 @using PagedList.Mvc;
 
 @{
@@ -58,6 +58,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ExtraPerson)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GST)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Miscelleneous)

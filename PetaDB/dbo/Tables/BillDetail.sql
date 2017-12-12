@@ -6,7 +6,7 @@
     [ExtraPerson] DECIMAL(12, 2) NULL, 
     [GST] DECIMAL(12, 2) NULL, 
     [Miscelleneous] DECIMAL(12, 2) NULL, 
-    [Others1] DECIMAL(12, 2) NULL, 
+    [Other1] DECIMAL(12, 2) NULL, 
     [Other2] DECIMAL(12, 2) NULL, 
     [Other3] DECIMAL(12, 2) NULL, 
     [Other4] DECIMAL(12, 2) NULL, 

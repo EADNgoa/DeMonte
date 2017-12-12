@@ -1,11 +1,11 @@
-﻿@model PagedList.IPagedList<BillViewCls>
+﻿@model PagedList.IPagedList<DeMonte.Bill>
 @using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Bills";
 }
 
-<center>
+@*<center>
     <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
     
     @using (Html.BeginForm("Index", "Bill", FormMethod.Get))
@@ -14,7 +14,7 @@
             <div>
                 <table>
                     <tr style="text-align:center">
-                        <td>&nbsp; Bill Name:</td>
+                        <td>&nbsp; Bill ID:</td>
                         <td> @Html.TextBox("PropName", ViewBag.CurrentFilter as string, new { @class = "form-control" })</td>
 
                         <td class="col-lg-1"></td>
@@ -24,7 +24,7 @@
             </div>
         </div>
     }
-</center>
+</center>*@
 
 <p>
     @Html.ActionLink("Create New", "Manage")
@@ -34,7 +34,7 @@
 <table class="table">
     <tr>
        
-
+       
         <th>No Of Guest</th>
        <th>Date Of Arrival</th>
         <th>Date Of Departure</th>
@@ -44,8 +44,7 @@
         <th>Period To Stay</th>
         <th>Bill/Receipt No</th>
         <th>Paid In Foreign/Indian</th>
-        <th>Check In Time</th>
-        <th>Check Out Time</th>
+        
        <th>CGST</th>
         <th>SGST</th>
         <th>IGST</th>
@@ -55,6 +54,7 @@
 
 @foreach (var item in Model) {
     <tr>
+       
        
         <td>
             @Html.DisplayFor(modelItem => item.NoOfGuest)
@@ -88,13 +88,7 @@
         @Html.DisplayFor(modelItem => item.PaidInForeignIndian)
     </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckInTime)
-        </td>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.CheckOutTime)
-        </td>
+       
         <td>
             @Html.DisplayFor(modelItem => item.CGST)
         </td>
@@ -112,3 +106,7 @@
 }
 
 </table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
