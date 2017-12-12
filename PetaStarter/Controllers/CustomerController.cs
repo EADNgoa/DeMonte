@@ -20,7 +20,24 @@ namespace DeMonte.Controllers
         // GET: Clients/Create
         public ActionResult Manage(int? id)
         {
-            return View(base.BaseCreateEdit<Customer>(id, "CustomerID"));
+            var customer = base.BaseCreateEdit<Customer>(id, "CustomerID");
+
+            if (id != null) {
+                CustomerViewCls res = new CustomerViewCls
+                {
+                    CustomerID = customer.CustomerID,
+                    Name = customer.Name,
+                    Address = customer.Address,
+                    PassportNo = customer.PassportNo,
+                    DateIssue = customer.DateIssue,
+                    PhotographID = customer.PhotograghID,
+                    DateExpiry = customer.DateExpiry
+                };
+                return View(res);
+            } else
+            {
+                return View();
+            }
         }
 
         // POST: Customer/Create
@@ -28,9 +45,44 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "CustomerID,Name,Address, PassportNo, DateIssue,DateExpiry")] Customer customer)
+        public ActionResult Manage([Bind(Include = "CustomerID,Name,Address, PassportNo, DateIssue,DateExpiry,PhotographID, UploadedFile")] CustomerViewCls customer)
         {
-            return base.BaseSave<Customer>(customer, customer.CustomerID > 0);
+            if (customer.UploadedFile != null || customer.CustomerID > 0)
+
+            {
+                Customer res = new Customer
+                {
+                    CustomerID = customer.CustomerID,
+                    Name = customer.Name,
+                    Address= customer.Address,
+                    PassportNo= customer.PassportNo,
+                    DateIssue= customer.DateIssue,
+                    DateExpiry= customer.DateExpiry
+                };
+
+                if (customer.UploadedFile != null)
+                {
+                    string fn = customer.UploadedFile.FileName.Substring(customer.UploadedFile.FileName.LastIndexOf('\\') + 1);
+                    fn = customer.CustomerID + "_" + fn;
+                    //string SavePath = System.IO.Path.Combine(Server.MapPath("~/IDs"), fn);
+                    //customer.UploadedFile.SaveAs(SavePath);
+
+                    System.Drawing.Bitmap upimg = new System.Drawing.Bitmap(customer.UploadedFile.InputStream);
+                    System.Drawing.Bitmap svimg = MyExtensions.CropUnwantedBackground(upimg);
+                    svimg.Save(System.IO.Path.Combine(Server.MapPath("~/IDs"), fn));
+
+                    res.PhotograghID = fn;
+                }
+                else
+                {
+                    res.PhotograghID = customer.PhotographID;
+                }
+                                
+                base.BaseSave<Customer>(res, res.CustomerID > 0);
+            }
+
+            return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

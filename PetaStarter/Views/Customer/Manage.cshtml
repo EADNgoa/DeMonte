@@ -1,16 +1,21 @@
-﻿@model DeMonte.Customer
+﻿@model DeMonte.CustomerViewCls
 
 @{
-    ViewBag.Title = "Manage";
+    ViewBag.Title = "Manage Customer";
 }
 
 <h2>Manage Customer</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
+    if (Model?.PhotographID?.Length > 0)
+    {
+        @Html.HiddenFor(model => model.PhotographID)
+    }
+
     <div class="form-horizontal">
         <h4>Customer</h4>
         <hr />
@@ -58,6 +63,39 @@
                 @Html.ValidationMessageFor(model => model.DateExpiry, "", new { @class = "text-danger" })
             </div>
         </div>
+        
+        @if (Model?.CustomerID>0)
+        { 
+            if (Model.PhotographID != null)
+            {
+            <div class="form-group">
+                <label class="control-label col-md-2">Site Picture</label>
+                <div class="col-md-10">
+                    <img src="~/IDs/@Model.PhotographID" height="400px;" />
+                </div>
+            </div>
+
+            }
+            else
+            {
+            <div class="form-group">
+                <label class="control-label col-md-2">Site Picture</label>
+                <div class="col-md-10">
+                    <input class="form-control" type="file" id="UploadedFile" name="UploadedFile" />
+                </div>
+            </div>
+            }
+        }
+        else
+        {
+        <div class="form-group">
+            <label class="control-label col-md-2">Site Picture</label>
+            <div class="col-md-10">
+                <input class="form-control" type="file" id="UploadedFile" name="UploadedFile" />
+            </div>
+        </div>
+        }
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

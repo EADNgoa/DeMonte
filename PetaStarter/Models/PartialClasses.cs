@@ -50,10 +50,11 @@ namespace DeMonte
         public string PassportNo { get; set; }
         public DateTime? DateIssue { get; set; }
         public DateTime? DateExpiry { get; set; }
-        public HttpPostedFileBase PhotograghID { get; set; }
+        public string PhotographID { get; set; }
+        public HttpPostedFileBase UploadedFile { get; set; }
     }
 
-
+    
     [MetadataType(typeof(BillMetadata))]
     public class BillViewCls
     {
