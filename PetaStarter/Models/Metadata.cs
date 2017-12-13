@@ -110,12 +110,12 @@ namespace DeMonte
 
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy HH:mm tt}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date Arrival Time")]
         public DateTime DateArrivalTime;
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy HH:mm tt}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date Departure Time")]
         public DateTime DateDepartureTime;
 
@@ -142,18 +142,7 @@ namespace DeMonte
         [Display(Name = "Charges Paid Foreign/Indian")]
         [Required]
         public decimal PaidInForeignIndian;
-
-        [Display(Name = "Check In Time")]
-        [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString ="{HH: mm }", ApplyFormatInEditMode = true)]
-        public decimal CheckInTime;
-
-        [Display(Name = "Check Out Time")]
-        [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{HH: mm }", ApplyFormatInEditMode = true)]
-        public decimal CheckOutTime;
-
-
+        
         [Display(Name = "CGST")]
         [Required]
         [Range(0.0, Double.MaxValue)]

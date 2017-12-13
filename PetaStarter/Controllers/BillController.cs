@@ -10,18 +10,20 @@ namespace DeMonte.Controllers
     {
         // GET: Clients
 
-
-        public ActionResult Index(int? page)
+        //public ActionResult Index(int? page, string PropName)
+        //{
+        //    if (PropName?.Length > 0) page = 1;
+        //    return View("Index", base.BaseIndex<BillViewCls>(page, "Bill where BillID like '%" + PropName + "%'"));
+        //}
+        public ActionResult Index(int? page, string PropName)
         {
-            return View(base.BaseIndex<BillViewCls>(page, "Customer b inner join Bill c on b.CustomerID=c.CustomerID "));
-
+            if (PropName?.Length > 0) page = 1;
+            return View("Index", base.BaseIndex<Bill>(page, "Bill"));
         }
-
-
         // GET: Clients/Create
         public ActionResult Manage(int? id)
         {
-            return View(base.BaseCreateEdit<BillViewCls>(id, "BillID"));
+            return View(base.BaseCreateEdit<Bill>(id, "BillID"));
         }
 
         // POST: Customer/Create
@@ -29,9 +31,9 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "BillID,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays,PeriodToStay,BillReceiptNo,PaidInForeignIndian,CheckInTime,CheckOutTime,CGST,SGST,IGST")] BillViewCls bill)
+        public ActionResult Manage([Bind(Include = "BillID,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays,PeriodToStay,BillReceiptNo,PaidInForeignIndian,CGST,SGST,IGST")] Bill bill)
         {
-          return  base.BaseSave<BillViewCls>(bill, bill.BillID > 0);          
+          return  base.BaseSave<Bill>(bill, bill.BillID > 0);          
         }
 
         protected override void Dispose(bool disposing)

@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `DefaultConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=DeMonteDB.sql;Integrated Security=True`
+//     Connection String:      `Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DeMonteDB.sql;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -162,14 +162,11 @@ namespace DeMonte
 		[Column] public decimal? ChargesPerDay { get; set; }
 		[Column] public int? RoomNo { get; set; }
 		[Column] public int? TotalDays { get; set; }
-		[Column] public int? PeriodToStay { get; set; }
 		[Column] public int? BillReceiptNo { get; set; }
 		[Column] public decimal? PaidInforeignIndian { get; set; }
-		[Column] public DateTime? CheckInTime { get; set; }
-		[Column] public DateTime? CheckOutTime { get; set; }
 		[Column] public decimal? CGST { get; set; }
 		[Column] public decimal? SGST { get; set; }
-		[Column(" IGST")] public decimal? _IGST { get; set; }
+		[Column] public decimal? IGST { get; set; }
 	}
     
 	[TableName("dbo.BillDetail")]
@@ -183,7 +180,7 @@ namespace DeMonte
 		[Column] public decimal? ExtraPerson { get; set; }
 		[Column] public decimal? GST { get; set; }
 		[Column] public decimal? Miscelleneous { get; set; }
-		[Column] public decimal? Others1 { get; set; }
+		[Column] public decimal? Other1 { get; set; }
 		[Column] public decimal? Other2 { get; set; }
 		[Column] public decimal? Other3 { get; set; }
 		[Column] public decimal? Other4 { get; set; }

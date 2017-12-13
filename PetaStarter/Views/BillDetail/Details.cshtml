@@ -1,0 +1,120 @@
+﻿@model DeMonte.BillDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="section-to-print">
+<h2>THE FOUR LEAF CLOVER </h2>
+<h4 style="padding-left:100px" ;>(HOLIDAY HOME)</h4>
+<h5>1751/A, Saipem, Candolim, Bardez Goa, Phone No. 2407789</h5>
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+       <dt></dt>
+        
+       
+        <dd class="pull-right">
+            RECEIPT NO:   @Html.DisplayFor(model => model.ReceiptID)
+        </dd>
+      
+        <dt class="pull-right">
+         DATE:   @Html.DisplayFor(model => model.TDate)
+          
+        </dt>
+        </dl>
+
+      <table  >
+          </br>
+         <tr>
+         
+        
+              <td>
+                  Received with Thanks from Ms /Mrs  &nbsp;<u>  @Html.DisplayFor(model=>model.Name)</u>
+              </td>
+        </tr> 
+
+        <tr>
+            <td>
+               The sum of Rupees
+            </td>
+            <td>
+                &nbsp;<u> </u>     
+            </td>
+        </tr>
+
+         
+        <tr>
+           
+       
+               <td>
+                   vide Cash/Cheque No.  &nbsp;       <u>   @Html.DisplayFor(model => model.ChequeNo)</u>
+               
+                Cheque date &nbsp;  <u>    @Html.DisplayFor(model => model.ChqDate)</u>
+</td>
+
+        </tr>
+
+          <tr>
+            
+         
+             <td>
+                 Drawn On         &nbsp;   <u>  @Html.DisplayFor(model => model.DrawnOn)</u>
+                &nbsp; On Account of Advance /balance /
+            </td>
+          </tr>
+
+        <tr>
+           
+      
+             <td>
+                  Full Payement towards Room Charges for Room No. &nbsp;   <u>     @Html.DisplayFor(model => model.RoomNo)</u> &nbsp; /
+            </td>
+       
+            
+             <td>
+               &nbsp;   Bill No.   &nbsp; <u>    @Html.DisplayFor(model => model.BillNo)</u>
+            </td>
+          </tr>
+
+          <tr>
+
+              </table>
+    </br>
+    </br>
+    </br>
+    <table >
+        <tr>
+        <th>
+              RS 
+         </th>
+              <td>
+             &nbsp; @Html.DisplayFor(model => model.Amount)
+              </td>
+            <td style="padding-left: 150px; padding-right: 5px;">
+               _________________
+            </td>
+            </tr>
+
+            <tr>
+              <td></td>
+                <td></td>
+
+                <td style="padding-left: 120px; padding-right: 5px;">
+                    For THE FOUR LEAF CLOVER
+                    </td>
+                </tr>
+            </tr>
+        
+       
+</table>
+       
+
+</div>
+  </div>
+<p>
+   
+    @Html.ActionLink("Back to List", "Index")
+    <input type="button" onclick="javascript:window.print();" value="Print" class="eabutton section-to-not-print" />
+</p>
+
