@@ -259,3 +259,5 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/PetaStarter/IDs/0_Cyling Goa 3.jpg
+/PetaStarter/IDs/1_Cyling Goa 1.jpg
