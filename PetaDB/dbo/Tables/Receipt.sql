@@ -9,4 +9,6 @@
     [DrawnOn] VARCHAR(50) NULL, 
     [RoomNo] varchar(10) NULL, 
     [BillNo] INT NULL, 
+    [ReceiptTypeID] INT NOT NULL DEFAULT 1, 
+    CONSTRAINT [FK_Receipt_ToReceiptType] FOREIGN KEY ([ReceiptTypeID]) REFERENCES [ReceiptTypes](ReceiptTypeID), 
 )

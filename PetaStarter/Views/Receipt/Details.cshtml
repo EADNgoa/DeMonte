@@ -61,7 +61,7 @@
          
              <td>
                  Drawn On         &nbsp;   <u>  @Html.DisplayFor(model => model.DrawnOn)</u>
-                &nbsp; On Account of Advance /balance /
+                &nbsp; On Account of @ViewBag.ReceiptTypeName 
             </td>
           </tr>
 
@@ -69,7 +69,7 @@
            
       
              <td>
-                  Full Payement towards Room Charges for Room No. &nbsp;   <u>     @Html.DisplayFor(model => model.RoomNo)</u> &nbsp; /
+                   towards Room Charges for Room No. &nbsp;   <u>     @Html.DisplayFor(model => model.RoomNo)</u> &nbsp; /
             </td>
        
             
