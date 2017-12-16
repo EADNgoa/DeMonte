@@ -10,7 +10,8 @@
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    
+    @Html.Hidden("BillID", (int)ViewBag.BillID)
+
     <div class="form-horizontal">
         <h4>Bill</h4>
         <hr />

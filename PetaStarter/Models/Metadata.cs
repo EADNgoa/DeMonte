@@ -131,9 +131,6 @@ namespace DeMonte
         [Required]
         public int TotalDays;
 
-        [Display(Name = "Period To Stay")]
-        [Required]
-        public int PeriodToStay;
 
         [Display(Name = "Bill/Receipt No")]
         public int BillReceiptNo;

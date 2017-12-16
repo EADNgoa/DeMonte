@@ -26,7 +26,7 @@
 // 
 //     Connection String Name: `DefaultConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DeMonteDB.sql;Integrated Security=True;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False`
+//     Connection String:      `Data Source=(localdb)\ProjectsV13;Initial Catalog=DeMonte;Integrated Security=True;`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -462,15 +462,7 @@ namespace DeMonte
 
 		[Column] public int? BillReceiptNo { get; set; }
 
-
-
-
-
 		[Column] public decimal? PaidInForeignIndian { get; set; }
-
-
-
-
 
 		[Column] public decimal? CGST { get; set; }
 
@@ -494,10 +486,7 @@ namespace DeMonte
 
 	[TableName("dbo.BillDetail")]
 
-
-
-	[PrimaryKey("BillDetailID", AutoIncrement=false)]
-
+	[PrimaryKey("BillDetailID")]
 
 	[ExplicitColumns]
 

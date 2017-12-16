@@ -1,1 +1,1 @@
-﻿Select * from Customer b inner join Bill c on b.customerID=c.customerID 
+﻿select *from [Customer] O inner JOIN Bill P ON O.CustomerID = P.CustomerID inner JOIN BillDetail I ON O.CustomerID = I.BillID 

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[BillDetail]
 (
-	[BillDetailID] INT NOT NULL PRIMARY KEY, 
+	[BillDetailID] INT NOT NULL Identity PRIMARY KEY, 
     [BillID] INT NULL, 
     [Date] DATE NULL, 
     [ExtraPerson] DECIMAL(12, 2) NULL, 
