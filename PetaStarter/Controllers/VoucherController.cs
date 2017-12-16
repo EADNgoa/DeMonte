@@ -36,8 +36,11 @@ namespace DeMonte.Controllers
         // GET: Vouchers/Details
         public ActionResult Details(int? id)
         {
-
-            return View(base.BaseCreateEdit<Voucher>(id, "VoucherID"));
+            var viewdata = base.BaseCreateEdit<Voucher>(id, "VoucherID");
+            ChangeNumbersToWords cntw = new ChangeNumbersToWords();
+           ViewBag.vouAmt = cntw.changeToWords(viewdata.Amount.ToString());
+            return View(viewdata);
+            
         }
 
        

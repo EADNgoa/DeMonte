@@ -15,7 +15,8 @@
         
        
         <dd class="pull-right">
-            RECEIPT NO:   @Html.DisplayFor(model => model.ReceiptID)
+            <h3>RECEIPT</h3>
+            NO:   @Html.DisplayFor(model => model.ReceiptID)
         </dd>
       
         <dt class="pull-right">
@@ -36,7 +37,7 @@
 
         <tr>
             <td>
-               The sum of Rupees
+               The sum of Rupees: <u>@ViewBag.recptAmt</u>
             </td>
             <td>
                 &nbsp;<u> </u>     

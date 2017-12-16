@@ -35,7 +35,10 @@ namespace DeMonte.Controllers
 
         public ActionResult Details(int? id)
         {
-            return View(base.BaseCreateEdit<Receipt>(id, "ReceiptID"));
+            var viewdata = base.BaseCreateEdit<Receipt>(id, "ReceiptID");
+            ChangeNumbersToWords cntw = new ChangeNumbersToWords();
+            ViewBag.recptAmt = cntw.changeToWords(viewdata.Amount.ToString());
+            return View(viewdata);
         }
 
         protected override void Dispose(bool disposing)

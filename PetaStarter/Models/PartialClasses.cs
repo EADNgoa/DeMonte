@@ -50,86 +50,11 @@ namespace DeMonte
         public string PassportNo { get; set; }
         public DateTime? DateIssue { get; set; }
         public DateTime? DateExpiry { get; set; }
-        public HttpPostedFileBase PhotograghID { get; set; }
+        public string PhotographID { get; set; }
+        public HttpPostedFileBase UploadedFile { get; set; }
     }
 
-    public class BillScreen
-    {
-      //  public int CustomerID { get; set; }
-      //  public string Name { get; set; }
-      //  public string Address { get; set; }
-      //  public string PassportNo { get; set; }
-      //  public DateTime? DateIssue { get; set; }
-      //  public DateTime? DateExpiry { get; set; }
-      //  public HttpPostedFileBase PhotograghID { get; set; }
 
-      //  //Bill
-      //  public int BillID { get; set; }
-      ////  public int? CustomerID { get; set; }
-      //  public int? NoOfGuest { get; set; }
-      //  public DateTime? DateArrivalTime { get; set; }
-      //  public DateTime? DateDepartureTime { get; set; }
-      //  public decimal? ChargesPerDay { get; set; }
-      //  public int? RoomNo { get; set; }
-      //  public int? TotalDays { get; set; }
-      //  public int? BillReceiptNo { get; set; }
-      //  public decimal? PaidInforeignIndian { get; set; }
-      //  public decimal? CGST { get; set; }
-      //  public decimal? SGST { get; set; }
-      //  public decimal? IGST { get; set; }
-
-      //  //BillDetail
-      //  public int BillDetailID { get; set; }
-      // // public int? BillID { get; set; }
-      //  public DateTime? Date { get; set; }
-      //  public decimal? ExtraPerson { get; set; }
-      //  public decimal? GST { get; set; }
-      //  public decimal? Miscelleneous { get; set; }
-      //  public decimal? Other1 { get; set; }
-      //  public decimal? Other2 { get; set; }
-      //  public decimal? Other3 { get; set; }
-      //  public decimal? Other4 { get; set; }
-      //  public decimal? Total { get; set; }
-
-        public Bill Bill { get; set; }
-        public Customer Customer { get; set; }
-        public IEnumerable<BillDetail> BillDetail { get; set; }
-    }
-    //[MetadataType(typeof(BillMetadata))]
-    //public class BillViewCls
-    //{
-    //    public int BillID { get; set; }
-    //    public int CustomerID { get; set; }
-    //    public int NoOfGuest { get; set; }
-    //    public DateTime? DateArrivalTime { get; set; }
-    //    public DateTime? DateDepartureTime { get; set; }
-    //    public decimal ChargesPerDay { get; set; }
-    //    public int RoomNo { get; set; }
-    //    public int TotalDays { get; set; }
-    //    public int PeriodToStay { get; set; }
-    //    public int BillReceiptNo { get; set; }
-    //    public decimal PaidInForeignIndian { get; set; }
-    //    public DateTime? CheckInTime{ get; set; }
-    //    public DateTime? CheckOutTime { get; set; }
-    //    public decimal CGST { get; set; }
-    //    public decimal SGST { get; set; }
-    //    public decimal IGST { get; set; }
-    //}
-    //[MetadataType(typeof(BillDetailMetadata))]
-    //public class BillDetailViewCls
-    //{
-    //    public int BillDetailID { get; set; }
-    //    public int BillID { get; set; }
-    //    public DateTime? Date {get;set;}
-    //    public decimal ExtraPerson{ get; set; }
-    //    public decimal GST { get; set;}
-    //    public decimal Miscelleneous{ get ; set; }
-    //    public decimal Other1 { get ; set; }
-    //    public decimal Other2 { get; set; }
-    //    public decimal Other3 { get; set; }
-    //    public decimal Other4 { get; set; }
-    //    public decimal Total { get; set; }
-    //}
     [MetadataType(typeof(RegisterMetadata))]
     public class RegisterViewCls
     {
