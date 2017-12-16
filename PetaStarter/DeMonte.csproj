@@ -231,6 +231,7 @@
     <Content Include="Content\jquery-ui-timepicker-addon.css" />
     <Content Include="Content\jquery-ui-timepicker-addon.min.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Print.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -273,9 +274,11 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Custom\BBS.ico" />
+    <Content Include="Custom\BkGrnd.png" />
     <Content Include="Custom\EAwell.jpg" />
     <Content Include="Custom\Emblem.png" />
     <Content Include="Custom\HeaderRaised.jpg" />
+    <Content Include="Custom\Logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -419,7 +422,9 @@
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\BillDetail\Index.cshtml" />
     <Content Include="Views\BillDetail\Manage.cshtml" />
+    <Content Include="Views\Shared\_LetterHead.cshtml" />
     <Content Include="Views\BillDetail\Details.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

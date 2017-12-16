@@ -2,119 +2,73 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "";
 }
-<div class="section-to-print">
-<h2>THE FOUR LEAF CLOVER </h2>
-<h4 style="padding-left:100px" ;>(HOLIDAY HOME)</h4>
-<h5>1751/A, Saipem, Candolim, Bardez Goa, Phone No. 2407789</h5>
-<div>
-   
-    <hr />
-    <dl class="dl-horizontal">
-       <dt></dt>
+<div class="section-to-print" style="background-image: url('/Custom/BkGrnd.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; ">
+    @Html.Partial("_LetterHead")
         
-       
-        <dd class="pull-right">
-            <h3>RECEIPT</h3>
-            NO:   @Html.DisplayFor(model => model.ReceiptID)
-        </dd>
-      
-        <dt class="pull-right">
-         DATE:   @Html.DisplayFor(model => model.TDate)
-          
-        </dt>
-        </dl>
-
-      <table  >
-          </br>
-         <tr>
-         
-        
-              <td>
-                  Received with Thanks from Ms /Mrs  &nbsp;<u>  @Html.DisplayFor(model=>model.Name)</u>
-              </td>
-        </tr> 
-
-        <tr>
-            <td>
-               The sum of Rupees: <u>@ViewBag.recptAmt</u>
-            </td>
-            <td>
-                &nbsp;<u> </u>     
-            </td>
-        </tr>
-
-         
-        <tr>
-           
-       
-               <td>
-                   vide Cash/Cheque No.  &nbsp;       <u>   @Html.DisplayFor(model => model.ChequeNo)</u>
-               
-                Cheque date &nbsp;  <u>    @Html.DisplayFor(model => model.ChqDate)</u>
-</td>
-
-        </tr>
-
-          <tr>
-            
-         
-             <td>
-                 Drawn On         &nbsp;   <u>  @Html.DisplayFor(model => model.DrawnOn)</u>
-                &nbsp; On Account of @ViewBag.ReceiptTypeName 
-            </td>
-          </tr>
-
-        <tr>
-           
-      
-             <td>
-                   towards Room Charges for Room No. &nbsp;   <u>     @Html.DisplayFor(model => model.RoomNo)</u> &nbsp; /
-            </td>
-       
-            
-             <td>
-               &nbsp;   Bill No.   &nbsp; <u>    @Html.DisplayFor(model => model.BillNo)</u>
-            </td>
-          </tr>
-
-          <tr>
-
-              </table>
-    </br>
-    </br>
-    </br>
-    <table >
-        <tr>
-        <th>
-              RS 
-         </th>
-              <td>
-             &nbsp; @Html.DisplayFor(model => model.Amount)
-              </td>
-            <td style="padding-left: 150px; padding-right: 5px;">
-               _________________
-            </td>
-            </tr>
-
+        <table width="100%">
             <tr>
-              <td></td>
-                <td></td>
-
-                <td style="padding-left: 120px; padding-right: 5px;">
-                    For THE FOUR LEAF CLOVER
-                    </td>
-                </tr>
+                <td width="53%">&nbsp;</td>
+                <td width="20%"></td>
+                <td>
+                    <h3>RECEIPT</h3>
+                    No:   @Html.DisplayFor(model => model.ReceiptID) <br />
+                    Date:   @Html.DisplayFor(model => model.TDate)
+                </td>
             </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td width="20%"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    Received with thanks from Ms /Mrs  &nbsp;<u>  @Html.DisplayFor(model => model.Name)</u>
         
-       
-</table>
-       
+                    the sum of Rupees: <u>@ViewBag.recptAmt</u>
+        
+                    vide Cash/Cheque No.  &nbsp;       <u>   @Html.DisplayFor(model => model.ChequeNo)</u>, 
 
+                    Cheque dated &nbsp;  <u>    @Html.DisplayFor(model => model.ChqDate)</u>
+        
+                    &nbsp; drawn On         &nbsp;   <u>  @Html.DisplayFor(model => model.DrawnOn)</u>
+                    &nbsp; on account of @ViewBag.ReceiptTypeName
+        
+                    towards Room Charges for Room No. &nbsp;   <u>     @Html.DisplayFor(model => model.RoomNo)</u> &nbsp; /
+                    &nbsp;   Bill No.   &nbsp; <u>    @Html.DisplayFor(model => model.BillNo)</u>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td width="20%"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td width="53%">
+                    <h3>Rs. &nbsp; <u>@Html.DisplayFor(model => model.Amount)</u></h3>
+                    <span style="font-style: italic;">* Cheques subject to realisation</span>
+                </td>                
+                <td style="border-bottom:3px solid;" width="20%"></td>
+                <td style="border-bottom:3px solid;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="53%"></td>
+                <td colspan="2" style="font-size:1.3em; text-align:center;"><span>For <span style="font-family: 'Merienda', cursive; font-weight:bold;">THE FOUR LEAF CLOVER</span></span></td>
+            </tr>
+        </table>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    &nbsp;
 </div>
-  </div>
-<p>
-   
+<p class="section-to-not-print">
+
     @Html.ActionLink("Back to List", "Index")
     <input type="button" onclick="javascript:window.print();" value="Print" class="eabutton section-to-not-print" />
 </p>
