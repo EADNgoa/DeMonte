@@ -49,6 +49,10 @@ input[type=checkbox] {
     zoom: 1.5;
  }
 
+input {
+    color:black;
+}
+
 /* Emblem
 <a id="emblem" href="~/"><img src="~/Emblem.png" height=100px; alt="Nunes HR System" /> </a>
  */
@@ -136,40 +140,3 @@ input[type=checkbox] {
     filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
 }
 
-
-
-/* Print only what is needed 
-<input type="button" onclick="javascript:window.print();" value="print a div!" /> */
-
-    #PrintHeader, #PrintHeader * {
-        visibility:hidden;
-        display:none;
-    }
-
-
-@media print {
-    
-    body * {
-        visibility: hidden;
-    }
-
-    #PrintHeader, #PrintHeader * {
-        visibility: visible;
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-
-    .section-to-print, .section-to-print * {
-        visibility: visible;
-    }
-
-    .section-to-Not-print, .section-to-Not-print* {
-        position: absolute;
-        left: 0;
-        top: 50px;
-    }
-
-    
-}

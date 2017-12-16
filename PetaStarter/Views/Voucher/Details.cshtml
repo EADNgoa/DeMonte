@@ -2,112 +2,82 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "";
 }
-<div class="section-to-print">
- 
-<h2>THE FOUR LEAF CLOVER</h2>
-<h4 style="padding-left:100px";>(HOLIDAY HOME)</h4>
-<h5>1751/A, Saipem, Candolim, Bardez Goa, Phone No. 2407789</h5>
-<div>
-   
-    <hr />
-    <dl class="dl-horizontal">
-       <dt></dt>
-        
-       
-        <dd class="pull-right">
-            VOUCHER NO:     @Html.DisplayFor(model => model.VoucherID)
-        </dd>
-      
-        <dt class="pull-right">
-         DATE:   @Html.DisplayFor(model => model.TDate)
-          
-        </dt>
-        
-   
-    </dl>
-    <table>
-        </br>
+<div class="section-to-print" style="background-image: url('/Custom/BkGrnd.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; ">
+    @Html.Partial("_LetterHead")
+
+    <table width="100%">
         <tr>
-
-
+            <td>&nbsp;</td>
+            <td width="30%"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td width="43%">&nbsp;</td>
+            <td width="30%"></td>
             <td>
+                <h3>VOUCHER</h3>
+                VOUCHER NO:     @Html.DisplayFor(model => model.VoucherID) <br />
+                DATE:   @Html.DisplayFor(model => model.TDate)
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td width="30%"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="3">
                 PAY TO:  &nbsp;<u>  @Html.DisplayFor(model => model.PayTo)</u>
             </td>
         </tr>
-
         <tr>
-            <td>
-                RUPEES: 
-            </td>
-            <td>
-                &nbsp;<u>@ViewBag.vouAmt</u>
+            <td colspan="3">
+                RUPEES:  &nbsp;<u>@ViewBag.vouAmt</u>
             </td>
         </tr>
-
-
         <tr>
-
-
-            <td>
+            <td colspan="3">
                 ON ACCOUNT OF:  &nbsp;        <u>  @Html.DisplayFor(model => model.OnAccountOf)</u>
-
-               
             </td>
-
         </tr>
-
         <tr>
-
-
-            <td>
+            <td colspan="3">
                 CASH/CHEQUE:        &nbsp; <u>    @Html.DisplayFor(model => model.ChequeNo)</u>
                 &nbsp; DRAWN ON:   &nbsp;  <u>   @Html.DisplayFor(model => model.DrawnOn)</u>
             </td>
         </tr>
-
-        
-
-       
-
-    </table>
-    </br>
-    </br>
-    </br>
-    <table>
         <tr>
-            <th>
-                RS
-            </th>
-            <td>
-                &nbsp; @Html.DisplayFor(model => model.Amount)
-            </td>
-            <td style="padding-left: 150px; padding-right: 5px;">
-                _________________
-            </td>
-            <td style="padding-left: 150px; padding-right: 5px;">
-                _________________
-            </td>
+            <td>&nbsp;</td>
+            <td width="30%"></td>
+            <td></td>
         </tr>
-
         <tr>
-            <td></td>
-            <td></td>
-
-            <td style="padding-left: 180px; padding-right: 5px;">
-               CASHIER
+            <td width="43%">
+                <h3>Rs. &nbsp; <u>@Html.DisplayFor(model => model.Amount)</u></h3>                
             </td>
-            <td style="padding-left: 140px; padding-right: 5px;">
-                RECEIVER'S SIGNATURE
-            </td>
+            <td style="border-bottom:3px solid; padding-right:18px;" width="30%"></td>
+            <td style="border-bottom:3px solid;">&nbsp;</td>
         </tr>
+        <tr>
+            <td width="43%"></td>
+            <td width="30%" style="text-align:center;"><span style=" font-weight:bold;">CASHIER</span></td>
+            <td style=" text-align:center;"><span style=" font-weight:bold;">RECEIVERS SIGNATURE</span></td>
         </tr>
-
-
     </table>
-    
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    &nbsp;
 </div>
-  </div>
+
+
 <p>
    
     @Html.ActionLink("Back to List", "Index")
