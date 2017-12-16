@@ -93,7 +93,7 @@ namespace DeMonte
 
         public Bill Bill { get; set; }
         public Customer Customer { get; set; }
-        public BillDetail BillDetail { get; set; }
+        public IEnumerable<BillDetail> BillDetail { get; set; }
     }
     //[MetadataType(typeof(BillMetadata))]
     //public class BillViewCls

@@ -18,7 +18,12 @@ namespace DeMonte.Controllers
 
         public ActionResult Details(int? id)
         {
-            return View(base.BaseCreateEdit<BillDetail>(id, "Customer C inner JOIN Bill B ON C.CustomerID = B.CustomerID inner JOIN BillDetail bd ON B.BillID = bd.BillID where BillDetailID="+ id ));
+            BillScreen vwdata = new BillScreen();
+            vwdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", id);
+            vwdata.Customer = db.FirstOrDefault<Customer>("where CustomerID=@0", vwdata.Bill.CustomerID);
+            vwdata.BillDetail = db.Fetch<BillDetail>("where BillID =@0", vwdata.Bill.BillID);
+
+            return View(vwdata);
         }
         // GET: Clients/Create
         public ActionResult Manage(int? id, int? BID)
@@ -39,6 +44,13 @@ namespace DeMonte.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage([Bind(Include = "BillDetailID,BillID,Date,ExtraPerson,GST,Miscelleneous,Other1,Other2,Other3,Other4,Total")] BillDetail billdetail)
         {
+            var Billrec = db.FirstOrDefault<Bill>("where BillID = @0", billdetail.BillID);
+            var TaxableValue = Billrec.ChargesPerDay + billdetail.ExtraPerson;
+
+            var igst = (TaxableValue * (Billrec.IGST ?? 0) / 100);
+            var cgst = (TaxableValue * (Billrec.CGST ?? 0) / 100);
+            var sgst = (TaxableValue * (Billrec.SGST ?? 0) / 100);
+            billdetail.GST = igst + cgst + sgst;
             return base.BaseSave<BillDetail>(billdetail, billdetail.BillDetailID > 0);
         }
 

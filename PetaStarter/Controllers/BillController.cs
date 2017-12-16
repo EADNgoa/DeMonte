@@ -43,6 +43,9 @@ namespace DeMonte.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage([Bind(Include = "BillID,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays,BillReceiptNo,PaidInForeignIndian,CGST,SGST,IGST")] Bill bill)
         {
+        
+            if (bill.DateDepartureTime.HasValue && bill.DateArrivalTime.HasValue)
+                bill.TotalDays = ((DateTime)bill.DateDepartureTime - (DateTime)bill.DateArrivalTime).Days;
           return  base.BaseSave<Bill>(bill, bill.BillID > 0);          
         }
 

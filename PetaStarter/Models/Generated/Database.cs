@@ -170,7 +170,7 @@ namespace DeMonte
 	}
     
 	[TableName("dbo.BillDetail")]
-	[PrimaryKey("BillDetailID", AutoIncrement=false)]
+	[PrimaryKey("BillDetailID")]
 	[ExplicitColumns]
     public partial class BillDetail  
     {
