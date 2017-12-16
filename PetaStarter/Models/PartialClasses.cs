@@ -65,7 +65,12 @@ namespace DeMonte
         public int EncashmentCash { get; set; }
         public int Remarks { get; set; }
     }
-
+    public class BillScreen
+    {
+        public Customer Customer { get; set; }
+        public Bill Bill { get; set; }
+        public IEnumerable<BillDetail> BillDetail { get; set; }
+    }
     //[MetadataType(typeof(ConfigMetadata))]
     //public partial class Config
     //{
