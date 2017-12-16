@@ -1,8 +1,8 @@
-﻿@model PagedList.IPagedList<DeMonte.BillDetailViewCls>
+﻿@model PagedList.IPagedList<DeMonte.BillDetail>
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "Bills";
+    ViewBag.Title = "BillS";
 }
 
 <center>
@@ -83,9 +83,12 @@
        
        
         <td>
-            @Html.ActionLink("Edit", "Manage", new { id = item.BillID})
+            @Html.ActionLink("Edit", "Manage", new { id = item.BillDetailID})
         </td>
       
+        <td>
+            @Html.ActionLink("BillScreen", "Details", new { id = item.BillDetailID })
+        </td>
     </tr>
 }
 
