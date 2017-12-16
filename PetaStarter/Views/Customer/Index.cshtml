@@ -63,6 +63,10 @@
         <td>
             @Html.ActionLink("Edit", "Manage", new { id = item.CustomerID})
         </td>
+        <td>
+            @Html.ActionLink("Bill","Manage", "Bill", new { CustID = item.CustomerID },null);
+
+        </td>
     </tr>
 }
 

@@ -18,14 +18,19 @@ namespace DeMonte.Controllers
 
         public ActionResult Details(int? id)
         {
-            return View(base.BaseCreateEdit<BillDetail>(id, "SELECT * FROM[Customer] O inner JOIN Bill P ON O.CustomerID = P.CustomerID inner JOIN BillDetail I ON O.CustomerID = I.BillID "));
+            return View(base.BaseCreateEdit<BillDetail>(id, "Customer C inner JOIN Bill B ON C.CustomerID = B.CustomerID inner JOIN BillDetail bd ON B.BillID = bd.BillID where BillDetailID="+ id ));
         }
         // GET: Clients/Create
-        public ActionResult Manage(int? id)
-
+        public ActionResult Manage(int? id, int? BID)
         {
-            return View(base.BaseCreateEdit<BillDetail>(id, "BillDetailID"));
+            var vwdata = base.BaseCreateEdit<BillDetail>(id, "BillDetailID");
+            if (BID.HasValue)
+                ViewBag.BillID = BID;
+            else
+                ViewBag.BillID = vwdata.BillID;
+            return View(vwdata);
         }
+      
 
         // POST: Customer/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 

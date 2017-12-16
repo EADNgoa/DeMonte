@@ -23,6 +23,7 @@ namespace DeMonte.Controllers
             return View(base.BaseCreateEdit<Customer>(id, "CustomerID"));
         }
 
+
         // POST: Customer/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
