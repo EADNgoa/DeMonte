@@ -63,12 +63,10 @@
         
        
         <td>
-            @Html.ActionLink("Edit", "Manage", new { id = item.VoucherID})
+            @Html.ActionLink("Edit", "Manage", new { id = item.VoucherID}) |
+            @Html.ActionLink("Print", "Details", new { id = item.VoucherID }, new { target = "_blank" })
         </td>
 
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.VoucherID })
-        </td>
     </tr>
 }
 

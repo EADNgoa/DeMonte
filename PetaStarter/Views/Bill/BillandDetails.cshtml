@@ -1,0 +1,180 @@
+﻿@model DeMonte.BillScreen
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Manage Bill Details</h2>
+
+<div class="MastDet cont">
+    <dl class="dl-horizontal">
+        <dt>Customer</dt>
+        <dd>@Model.Customer.Name</dd>
+
+        <dt>Customer ID Picture</dt>
+        <dd>@if (Model.Customer.PhotograghID != null)
+        { <img height="80px;" src="~/IDs/@Model.Customer.PhotograghID" /> }</dd>
+
+        <dt>Bill Number</dt>
+        <dd>@Model.Bill.BillID</dd>
+
+        <dt>Advance Recpt. No.</dt>
+        <dd>@Model.Bill.BillReceiptNo</dd>
+
+        <dt>Arrived On</dt>
+        <dd>@Model.Bill.DateArrivalTime</dd>
+
+        <dt>Total Days</dt>
+        <dd>@Model.Bill.TotalDays</dd>
+
+        <dt>No. Of Pax</dt>
+        <dd>@Model.Bill.NoOfGuest</dd>
+
+        <dt>Room No.</dt>
+        <dd>@Model.Bill.RoomNo</dd>
+
+        <dt>Charges/Day</dt>
+        <dd>@Model.Bill.ChargesPerDay</dd>
+    </dl>
+</div>
+
+@if (Model.FrmEdt != null)
+{    
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("BillID", (int)Model.Bill.BillID)
+        @Html.Hidden("BillDetailID", (int)Model.FrmEdt.BillDetailID)
+        @Html.Hidden("Date", (DateTime)Model.FrmEdt.Date)
+
+        <div class="form-horizontal">
+            <h4>Bill Details</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.FrmEdt.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.FrmEdt.Date, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FrmEdt.Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FrmEdt.ExtraPerson, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input value=@Model.FrmEdt.ExtraPerson name="ExtraPerson" class="form-control text-box single-line valid" id="ExtraPerson" aria-invalid="false" aria-describedby="billDetails_ExtraPerson-error" type="text" data-val-number="The field Extra Person must be a number." data-val="true" data-val-range-min="0" data-val-range-max="1.79769313486232E+308" data-val-range="The field Extra Person must be between 0 and 1.79769313486232E+308.">
+                    @Html.ValidationMessageFor(model => model.FrmEdt.ExtraPerson, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.FrmEdt.Miscelleneous, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input value=@Model.FrmEdt.Miscelleneous name="Miscelleneous" class="form-control text-box single-line valid" id="Miscelleneous" aria-invalid="false" aria-describedby="Miscelleneous-error" type="text" data-val-number="The field Miscelleneous must be a number." data-val="true">
+                    @Html.ValidationMessageFor(model => model.FrmEdt.Miscelleneous, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FrmEdt.Other1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input value=@Model.FrmEdt.Other1 name="Other1" class="form-control text-box single-line valid" id="Other1" aria-invalid="false" aria-describedby="Other1-error" type="text" data-val-number="The field Others 1 must be a number." data-val="true" data-val-range-min="0" data-val-range-max="1.79769313486232E+308" data-val-range="The field Others 1 must be between 0 and 1.79769313486232E+308.">
+                    @Html.ValidationMessageFor(model => model.FrmEdt.Other1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FrmEdt.Other2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input value=@Model.FrmEdt.Other2  name="Other2" class="form-control text-box single-line valid" id="Other2" aria-invalid="false" aria-describedby="Other2-error" type="text" data-val-number="The field Others 2 must be a number." data-val="true" data-val-range-min="0" data-val-range-max="1.79769313486232E+308" data-val-range="The field Others 2 must be between 0 and 1.79769313486232E+308.">
+                    @Html.ValidationMessageFor(model => model.FrmEdt.Other2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FrmEdt.Other3, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input value=@Model.FrmEdt.Other3 name="Other3" class="form-control text-box single-line valid" id="Other3" aria-invalid="false" aria-describedby="Other3-error" type="text" data-val-number="The field Others 3 must be a number." data-val="true" data-val-range-min="0" data-val-range-max="1.79769313486232E+308" data-val-range="The field Others 3 must be between 0 and 1.79769313486232E+308.">
+                    @Html.ValidationMessageFor(model => model.FrmEdt.Other3, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.FrmEdt.Other4, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input value=@Model.FrmEdt.Other4 name="Other4" class="form-control text-box single-line valid" id="Other4" aria-invalid="false" aria-describedby="Other4-error" type="text" data-val-number="The field Others 4 must be a number." data-val="true" data-val-range-min="0" data-val-range-max="1.79769313486232E+308" data-val-range="The field Others 4 must be between 0 and 1.79769313486232E+308.">
+                    @Html.ValidationMessageFor(model => model.FrmEdt.Other4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+}
+
+<br />
+<div>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Print", "Print", new { id = Model.Bill.BillID}, new { target="_blank"})
+    
+</div>
+<hr />
+<h2>Bill Details</h2>
+<table class="table">
+    <tr>
+        <th>Date</th>
+        <th>Extra Person</th>
+        <th>GST</th>
+        <th>Miscelleneous</th>
+        <th>Other 1</th>
+        <th>Other 2</th>
+        <th>Other 3</th>
+        <th>Other 4</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.BillDetails)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExtraPerson)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GST)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Miscelleneous)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Other1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Other2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Other3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Other4)
+            </td>
+            <td>
+                @Html.ActionLink("Manage","ManageDetails",new { id = item.BillDetailID})
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

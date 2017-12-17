@@ -61,12 +61,10 @@
             @Html.DisplayFor(modelItem => item.DateExpiry)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Manage", new { id = item.CustomerID})
+            @Html.ActionLink("Edit", "Manage", new { id = item.CustomerID}) |
+            @Html.ActionLink("New Bill","Manage", "Bill", new { CustID = item.CustomerID },null);
         </td>
-        <td>
-            @Html.ActionLink("Bill","Manage", "Bill", new { CustID = item.CustomerID },null);
-
-        </td>
+        
     </tr>
 }
 

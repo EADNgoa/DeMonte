@@ -26,23 +26,29 @@
 </center>
 
 <p>
-    @Html.ActionLink("Create New", "Manage")
+    @Html.ActionLink("Create New", "Manage", new { BillID= ViewBag.BillNo })
 </p>
 <table class="table">
     <tr>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BillNo)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ReceiptID)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().TDate)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Name)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Amount)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChequeNo)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChqDate)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DrawnOn)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().RoomNo)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BillNo)</th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BillNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReceiptID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.TDate)
         </td>
@@ -56,24 +62,16 @@
             @Html.DisplayFor(modelItem => item.ChequeNo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ChqDate)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.DrawnOn)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RoomNo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.BillNo)
+            @Html.ActionLink("Edit", "Manage", new { id = item.ReceiptID, BillId= ViewBag.BillNo }) |
+            @Html.ActionLink("Print", "Details", new { id = item.ReceiptID }, new { target = "_blank" })
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Manage", new { id = item.ReceiptID})
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id = item.ReceiptID })
-
-        </td>
+        
     </tr>
 }
 

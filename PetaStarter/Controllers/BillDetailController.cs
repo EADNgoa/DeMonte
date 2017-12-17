@@ -21,7 +21,7 @@ namespace DeMonte.Controllers
             BillScreen vwdata = new BillScreen();
             vwdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", id);
             vwdata.Customer = db.FirstOrDefault<Customer>("where CustomerID=@0", vwdata.Bill.CustomerID);
-            vwdata.BillDetail = db.Fetch<BillDetail>("where BillID =@0", vwdata.Bill.BillID);
+            vwdata.BillDetails = db.Fetch<BillDetail>("where BillID =@0", vwdata.Bill.BillID);
 
             return View(vwdata);
         }

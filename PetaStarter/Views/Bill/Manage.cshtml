@@ -6,22 +6,21 @@
 
 <h2>Manage Bill</h2>
 
+<div id="EndangeredRecs"></div>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
-    @Html.Hidden("CustomerID", (int) ViewBag.CustomerID)
-
-    
-
+    @Html.Hidden("CustomerID", (int) ViewBag.CustomerID)   
+    @Html.HiddenFor(model => model.BDate)
 
     <div class="form-horizontal">
-        <h4>Bill</h4>
+        <h4>&nbsp;</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @if (Model?.BillID >0)
         {
-            @Html.HiddenFor(model => model.BillID)
+            @Html.HiddenFor(model => model.BillID)            
         }
         <div class="form-group" >
             @Html.LabelFor(model => model.NoOfGuest, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -62,17 +61,9 @@
                 @Html.ValidationMessageFor(model => model.RoomNo, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        
         <div class="form-group">
-            @Html.LabelFor(model => model.TotalDays, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TotalDays, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TotalDays, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.BillReceiptNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.BillReceiptNo,"Advance Recpt. No.", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.BillReceiptNo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.BillReceiptNo, "", new { @class = "text-danger" })
@@ -88,6 +79,13 @@
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.EncashCertDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EncashCertDetails, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.EncashCertDetails, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
 
         <div class="form-group">
@@ -114,6 +112,13 @@
             </div>
         </div>
 
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -130,3 +135,18 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script>
+    $("#DateArrivalTime").change({ newVal: $("#DateArrivalTime").val() }, function (event) {
+        
+        $('#EndangeredRecs').html("");
+        $('#EndangeredRecs').load('@Url.Action("FetchEndangeredBillDets", "Bill")', { BillID: $("#BillID").val(), NewStart: $("#DateArrivalTime").val(), NewStop: $("#DateDepartureTime").val()} );
+
+    });
+
+    $("#DateDepartureTime").change({ newVal: $("#DateDepartureTime").val() }, function (event) {
+        
+        $('#EndangeredRecs').html("");
+        $('#EndangeredRecs').load('@Url.Action("FetchEndangeredBillDets", "Bill")', { BillID: $("#BillID").val(), NewStart: $("#DateArrivalTime").val(), NewStop: $("#DateDepartureTime").val()} );
+
+    });
+</script>

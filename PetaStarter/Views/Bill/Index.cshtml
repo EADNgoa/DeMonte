@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<DeMonte.Bill>
+﻿@model PagedList.IPagedList<DeMonte.BillIndex>
 @using PagedList.Mvc;
 
 @{
@@ -27,77 +27,44 @@
     </center>
 
 <table class="table">
-    <tr>
-       
-       
-        <th>No Of Guest</th>
-       <th>Date Of Arrival</th>
-        <th>Date Of Departure</th>
-        <th>Charges Per Day</th>
+    <tr>       
+       <th>Bill No.</th>
+        <th>Customer</th>
+        <th>No Of Guests</th>
+        <th>Arrival Date</th>
+        <th>Total Nights</th>
         <th>Room No</th>
-        <th>Total Days</th>
-      
-        <th>Bill/Receipt No</th>
-        <th>Paid In Foreign/Indian</th>
         
-       <th>CGST</th>
-        <th>SGST</th>
-        <th>IGST</th>
-
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-       
-       
+    <tr>       
         <td>
-            @Html.DisplayFor(modelItem => item.NoOfGuest)
+            @Html.DisplayFor(modelItem => item.BillID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateArrivalTime)
+            @Html.DisplayFor(modelItem => item.Customer)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateDepartureTime)
+            @Html.DisplayFor(modelItem => item.NoOfGuests)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ChargesPerDay)
+            @Html.DisplayFor(modelItem => item.ArrivalDt)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalDays)
+        </td>        
         <td>
             @Html.DisplayFor(modelItem => item.RoomNo)
         </td>
-          
-    <td>
-        @Html.DisplayFor(modelItem => item.TotalDays)
-    </td>
-       
-   
-    <td>
-        @Html.DisplayFor(modelItem => item.BillReceiptNo)
-    </td>
-       
-    <td>
-        @Html.DisplayFor(modelItem => item.PaidInForeignIndian)
-    </td>
-
-       
+        
         <td>
-            @Html.DisplayFor(modelItem => item.CGST)
+            @Html.ActionLink("Edit", "Manage", new { id = item.BillID }) |
+            @Html.ActionLink("Detail", "Details", "Bill", new { id = item.BillID }, null);
+            @Html.ActionLink("Receipts", "Index", "Receipt", new { BillID = item.BillID }, null);
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SGST)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IGST)
-        </td>
-      
-        <td>
-            @Html.ActionLink("Edit", "Manage", new { id = item.BillID })
-
-        </td>
-        <td>
-            @Html.ActionLink("Detail","Manage", "BillDetail", new { BID = item.BillID }, null);
-        </td>
+        
     </tr>
 }
 

@@ -9,19 +9,22 @@ namespace DeMonte.Controllers
     public class ReceiptController : EAController
     {
         // GET: Clients
-        public ActionResult Index(int? page, string PropName)
+        public ActionResult Index(int? page, int BillID)
         {
-            if (PropName?.Length > 0) page = 1;
-            return View("Index", base.BaseIndex<Receipt>(page, "Receipt where Name like '%" + PropName + "%'"));
+            page = 1;
+            ViewBag.BillNo = BillID;
+            return View("Index", base.BaseIndex<Receipt>(page, "Receipt where  BillNo =" + BillID  + " order by ReceiptID desc"));
         }
 
 
 
         // GET: Clients/Create
-        public ActionResult Manage(int? id)
+        public ActionResult Manage(int? id, int BillID)
         {
             ViewBag.ReceiptTypeID = new SelectList(db.Fetch<ReceiptType>("Select * from ReceiptTypes"), "ReceiptTypeID", "Type");
-            return View(base.BaseCreateEdit<Receipt>(id, "ReceiptID"));
+            var vwdata = base.BaseCreateEdit<Receipt>(id, "ReceiptID");
+            ViewBag.BillNo = BillID;
+            return View(vwdata);
         }
 
         // POST: Customer/Create
@@ -29,9 +32,13 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "ReceiptID,TDate,Name,Amount,ChequeNo,ChqDate,DrawnOn,RoomNo,BillNo, ReceiptTypeID")] Receipt receipt)
+        public ActionResult Manage([Bind(Include = "ReceiptID,TDate,Name,Amount,ChequeNo,ChqDate,DrawnOn, BillNo,ReceiptTypeID")] Receipt receipt)
         {
-            return base.BaseSave<Receipt>(receipt,receipt.ReceiptID > 0);
+            receipt.RoomNo = db.Single<string>("Select RoomNo from Bill Where BillID = @0", receipt.BillNo);
+
+            var res = (receipt.ReceiptID>0) ? db.Update(receipt) : db.Insert(receipt);
+
+            return RedirectToAction("Index",new { BillID = receipt.BillNo});
         }
 
         public ActionResult Details(int? id)

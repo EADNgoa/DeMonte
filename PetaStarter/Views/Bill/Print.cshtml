@@ -1,0 +1,188 @@
+﻿@model DeMonte.BillScreen
+
+@{
+    ViewBag.Title = "Print Bill";
+    Layout = "";
+}
+
+<style>
+    table {
+        border-collapse:collapse;
+    }
+    #grid table, #grid th, #grid td {
+        border: 1px solid;
+        text-align:right;
+    }
+
+</style>
+
+<div class="section-to-print" style="background-image: url('/Custom/BkGrnd.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; ">
+    @Html.Partial("_LetterHead")
+    <br />
+    <table width="90%">
+        <tr>
+            <td width="30%">Bill: <u>@Model.Bill.BillID</u></td>
+            <td width="30%"></td>
+            <td width="40%">
+                Date:   <u>@(String.Format("{0:dd-MMM-yy}",Model.Bill.BDate))</u>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">Name: <u>@Model.Customer.Name</u></td>
+        </tr>
+        <tr>
+            <td colspan="2">Address: <u>@Model.Customer.Address</u></td>
+            <td>Room Charges per day: <u>@Model.Bill.ChargesPerDay</u></td>
+        </tr>
+    </table>
+    <br />
+    <table width="100%">
+        <tr>
+            <td width="16%">Date Of Arrival:</td>
+            <td width="17%"><u>@(String.Format("{0:dd-MMM-yy}", Model.Bill.DateArrivalTime.Value.Date))</u></td>
+            <td width="16%">Departure Date:</td>
+            <td width="17%"><u>@(String.Format("{0:dd-MMM-yy}", Model.Bill.DateDepartureTime.Value.Date))</u></td>
+            <td width="16%">Total Days:</td>
+            <td width="17%"><u>@Model.Bill.TotalDays</u></td>
+        </tr>
+        <tr>
+            <td width="16%">Check in Time:</td>
+            <td width="17%"><u>@Model.Bill.DateArrivalTime.Value.ToShortTimeString()</u></td>
+            <td width="16%">Check out Time:</td>
+            <td width="17%"><u>@Model.Bill.DateDepartureTime.Value.ToShortTimeString()</u></td>
+            <td width="16%">No of Persons:</td>
+            <td width="17%"><u>@Model.Bill.NoOfGuest</u></td>
+        </tr>
+        <tr>
+            <td width="16%">Register No:</td>
+            <td width="17%"><u>@Model.Bill.BillID</u></td>
+            <td width="16%">Room No.:</td>
+            <td width="17%"><u>@Model.Bill.RoomNo</u></td>
+            <td width="16%">Adv. Rcpt No.:</td>
+            <td width="17%"><u>@Model.Bill.BillReceiptNo</u></td>
+        </tr>
+    </table>
+    <br />
+    <table id ="grid" width="100%">
+        <tr>
+            <td style="text-align:left;">Date</td>
+            @foreach(var item in Model.BillDetails)
+            {
+                <td style="font-weight:bold;">@(String.Format("{0:dd-MMM-yy}", item.Date))</td>
+            }
+        </tr>
+        <tr>
+            <td style="text-align:left;">Room Charges</td>
+            @foreach (var item in Model.BillDetails)
+            {
+                <td>@Model.Bill.ChargesPerDay</td>
+            }
+        </tr>
+        <tr>
+            <td style="text-align:left;">Extra Person</td>
+            @foreach (var item in Model.BillDetails)
+            {
+                <td>@item.ExtraPerson</td>
+            }
+        </tr>
+        <tr>
+            <td style="text-align:left;">GST</td>
+            @foreach (var item in Model.BillDetails)
+            {
+                <td>@item.GST</td>
+            }
+        </tr>
+        <tr>
+            <td style="text-align:left;">Miscellaneous</td>
+            @foreach (var item in Model.BillDetails)
+            {
+                <td>@item.Miscelleneous</td>
+            }
+        </tr>
+        <tr>
+            <td style="text-align:left;">Others 1</td>
+            @foreach (var item in Model.BillDetails)
+            {
+                <td>@item.Other1</td>
+            }
+        </tr>
+        <tr>
+            <td style="text-align:left;">Others 2</td>
+            @foreach (var item in Model.BillDetails)
+            {
+                <td>@item.Other2</td>
+            }
+        </tr>
+        <tr>
+            <td style="text-align:left;">Others 3</td>
+            @foreach (var item in Model.BillDetails)
+            {
+                <td>@item.Other3</td>
+            }
+        </tr>
+        <tr>
+            <td style="text-align:left;">Others4</td>
+            @foreach (var item in Model.BillDetails)
+            {
+                <td>@item.Other4</td>
+            }
+        </tr>
+        <tr>
+            <td style="text-align:left;">Total</td>
+            @{ decimal tot = 0;
+               decimal GTot=0; }
+            @foreach (var item in Model.BillDetails)
+            {
+                tot = Model.Bill.ChargesPerDay.Value + item.DayTotal;
+                GTot += tot;
+                <td style="font-weight:bolder;">@(tot)</td>
+            }
+        </tr>
+    </table>
+    <br />
+    <table id="grid" width="100%">
+        <tr>
+            @{ 
+                var ctw = new ChangeNumbersToWords();
+            }
+            <td style="text-align:left;" width="70%">Rupees @ctw.changeToWords(GTot.ToString())</td>
+            <td width="10%">Advance</td>
+            <td width="10%">@ViewBag.AdvanceAmt</td>
+        </tr>
+        <tr>
+            <td width="70%"></td>
+            <td width="10%">Bal. to pay</td>
+            <td width="10%">@(GTot-(decimal)(ViewBag.AdvanceAmt ??0))</td>
+        </tr>
+    </table>
+
+    <h3>VERIFIED AND ACCEPTED</h3>
+    <br />
+    <br />
+    <br />
+    <table width="80%">
+       
+        <tr>
+            <td width="30%"></td>
+            <td width="20%"></td>
+            <td width="30%"></td>
+        </tr>
+        <tr>
+            <td width="30%" style="border-top: 3px solid; text-align:center;">GUESTS SIGNATURE</td>
+            <td width="15%"></td>
+            <td width="35%" style="border-top: 3px solid; text-align:center;">RECEPTIONIST'S SIGNATURE</td>
+        </tr>
+    </table>
+    <ul>
+        <li>CHECK IN/ CHECK OUT TIME 12 NOON</li>
+        <li>BILLS ARE PAYABLE ON PRESENTATION</li>
+        <li>CHEQUES ARE NOT ACCEPTABLE. INCONCENIENCE IS REGRETTED</li>
+        <li>PLEASE REMEMBER TO DEPOSIT THE KEY AT THE RECEPTION</li>
+    </ul>
+    </div>
+    <p class="section-to-not-print">
+
+        @Html.ActionLink("Back to List", "Index")
+        <input type="button" onclick="javascript:window.print();" value="Print" class="eabutton section-to-not-print" />
+    </p>
+

@@ -26,7 +26,7 @@
 // 
 //     Connection String Name: `DefaultConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=(localdb)\ProjectsV13;Initial Catalog=DeMonte;Integrated Security=True;`
+//     Connection String:      `Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DeMonte;Integrated Security=True;`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -418,6 +418,12 @@ namespace DeMonte
 
 
 
+		[Column] public DateTime BDate { get; set; }
+
+
+
+
+
 		[Column] public int? CustomerID { get; set; }
 
 
@@ -448,7 +454,7 @@ namespace DeMonte
 
 
 
-		[Column] public int? RoomNo { get; set; }
+		[Column] public string RoomNo { get; set; }
 
 
 
@@ -462,7 +468,27 @@ namespace DeMonte
 
 		[Column] public int? BillReceiptNo { get; set; }
 
+
+
+
+
 		[Column] public decimal? PaidInForeignIndian { get; set; }
+
+
+
+
+
+		[Column] public string EncashCertDetails { get; set; }
+
+
+
+
+
+		[Column] public string Remarks { get; set; }
+
+
+
+
 
 		[Column] public decimal? CGST { get; set; }
 
@@ -486,7 +512,12 @@ namespace DeMonte
 
 	[TableName("dbo.BillDetail")]
 
+
+
 	[PrimaryKey("BillDetailID")]
+
+
+
 
 	[ExplicitColumns]
 
@@ -550,12 +581,6 @@ namespace DeMonte
 
 
 		[Column] public decimal? Other4 { get; set; }
-
-
-
-
-
-		[Column] public decimal? Total { get; set; }
 
 
 

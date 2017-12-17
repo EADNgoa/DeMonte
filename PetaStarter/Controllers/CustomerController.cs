@@ -12,7 +12,7 @@ namespace DeMonte.Controllers
         public ActionResult Index(int? page, string PropName)
         {
             if (PropName?.Length > 0) page = 1;
-            return View("Index", base.BaseIndex<CustomerViewCls>(page, "Customer where Name like '%" + PropName + "%'"));
+            return View("Index", base.BaseIndex<CustomerViewCls>(page, "Customer where Name like '%" + PropName + "%' order by CustomerID desc"));
         }
 
 

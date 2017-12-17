@@ -105,16 +105,18 @@ namespace DeMonte
     }
     public class BillMetadata
     {
-        [Display(Name = "No of Guest")]
+        [Display(Name = "No of Guests")]
         public int NoOfGuest;
 
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
+        [Required]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy HH:mm tt}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date Arrival Time")]
         public DateTime DateArrivalTime;
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
+        [Required]
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy HH:mm tt}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date Departure Time")]
         public DateTime DateDepartureTime;
@@ -125,33 +127,36 @@ namespace DeMonte
         public decimal ChargesPerDay;
 
         [Display(Name = "Room No")]
+        [MaxLength(10)]
         public int RoomNo;
 
-        [Display(Name = "Total Days")]
-        [Required]
+        [Display(Name = "Total Days")]        
         public int TotalDays;
 
 
         [Display(Name = "Bill/Receipt No")]
         public int BillReceiptNo;
-
-
-        [Display(Name = "Charges Paid Foreign/Indian")]
-        [Required]
-        public decimal PaidInForeignIndian;
         
-        [Display(Name = "CGST")]
-        [Required]
+        [Display(Name = "Charges Paid Foreign/Indian")]        
+        public decimal PaidInForeignIndian;
+
+        [Display(Name ="Encashment Cert. Details")]
+        [MaxLength(100)]
+        public string EncashCertDetails;
+
+        
+        [MaxLength(100)]
+        public string Remarks;
+
+        [Display(Name = "CGST")]        
         [Range(0.0, Double.MaxValue)]
         public decimal CGST;
 
-        [Display(Name = "SGST")]
-        [Required]
+        [Display(Name = "SGST")]        
         [Range(0.0, Double.MaxValue)]
         public decimal SGST;
 
-        [Display(Name = "IGST")]
-        [Required]
+        [Display(Name = "IGST")]        
         [Range(0.0, Double.MaxValue)]
         public decimal IGST;
 
@@ -163,39 +168,31 @@ namespace DeMonte
         [Display(Name = "Date")]
         public DateTime Date;
 
-        [Display(Name = "Extra Person")]
-        [Required]
-        public string ExtraPerson;
+        [Display(Name = "Extra Person")]        
+        [Range(0.0, Double.MaxValue)]
+        public decimal ExtraPerson;
 
-        [Display(Name = "GST")]
-        [Required]
+        [Display(Name = "GST")]        
         [Range(0.0, Double.MaxValue)]
         public decimal GST;
 
-        [Display(Name = "Others 1")]
-        [Required]
+        [Display(Name = "Others 1")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other1;
 
-        [Display(Name = "Other2")]
-        [Required]
+        [Display(Name = "Others 2")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other2;
 
-        [Display(Name = "Other3")]
-        [Required]
+        [Display(Name = "Others 3")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other3;
 
-        [Display(Name = "Other4")]
-        [Required]
+        [Display(Name = "Others 4")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other4;
 
-        [Display(Name = "Total")]
-        [Required]
-        [Range(0.0, Double.MaxValue)]
-        public decimal Total;
+       
     }
     public class RegisterMetadata
     {

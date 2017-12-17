@@ -77,6 +77,7 @@
     <Build Include="dbo\Tables\Register.sql" />
     <Build Include="dbo\Tables\BillDetail.sql" />
     <Build Include="dbo\Tables\ReceiptTypes.sql" />
+    <Build Include="dbo\StoredProcedures\GetRegister.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DeMonteDB.refactorlog" />
