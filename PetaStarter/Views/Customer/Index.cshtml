@@ -13,7 +13,7 @@
             <div>
                 <table>
                     <tr style="text-align:center">
-                        <td>&nbsp; Customer Name:</td>
+                        <td>&nbsp; Customer Name:  &nbsp;</td>
                         <td> @Html.TextBox("PropName", ViewBag.CurrentFilter as string, new { @class = "form-control" })</td>
 
                         <td class="col-lg-1"></td>
@@ -63,6 +63,7 @@
         <td>
             @Html.ActionLink("Edit", "Manage", new { id = item.CustomerID}) |
             @Html.ActionLink("New Bill","Manage", "Bill", new { CustID = item.CustomerID },null);
+            @Html.ActionLink("View Bills", "CustBills", "Bill", new { CustID = item.CustomerID }, null);
         </td>
         
     </tr>

@@ -13,7 +13,14 @@ namespace DeMonte.Controllers
             if (PropName?.Length > 0) page = 1;
             return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo", "Bill b, Customer c where b.customerID=c.CustomerID order by BillID desc"));
         }
-     
+
+        public ActionResult CustBills(int? page, int CustID)
+        {
+            page = 1;
+            ViewBag.CustID = CustID;
+            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo", "Bill b, Customer c where b.customerID=c.CustomerID and b.CustomerID =" + CustID + " order by BillID desc"));
+        }
+
         // GET: Clients/Create
         public ActionResult Manage(int? id, int? CustID)
         {
@@ -147,7 +154,7 @@ namespace DeMonte.Controllers
             viewdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", id);
             viewdata.Customer = db.FirstOrDefault<Customer>("where CustomerID=@0", viewdata.Bill.CustomerID);
             viewdata.BillDetails = db.Fetch<BillDetail>("where BillID =@0  order by [Date]", viewdata.Bill.BillID);
-            ViewBag.AdvanceAmt = db.Single<decimal>("Select sum(Amount) from Receipt where BillNo = @0", id);
+            ViewBag.AdvanceAmt = db.Single<decimal>("Select coalesce(sum(Amount),0) from Receipt where BillNo = @0", id);
 
             return View("Print", viewdata);
         }

@@ -13,7 +13,7 @@
             <div>
                 <table>
                     <tr style="text-align:center">
-                        <td>&nbsp; Supplier Name:</td>
+                        <td>&nbsp; Paid To:  &nbsp;</td>
                         <td> @Html.TextBox("PropName", ViewBag.CurrentFilter as string, new { @class = "form-control" })</td>
 
                         <td class="col-lg-1"></td>
@@ -30,11 +30,11 @@
 </p>
 <table class="table">
     <tr>
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().VoucherID)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().TDate)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().PayTo)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Amount)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().OnAccountOf)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChequeNo)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DrawnOn)</th>
         
         <th></th>
@@ -42,6 +42,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VoucherID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.TDate)
         </td>
@@ -53,9 +56,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OnAccountOf)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChequeNo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DrawnOn)

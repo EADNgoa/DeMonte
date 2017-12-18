@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Filter register";
+}
+
+<h2>Please choose the dates for which you want to see the Register</h2>
+
+
+@using (Html.BeginForm("ViewRegister", "Register", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group" >
+            @Html.Label("View Register From:" , htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="FromDt" name="FromDt" type="date" value="@(String.Format("{0:yyyy-MM-dd}",DateTime.Today.AddMonths(-1).Date))" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("View Register To:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input id="ToDt" name="ToDt"  type="date" value="@(String.Format("{0:yyyy-MM-dd}",DateTime.Today.Date))" class="form-control" />
+            </div>
+        </div>
+
+      
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Fetch" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

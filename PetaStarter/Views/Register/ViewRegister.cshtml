@@ -1,0 +1,94 @@
+﻿@model IEnumerable<DeMonte.RegisterViewCls>
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "";
+}
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    #grid table, #grid th, #grid td {
+        border: 1px solid;
+        text-align: right;
+    }
+</style>
+<div class="section-to-print" style="background-image: url('/Custom/BkGrnd.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; ">
+    <table width="100%">
+        <tr>
+            <td style="text-align:left;">
+                <h3>Form XI (See Rule 10)</h3>
+                <h1>TOURIST REISTER</h1>
+            </td>
+            <td>
+                @Html.Partial("_LetterHead")
+            </td>
+            <td style="text-align:right;">
+                Form 2 [See Rule 3(I) (b)] of<br />
+                The Goa Tax on Luxuries (Hotel & Lodging Houses) Rules 1988<br />
+                Daily account of occupancy of rooms & collection of tax
+            </td>
+        </tr>
+    </table>
+    <br />
+    <table width="100%" id="grid">
+     <tr>
+         <td style="text-align:center;" width="1.5%">Sr. No.</td>
+         <td style="text-align:center;" width="12%">Name of Guest</td>
+         <td style="text-align:center;" width="10.5%">Full address in India/abroad</td>
+         <td style="text-align:center;" width="5%">Passport No. date of issue and expiry</td>
+         <td style="text-align:center;" width="5%">No. of guests acc. and No. of rooms occupied</td>
+         <td style="text-align:center;" width="5%">Date of arrival and time</td>
+         <td style="text-align:center;" width="5%">Date of departure and time</td>
+         <td style="text-align:center;" width="5%">Accommodation charges per day</td>
+         <td style="text-align:center;" width="5%">Room No/Period of stay</td>
+         <td style="text-align:center;" width="5%">Sign of Guest during arrival</td>
+         <td style="text-align:center;" width="5%">Total amount charges on accommodation</td>
+         <td style="text-align:center;" width="5%">Charges paid in foreign/Indian currency</td>
+         <td style="text-align:center;" width="5%">Bill/receipt no. and cash memo with date</td>
+         <td style="text-align:center;" width="5%">Amount of luxury tax collected</td>
+         <td style="text-align:center;" width="5%">Sign of receptionist or manageer on duty</td>
+         <td style="text-align:center;" width="5%">Particulars of encashment certificate with date</td>
+         <td style="text-align:center;" width="5%">Sign of guest during departure</td>
+         <td style="text-align:center;" width="6%">Remarks</td>
+     </tr>   
+        <tr>            
+            @for(int i=1;i<=18;i++)
+            { 
+               <td style="text-align:center;">@i</td> }
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="text-align:center;">@item.BillID</td>
+                <td style="text-align:left;">@item.Name</td>
+                <td style="text-align:left;">@item.Address</td>
+                <td style="text-align:left;">@item.PassportDet</td>
+                <td style="text-align:center;">@item.NoOfGuest , @item.NoOfRooms</td>
+                <td style="text-align:left;">@(String.Format("{0:dd-MMM-yy HH:mm}", item.DateArrivalTime))</td>
+                <td style="text-align:left;">@(String.Format("{0:dd-MMM-yy HH:mm}", item.DateArrivalTime))</td>
+                <td style="text-align:right;">@item.ChargesPerDay</td>
+                <td style="text-align:center;">@item.RoomNo, @item.TotalDays</td>
+                <td style="text-align:left;"></td>
+                <td style="text-align:right;">@item.TotalCharges</td>
+                <td style="text-align:right;">@item.PaidInForeignIndian</td>
+                <td style="text-align:center;">@item.BillReceiptNo</td>
+                <td style="text-align:right;">@item.GST</td>
+                <td style="text-align:left;"></td>
+                <td style="text-align:left;">@item.EncashCertDetails</td>
+                <td style="text-align:left;"></td>
+                <td style="text-align:left;">@item.Remarks</td>
+            </tr>
+        }
+        </table>
+</div>
+
+
+<p>
+
+    @Html.ActionLink("Back to List", "Index")
+    <input type="button" onclick="javascript:window.print();" value="Print" class="eabutton section-to-not-print" />
+</p>
+

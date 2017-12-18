@@ -5,27 +5,16 @@
     ViewBag.Title = "Bills";
 }
 
-<center>
-    <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
-    
-  @*  @using (Html.BeginForm("Index", "Bill", FormMethod.Get))
-    {
-        <div class="row section-to-Not-print">
-            <div>
-                <table>
-                    <tr style="text-align:center">
-                        <td>&nbsp; Bill ID:</td>
-                        <td> @Html.TextBox("PropName", ViewBag.CurrentFilter as string, new { @class = "form-control" })</td>
-
-                        <td class="col-lg-1"></td>
-                        <td><input type="submit" value="Search" class="btn btn-default" /></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    }*@
+    <center>
+        <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>    
     </center>
-
+<p>
+    @if (ViewBag.CustID != null)
+    {
+        @Html.ActionLink("Create New", "Manage", new { CustID = (int)ViewBag.CustID })
+        <a href="" onclick="window.history.go(-1); return false;">Back to Customers</a>
+    }
+</p>
 <table class="table">
     <tr>       
        <th>Bill No.</th>

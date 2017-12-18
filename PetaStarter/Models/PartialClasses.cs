@@ -55,15 +55,26 @@ namespace DeMonte
     }
 
 
-    [MetadataType(typeof(RegisterMetadata))]
+    
     public class RegisterViewCls
     {
-        public int RegisterID { get; set; }
-        public int CustomerID { get; set; }
-
         public int BillID { get; set; }
-        public int EncashmentCash { get; set; }
-        public int Remarks { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string PassportDet { get; set; }
+        public int NoOfGuest { get; set; }
+        public int NoOfRooms { get; set; }
+        public DateTime DateArrivalTime { get; set; }
+        public DateTime DateDepartureTime { get; set; }
+        public decimal ChargesPerDay { get; set; }
+        public string RoomNo { get; set; }
+        public int TotalDays { get; set; }
+        public decimal TotalCharges { get; set; }
+        public decimal PaidInForeignIndian { get; set; }
+        public string BillReceiptNo { get; set; }
+        public decimal GST { get; set; }
+        public string EncashCertDetails { get; set; }
+        public string Remarks { get; set; }
     }
     public class BillScreen
     {
@@ -81,7 +92,7 @@ namespace DeMonte
         public int NoOfGuests { get; set; }
         public DateTime ArrivalDt { get; set; }
         public int TotalDays { get; set; }
-        public int RoomNo { get; set; }        
+        public string RoomNo { get; set; }        
     }
 
 

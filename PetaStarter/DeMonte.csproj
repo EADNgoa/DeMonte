@@ -419,7 +419,7 @@
     <Content Include="Views\Bill\Index.cshtml" />
     <Content Include="Views\Bill\Manage.cshtml" />
     <Content Include="Views\Register\Manage.cshtml" />
-    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Register\ViewRegister.cshtml" />
     <Content Include="Views\BillDetail\Index.cshtml" />
     <Content Include="Views\Bill\ManageBillDetail.cshtml" />
     <Content Include="Views\Shared\_LetterHead.cshtml" />
@@ -427,6 +427,9 @@
     <Content Include="Views\Bill\BillandDetails.cshtml" />
     <Content Include="Views\Bill\DeleConfirm.cshtml" />
     <Content Include="Views\Bill\Print.cshtml" />
+    <Content Include="Views\Register\Filter.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateWithTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

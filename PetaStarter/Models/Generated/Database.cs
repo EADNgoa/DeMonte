@@ -802,6 +802,124 @@ namespace DeMonte
 
     
 
+	[TableName("dbo.RptRegister")]
+
+
+
+	[PrimaryKey("BillID", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class RptRegister  
+    {
+
+
+
+		[Column] public int BillID { get; set; }
+
+
+
+
+
+		[Column] public string Name { get; set; }
+
+
+
+
+
+		[Column] public string Address { get; set; }
+
+
+
+
+
+		[Column] public string PassportDet { get; set; }
+
+
+
+
+
+		[Column] public int? NoOfGuest { get; set; }
+
+
+
+
+
+		[Column] public int? NoOfRooms { get; set; }
+
+
+
+
+
+		[Column] public DateTime? DateArrivalTime { get; set; }
+
+
+
+
+
+		[Column] public DateTime? DateDepartureTime { get; set; }
+
+
+
+
+
+		[Column] public decimal? ChargesPerDay { get; set; }
+
+
+
+
+
+		[Column] public string RoomNo { get; set; }
+
+
+
+
+
+		[Column] public int? TotalDays { get; set; }
+
+
+
+
+
+		[Column] public decimal? TotalCharges { get; set; }
+
+
+
+
+
+		[Column] public decimal? PaidInForeignIndian { get; set; }
+
+
+
+
+
+		[Column] public string BillReceiptNo { get; set; }
+
+
+
+
+
+		[Column] public decimal? GST { get; set; }
+
+
+
+
+
+		[Column] public string EncashCertDetails { get; set; }
+
+
+
+
+
+		[Column] public string Remarks { get; set; }
+
+
+
+	}
+
+    
+
 	[TableName("dbo.Voucher")]
 
 

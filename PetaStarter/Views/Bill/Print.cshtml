@@ -39,9 +39,9 @@
     <table width="100%">
         <tr>
             <td width="16%">Date Of Arrival:</td>
-            <td width="17%"><u>@(String.Format("{0:dd-MMM-yy}", Model.Bill.DateArrivalTime.Value.Date))</u></td>
+            <td width="17%"><u>@(String.Format("{0:yyyy-MM-dd}", Model.Bill.DateArrivalTime.Value.Date))</u></td>
             <td width="16%">Departure Date:</td>
-            <td width="17%"><u>@(String.Format("{0:dd-MMM-yy}", Model.Bill.DateDepartureTime.Value.Date))</u></td>
+            <td width="17%"><u>@(String.Format("{0:yyyy-MM-dd}", Model.Bill.DateDepartureTime.Value.Date))</u></td>
             <td width="16%">Total Days:</td>
             <td width="17%"><u>@Model.Bill.TotalDays</u></td>
         </tr>
@@ -68,7 +68,7 @@
             <td style="text-align:left;">Date</td>
             @foreach(var item in Model.BillDetails)
             {
-                <td style="font-weight:bold;">@(String.Format("{0:dd-MMM-yy}", item.Date))</td>
+                <td style="font-weight:bold;">@(String.Format("{0:yyyy-MM-dd}", item.Date))</td>
             }
         </tr>
         <tr>

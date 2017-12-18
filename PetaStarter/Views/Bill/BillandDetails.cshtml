@@ -119,8 +119,8 @@
 }
 
 <br />
-<div>
-    @Html.ActionLink("Back to List", "Index") |
+<div>    
+    <a href="" onclick="window.history.go(-1); return false;" >Back to List</a> |
     @Html.ActionLink("Print", "Print", new { id = Model.Bill.BillID}, new { target="_blank"})
     
 </div>
