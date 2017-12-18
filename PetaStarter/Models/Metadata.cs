@@ -176,6 +176,10 @@ namespace DeMonte
         [Range(0.0, Double.MaxValue)]
         public decimal GST;
 
+        [Display(Name = "Miscellaneous")]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Miscelleneous;
+
         [Display(Name = "Others 1")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other1;

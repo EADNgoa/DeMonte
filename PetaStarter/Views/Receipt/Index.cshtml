@@ -1,11 +1,11 @@
 ﻿@model PagedList.IPagedList<Receipt>
 @using PagedList.Mvc;
 @{
-    ViewBag.Title = "Receipt";
+    ViewBag.Title = "Receipts";
 }
 
 <center>
-    <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
+    <h2 class="section-to-print"><b>@ViewBag.Title for Bill No. @ViewBag.BillNo of Bill Value @ViewBag.BillTotal</b></h2>
     
     @using (Html.BeginForm("Index", "Receipt", FormMethod.Get))
     {        
@@ -32,11 +32,11 @@
 <table class="table">
     <tr>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BillNo)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ReceiptID)</th>
+        <th>Receipt No.</th>
+        <th>Type</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().TDate)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Name)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().Amount)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChequeNo)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DrawnOn)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().RoomNo)</th>
         <th></th>
@@ -51,6 +51,9 @@
             @Html.DisplayFor(modelItem => item.ReceiptID)
         </td>
         <td>
+            @( (item.ReceiptTypeID==1)? "Full Amount" : (item.ReceiptTypeID == 2) ? "Advance" : "Balance")
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.TDate)
         </td>
         <td>
@@ -58,9 +61,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChequeNo)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DrawnOn)

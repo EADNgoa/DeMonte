@@ -53,11 +53,10 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             
             <div class="form-group">
-                @Html.LabelFor(model => model.FrmEdt.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DisplayFor(model => model.FrmEdt.Date, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FrmEdt.Date, "", new { @class = "text-danger" })
-                </div>
+                <h3 class="col-md-2">&nbsp;</h3>            
+                <h2 class="col-md-10"><u>@Html.DisplayFor(model => model.FrmEdt.Date, new { htmlAttributes = new { @class = "form-label" } })</u></h2>
+                   
+                
             </div>
 
             <div class="form-group">

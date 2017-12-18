@@ -11,14 +11,16 @@ namespace DeMonte.Controllers
         public ActionResult Index(int? page, string PropName)
         {
             if (PropName?.Length > 0) page = 1;
-            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo", "Bill b, Customer c where b.customerID=c.CustomerID order by BillID desc"));
+            ViewBag.CustName = " ";
+            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo", "Bill b, Customer c where b.customerID=c.CustomerID order by BillID desc"));
         }
 
         public ActionResult CustBills(int? page, int CustID)
         {
             page = 1;
             ViewBag.CustID = CustID;
-            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo", "Bill b, Customer c where b.customerID=c.CustomerID and b.CustomerID =" + CustID + " order by BillID desc"));
+            ViewBag.CustName = " of " + db.Single<string>("select Name from Customer where CustomerID=@0", CustID);
+            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo", "Bill b, Customer c where b.customerID=c.CustomerID and b.CustomerID =" + CustID + " order by BillID desc"));
         }
 
         // GET: Clients/Create
@@ -72,8 +74,13 @@ namespace DeMonte.Controllers
                         DateTime dt = (DateTime)bill.DateArrivalTime.Value.Date;
                         for (int i = 0; i < bill.TotalDays; i++)
                         {
-                            if (!existingDays.Any(bd => bd.Date==dt))//Insert the placeholders only if they dont exist already
-                                db.Insert(new BillDetail { BillID = b, Date = dt });
+                            if (!existingDays.Any(bd => bd.Date == dt))//Insert the placeholders only if they dont exist already
+                            {
+                                //calc the GST
+                                var GSTdec = (bill.CGST ?? 0) + (bill.SGST ?? 0) + (bill.IGST ?? 0);
+                                GSTdec = bill.ChargesPerDay.Value * (GSTdec / 100);
+                                db.Insert(new BillDetail { BillID = b, Date = dt, GST = GSTdec });
+                            }
                             dt = dt.AddDays(1);
                         }
                     }
