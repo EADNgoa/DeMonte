@@ -6,13 +6,14 @@ using System.Web.Mvc;
 using System.Net;
 namespace DeMonte.Controllers
 {
+    [Authorize(Roles = "Boss,hr")]
     public class VoucherController : EAController
     {
         // GET: Clients
         public ActionResult Index(int? page, string PropName)
         {
             if (PropName?.Length > 0) page = 1;
-            return View("Index", base.BaseIndex<Voucher>(page, "Voucher where PayTo like '%" + PropName + "%'"));
+            return View("Index", base.BaseIndex<Voucher>(page, "Voucher where PayTo like '%" + PropName + "%' order by VoucherID desc"));
         }
 
 

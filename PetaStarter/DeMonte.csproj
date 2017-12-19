@@ -196,7 +196,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BillController.cs" />
-    <Compile Include="Controllers\BillDetailController.cs" />
     <Compile Include="Controllers\ReceiptController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\VoucherController.cs" />
@@ -420,10 +419,8 @@
     <Content Include="Views\Bill\Manage.cshtml" />
     <Content Include="Views\Register\Manage.cshtml" />
     <Content Include="Views\Register\ViewRegister.cshtml" />
-    <Content Include="Views\BillDetail\Index.cshtml" />
     <Content Include="Views\Bill\ManageBillDetail.cshtml" />
     <Content Include="Views\Shared\_LetterHead.cshtml" />
-    <Content Include="Views\BillDetail\Details.cshtml" />
     <Content Include="Views\Bill\BillandDetails.cshtml" />
     <Content Include="Views\Bill\DeleConfirm.cshtml" />
     <Content Include="Views\Bill\Print.cshtml" />

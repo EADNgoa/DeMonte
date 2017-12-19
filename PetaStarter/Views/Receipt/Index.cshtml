@@ -27,7 +27,8 @@
 
 <p>
     @Html.ActionLink("Create New", "Manage", new { BillID= ViewBag.BillNo })
-    <a href="" onclick="window.history.go(-1); return false;">Back to List</a> 
+    @Html.ActionLink("Back to Bills", "Index","Bill", new { BillID = ViewBag.BillNo },null)
+    
 </p>
 <table class="table">
     <tr>

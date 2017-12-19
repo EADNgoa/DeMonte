@@ -7,19 +7,19 @@
 <div class="section-to-print" style="background-image: url('/Custom/BkGrnd.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; ">
     @Html.Partial("_LetterHead")
 
+    <br />
     <table width="100%">
         <tr>
-            <td>&nbsp;</td>
+            <td>No.:     @Html.DisplayFor(model => model.VoucherID) </td>
             <td width="30%"></td>
-            <td></td>
+            <td style="text-align:right;">Date:   @Html.DisplayFor(model => model.TDate)</td>
         </tr>
         <tr>
             <td width="43%">&nbsp;</td>
-            <td width="30%"></td>
-            <td>
+            <td width="30%">
                 <h3>VOUCHER</h3>
-                VOUCHER NO:     @Html.DisplayFor(model => model.VoucherID) <br />
-                DATE:   @Html.DisplayFor(model => model.TDate)
+            </td>
+            <td>
             </td>
         </tr>
         <tr>
@@ -29,30 +29,14 @@
         </tr>
         <tr>
             <td colspan="3">
-                PAY TO:  &nbsp;<u>  @Html.DisplayFor(model => model.PayTo)</u>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                RUPEES:  &nbsp;<u>@ViewBag.vouAmt</u>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                ON ACCOUNT OF:  &nbsp;        <u>  @Html.DisplayFor(model => model.OnAccountOf)</u>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3">
+                Pay to:  &nbsp;<u>  @Html.DisplayFor(model => model.PayTo)</u>
+                Rupees:  &nbsp;<u>@ViewBag.vouAmt</u>
+                on account of:  &nbsp;        <u>  @Html.DisplayFor(model => model.OnAccountOf)</u>
                 CASH/CHEQUE:        &nbsp; <u>    @Html.DisplayFor(model => model.ChequeNo)</u>
-                &nbsp; DRAWN ON:   &nbsp;  <u>   @Html.DisplayFor(model => model.DrawnOn)</u>
+                &nbsp; drawn on:   &nbsp;  <u>   @Html.DisplayFor(model => model.DrawnOn)</u>
             </td>
         </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td width="30%"></td>
-            <td></td>
-        </tr>
+        
         <tr>
             <td width="43%">
                 <h3>Rs. &nbsp; <u>@Html.DisplayFor(model => model.Amount)</u></h3>                

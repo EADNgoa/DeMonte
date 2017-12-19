@@ -20,7 +20,7 @@
         <tr>
             <td style="text-align:left;">
                 <h3>Form XI (See Rule 10)</h3>
-                <h1>TOURIST REISTER</h1>
+                <h1>TOURIST REGISTER</h1>
             </td>
             <td>
                 @Html.Partial("_LetterHead")
@@ -39,25 +39,40 @@
          <td style="text-align:center;" width="12%">Name of Guest</td>
          <td style="text-align:center;" width="10.5%">Full address in India/abroad</td>
          <td style="text-align:center;" width="5%">Passport No. date of issue and expiry</td>
-         <td style="text-align:center;" width="5%">No. of guests acc. and No. of rooms occupied</td>
+         <td style="text-align:center;" colspan="2" width="5%">No. of guests acc. and No. of rooms occupied</td>
          <td style="text-align:center;" width="5%">Date of arrival and time</td>
          <td style="text-align:center;" width="5%">Date of departure and time</td>
          <td style="text-align:center;" width="5%">Accommodation charges per day</td>
-         <td style="text-align:center;" width="5%">Room No/Period of stay</td>
+         <td style="text-align:center;" colspan="2" width="5%">Room No/Period of stay</td>
          <td style="text-align:center;" width="5%">Sign of Guest during arrival</td>
          <td style="text-align:center;" width="5%">Total amount charges on accommodation</td>
          <td style="text-align:center;" width="5%">Charges paid in foreign/Indian currency</td>
          <td style="text-align:center;" width="5%">Bill/receipt no. and cash memo with date</td>
-         <td style="text-align:center;" width="5%">Amount of luxury tax collected</td>
-         <td style="text-align:center;" width="5%">Sign of receptionist or manageer on duty</td>
+         <td style="text-align:center;" width="5%">Amount of GST collected</td>
+         <td style="text-align:center;" width="5%">Sign of Receptionist or Manager on duty</td>
          <td style="text-align:center;" width="5%">Particulars of encashment certificate with date</td>
-         <td style="text-align:center;" width="5%">Sign of guest during departure</td>
+         <td style="text-align:center;" width="5%">Sign of Guest during departure</td>
          <td style="text-align:center;" width="6%">Remarks</td>
      </tr>   
-        <tr>            
-            @for(int i=1;i<=18;i++)
-            { 
-               <td style="text-align:center;">@i</td> }
+        <tr>
+            <td style="text-align:center;">1</td>
+            <td style="text-align:center;">2</td>
+            <td style="text-align:center;">3</td>
+            <td style="text-align:center;">4</td>
+            <td style="text-align:center;" colspan="2">5</td>
+            <td style="text-align:center;">6</td>
+            <td style="text-align:center;">7</td>
+            <td style="text-align:center;">8</td>
+            <td style="text-align:center;" colspan="2">9</td>
+            <td style="text-align:center;">10</td>
+            <td style="text-align:center;">11</td>
+            <td style="text-align:center;">12</td>
+            <td style="text-align:center;">13</td>
+            <td style="text-align:center;">14</td>
+            <td style="text-align:center;">15</td>
+            <td style="text-align:center;">16</td>
+            <td style="text-align:center;">17</td>
+            <td style="text-align:center;">18</td>
         </tr>
         @foreach (var item in Model)
         {
@@ -66,11 +81,13 @@
                 <td style="text-align:left;">@item.Name</td>
                 <td style="text-align:left;">@item.Address</td>
                 <td style="text-align:left;">@item.PassportDet</td>
-                <td style="text-align:center;">@item.NoOfGuest , @item.NoOfRooms</td>
-                <td style="text-align:left;">@(String.Format("{0:dd-MMM-yy HH:mm}", item.DateArrivalTime))</td>
-                <td style="text-align:left;">@(String.Format("{0:dd-MMM-yy HH:mm}", item.DateArrivalTime))</td>
+                <td style="text-align:center;">@item.NoOfGuest</td>
+                <td style="text-align:center;">@item.NoOfRooms</td>
+                <td style="text-align:left;">@(String.Format("{0:dd-MM-yy HH:mm}", item.DateArrivalTime))</td>
+                <td style="text-align:left;">@(String.Format("{0:dd-MM-yy HH:mm}", item.DateArrivalTime))</td>
                 <td style="text-align:right;">@item.ChargesPerDay</td>
-                <td style="text-align:center;">@item.RoomNo, @item.TotalDays</td>
+                <td style="text-align:center;">@item.RoomNo</td>
+                <td style="text-align:center;">@item.TotalDays</td>
                 <td style="text-align:left;"></td>
                 <td style="text-align:right;">@item.TotalCharges</td>
                 <td style="text-align:right;">@item.PaidInForeignIndian</td>

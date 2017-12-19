@@ -9,28 +9,26 @@
         
         <table width="100%">
             <tr>
-                <td width="53%">&nbsp;</td>
+                <td width="53%">No:   @Html.DisplayFor(model => model.ReceiptID)</td>
                 <td width="20%"></td>
-                <td>
-                    <h3>RECEIPT</h3>
-                    No:   @Html.DisplayFor(model => model.ReceiptID) <br />
+                <td>                   
                     Date:   @Html.DisplayFor(model => model.TDate)
                 </td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td width="20%"></td>
+                <td width="20%"><h3>RECEIPT</h3></td>
                 <td></td>
             </tr>
             <tr>
-                <td colspan="3">
+                <td style="line-height:180%" colspan="3">
                     Received with thanks from Ms /Mrs  &nbsp;<u>  @Html.DisplayFor(model => model.Name)</u>
         
                     the sum of Rupees: <u>@ViewBag.recptAmt</u>
         
-                    vide Cash/Cheque No.  &nbsp;       <u>   @Html.DisplayFor(model => model.ChequeNo)</u>, 
+                    vide CASH/NEFT/RTGS/IMPS/UTR No.  &nbsp;       <u>   @Html.DisplayFor(model => model.ChequeNo)</u>, 
 
-                    Cheque dated &nbsp;  <u>    @Html.DisplayFor(model => model.ChqDate)</u>
+                    dated &nbsp;  <u>    @Html.DisplayFor(model => model.ChqDate)</u>
         
                     &nbsp; drawn On         &nbsp;   <u>  @Html.DisplayFor(model => model.DrawnOn)</u>
                     &nbsp; on account of @ViewBag.ReceiptTypeName
@@ -47,10 +45,9 @@
             <tr>
                 <td width="53%">
                     <h3>Rs. &nbsp; <u>@Html.DisplayFor(model => model.Amount)</u></h3>
-                    <span style="font-style: italic;">* Cheques subject to realisation</span>
-                </td>                
-                <td style="border-bottom:3px solid;" width="20%"></td>
-                <td style="border-bottom:3px solid;">&nbsp;</td>
+                    <span style="font-style: italic;">&nbsp;</span>
+                </td>                                
+                <td colspan="2" style="border-bottom:3px solid;">&nbsp;</td>
             </tr>
             <tr>
                 <td width="53%"></td>

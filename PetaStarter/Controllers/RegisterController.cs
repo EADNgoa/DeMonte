@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Net;
 namespace DeMonte.Controllers
 {
+    [Authorize(Roles = "Boss,hr")]
     public class RegisterController : EAController
     {
         // GET: Clients

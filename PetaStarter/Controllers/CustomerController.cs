@@ -6,9 +6,11 @@ using System.Web.Mvc;
 
 namespace DeMonte.Controllers
 {
+    [Authorize(Roles = "Boss,hr")]
     public class CustomerController : EAController
     {
         // GET: Clients
+
         public ActionResult Index(int? page, string PropName)
         {
             if (PropName?.Length > 0) page = 1;

@@ -19,11 +19,11 @@
 <div class="section-to-print" style="background-image: url('/Custom/BkGrnd.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; ">
     @Html.Partial("_LetterHead")
     <br />
-    <table width="90%">
+    <table width="100%">
         <tr>
-            <td width="30%">Bill: <u>@Model.Bill.BillID</u></td>
-            <td width="30%"></td>
-            <td width="40%">
+            <td width="30%">No.: <u>@Model.Bill.BillID</u></td>
+            <td style="text-align:right;" width="30%"><h2>INVOICE</h2></td>
+            <td style="text-align:right;" width="40%">
                 Date:   <u>@(String.Format("{0:dd-MMM-yy}",Model.Bill.BDate))</u>
             </td>
         </tr>
@@ -156,18 +156,17 @@
         </tr>
     </table>
 
-    <h3>VERIFIED AND ACCEPTED</h3>
+    <h3>VERIFIED AND ACCEPTED</h3>    
     <br />
-    <br />
-    <br />
-    <table width="80%">
-       
+    <table width="100%">       
         <tr>
+            <td width="20%"><img width="100%" src="~/IDs/@Model.Customer.PhotograghID"</td>
             <td width="30%"></td>
-            <td width="20%"></td>
-            <td width="30%"></td>
+            <td width="15%"></td>
+            <td width="35%"></td>
         </tr>
         <tr>
+            <td width="20%"></td>
             <td width="30%" style="border-top: 3px solid; text-align:center;">GUESTS SIGNATURE</td>
             <td width="15%"></td>
             <td width="35%" style="border-top: 3px solid; text-align:center;">RECEPTIONIST'S SIGNATURE</td>

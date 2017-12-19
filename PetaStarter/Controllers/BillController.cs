@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace DeMonte.Controllers
 {
+    [Authorize(Roles ="Boss,hr")]
     public class BillController : EAController
     {                
         public ActionResult Index(int? page, string PropName)

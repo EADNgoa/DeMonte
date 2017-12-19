@@ -8,6 +8,7 @@ using PagedList;
 namespace DeMonte.Controllers
 {
     [HandleError]
+    [Authorize]
     public class EAController : Controller
     {
         // GET: EA
