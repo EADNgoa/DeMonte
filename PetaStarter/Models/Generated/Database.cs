@@ -26,7 +26,7 @@
 // 
 //     Connection String Name: `DefaultConnection`
 //     Provider:               `System.Data.SqlClient`
-//     Connection String:      `Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DeMonte;Integrated Security=True;`
+//     Connection String:      `Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=DeMonteDB;Integrated Security=True;`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -622,6 +622,12 @@ namespace DeMonte
 
 
 
+		[Column] public string GSTNo { get; set; }
+
+
+
+
+
 		[Column] public string PassportNo { get; set; }
 
 
@@ -641,6 +647,88 @@ namespace DeMonte
 
 
 		[Column] public string PhotograghID { get; set; }
+
+
+
+	}
+
+    
+
+	[TableName("dbo.ExpSales")]
+
+
+
+	[PrimaryKey("BillID", AutoIncrement=false)]
+
+
+	[ExplicitColumns]
+
+    public partial class ExpSale  
+    {
+
+
+
+		[Column] public int BillID { get; set; }
+
+
+
+
+
+		[Column] public DateTime? TDate { get; set; }
+
+
+
+
+
+		[Column] public string GSTNo { get; set; }
+
+
+
+
+
+		[Column] public string Name { get; set; }
+
+
+
+
+
+		[Column] public string AddLineBreaks { get; set; }
+
+
+
+
+
+		[Column] public decimal? TaxableSales { get; set; }
+
+
+
+
+
+		[Column] public decimal? IGST { get; set; }
+
+
+
+
+
+		[Column] public decimal? CGST { get; set; }
+
+
+
+
+
+		[Column] public decimal? SGST { get; set; }
+
+
+
+
+
+		[Column] public decimal? TotalValue { get; set; }
+
+
+
+
+
+		[Column] public decimal? GST { get; set; }
 
 
 

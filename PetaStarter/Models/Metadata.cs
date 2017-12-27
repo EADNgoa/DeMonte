@@ -15,10 +15,13 @@ namespace DeMonte
         [StringLength(150, MinimumLength = 3)]
         public string Name;
 
-        [Display(Name = "Address")]
-        [Required]
+        [Display(Name = "Address")]        
         [StringLength(350, MinimumLength = 3)]
         public string Address;
+
+        [Display(Name = "GSTIN No.")]
+        [StringLength(30)]
+        public string GSTNo;
 
         [Display(Name = "Passport No.")]        
         [StringLength(20, MinimumLength = 3)]

@@ -47,6 +47,7 @@ namespace DeMonte
         public int CustomerID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public string GSTNo { get; set; }
         public string PassportNo { get; set; }
         public DateTime? DateIssue { get; set; }
         public DateTime? DateExpiry { get; set; }
@@ -95,7 +96,10 @@ namespace DeMonte
         public string RoomNo { get; set; }        
     }
 
-
+   public partial class ExpSale
+    {
+        public string Address { get { return AddLineBreaks.Replace("\r\n", ", "); } } 
+    }
 
     //[MetadataType(typeof(ConfigMetadata))]
     //public partial class Config

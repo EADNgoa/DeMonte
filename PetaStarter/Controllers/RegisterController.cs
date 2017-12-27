@@ -31,32 +31,7 @@ namespace DeMonte.Controllers
             return View(vwData);
         }
 
-
-        //// GET: Clients/Create
-        //public ActionResult Manage(int? id)
-        //{
-        //    return View(base.BaseCreateEdit<RegisterViewCls>(id, "RegisterID"));
-        //}
-
-        //// POST: Customer/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Manage([Bind(Include = "RegisterID,CustomerID,BillID,EncashmentCertificate,Remarks")] RegisterViewCls register)
-        //{
-        //    return base.BaseSave<RegisterViewCls>(register,register.RegisterID > 0);
-        //}
-
-        //// GET: Vouchers/Details
-        //public ActionResult Details(int? id)
-        //{
-
-        //    return View(base.BaseCreateEdit<Register>(id, "RegisterID"));
-        //}
-
-       
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)

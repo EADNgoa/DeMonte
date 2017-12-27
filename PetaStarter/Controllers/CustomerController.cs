@@ -30,6 +30,7 @@ namespace DeMonte.Controllers
                     CustomerID = customer.CustomerID,
                     Name = customer.Name,
                     Address = customer.Address,
+                    GSTNo =customer.GSTNo,
                     PassportNo = customer.PassportNo,
                     DateIssue = customer.DateIssue,
                     PhotographID = customer.PhotograghID,
@@ -48,7 +49,7 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "CustomerID,Name,Address, PassportNo, DateIssue,DateExpiry,PhotographID, UploadedFile")] CustomerViewCls customer)
+        public ActionResult Manage([Bind(Include = "CustomerID,Name,Address, PassportNo, DateIssue,DateExpiry,PhotographID,GSTNo, UploadedFile")] CustomerViewCls customer)
         {
             if (customer.UploadedFile != null || customer.CustomerID > 0)
 
@@ -58,6 +59,7 @@ namespace DeMonte.Controllers
                     CustomerID = customer.CustomerID,
                     Name = customer.Name,
                     Address= customer.Address,
+                    GSTNo=customer.GSTNo,
                     PassportNo= customer.PassportNo,
                     DateIssue= customer.DateIssue,
                     DateExpiry= customer.DateExpiry

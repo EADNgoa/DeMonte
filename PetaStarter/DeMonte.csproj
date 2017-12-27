@@ -197,6 +197,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BillController.cs" />
     <Compile Include="Controllers\ReceiptController.cs" />
+    <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\VoucherController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
@@ -299,6 +300,7 @@
     </Content>
     <Content Include="Models\Generated\PetaPoco.Generator.ttinclude" />
     <Content Include="Models\Generated\PetaPoco.Core.ttinclude" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -427,6 +429,8 @@
     <Content Include="Views\Register\Filter.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateWithTime.cshtml" />
+    <Content Include="Views\Export\PayRegRq.cshtml" />
+    <Content Include="Views\Export\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
