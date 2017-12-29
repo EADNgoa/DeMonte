@@ -424,7 +424,7 @@
     <Content Include="Views\BillDetail\Manage.cshtml" />
     <Content Include="Views\Shared\_LetterHead.cshtml" />
     <Content Include="Views\BillDetail\Details.cshtml" />
-
+    <Content Include="Views\BillDetail\PrintDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

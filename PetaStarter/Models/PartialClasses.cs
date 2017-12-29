@@ -65,11 +65,13 @@ namespace DeMonte
         public int EncashmentCash { get; set; }
         public int Remarks { get; set; }
     }
+    [MetadataType(typeof(BillDetailMetadata))]
     public class BillScreen
     {
         public Customer Customer { get; set; }
         public Bill Bill { get; set; }
         public IEnumerable<BillDetail> BillDetail { get; set; }
+        public BillDetail FrmEdit { get; set;  }
     }
     //[MetadataType(typeof(ConfigMetadata))]
     //public partial class Config

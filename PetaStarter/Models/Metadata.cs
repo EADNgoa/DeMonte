@@ -128,12 +128,11 @@ namespace DeMonte
         public int RoomNo;
 
         [Display(Name = "Total Days")]
-        [Required]
         public int TotalDays;
 
 
-        [Display(Name = "Bill/Receipt No")]
-        public int BillReceiptNo;
+        [Display(Name = "Advance/Receipt No")]
+        public int AdvReceiptNo;
 
 
         [Display(Name = "Charges Paid Foreign/Indian")]
@@ -155,6 +154,11 @@ namespace DeMonte
         [Range(0.0, Double.MaxValue)]
         public decimal IGST;
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Transaction Date")]
+        public DateTime TransactionDate;
+
     }
     public class BillDetailMetadata
     {
@@ -163,37 +167,35 @@ namespace DeMonte
         [Display(Name = "Date")]
         public DateTime Date;
 
-        [Display(Name = "Extra Person")]
-        [Required]
-        public string ExtraPerson;
+        [Display(Name = "Extra Person")]    
+        public decimal ExtraPerson;
 
-        [Display(Name = "GST")]
-        [Required]
+        [Display(Name = "Miscelleneous")]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Miscelleneous;
+
+
+        [Display(Name = "GST")]        
         [Range(0.0, Double.MaxValue)]
         public decimal GST;
 
-        [Display(Name = "Others 1")]
-        [Required]
+        [Display(Name = "Others 1")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other1;
 
-        [Display(Name = "Other2")]
-        [Required]
+        [Display(Name = "Others 2")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other2;
 
-        [Display(Name = "Other3")]
-        [Required]
+        [Display(Name = "Others 3")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other3;
 
-        [Display(Name = "Other4")]
-        [Required]
+        [Display(Name = "Others 4")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other4;
 
-        [Display(Name = "Total")]
-        [Required]
+        [Display(Name = "Total")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Total;
     }

@@ -2,35 +2,17 @@
 @using PagedList.Mvc;
 
 @{
-    ViewBag.Title = "BillS";
+    ViewBag.Title = "BillDetailS";
 }
 
 <center>
     <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
     
-    @using (Html.BeginForm("Index", "BillDetail", FormMethod.Get))
-    {        
-        <div class="row section-to-Not-print">
-            <div>
-                <table>
-                    <tr style="text-align:center">
-                        <td>&nbsp; Bill Name:</td>
-                        <td> @Html.TextBox("PropName", ViewBag.CurrentFilter as string, new { @class = "form-control" })</td>
-
-                        <td class="col-lg-1"></td>
-                        <td><input type="submit" value="Search" class="btn btn-default" /></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    }
+   
 </center>
 
-<p>
-    @Html.ActionLink("Create New", "Manage")
-   
-      
-</p>
+
+
 <table class="table">
     <tr>
        
@@ -86,9 +68,7 @@
             @Html.ActionLink("Edit", "Manage", new { id = item.BillDetailID})
         </td>
       
-        <td>
-            @Html.ActionLink("BillScreen", "Details", new { id = item.BillDetailID })
-        </td>
+        
     </tr>
 }
 

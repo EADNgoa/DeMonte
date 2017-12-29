@@ -8,11 +8,12 @@
     [ChargesPerDay] DECIMAL(15, 2) NULL, 
 	[RoomNo] INT NULL,
     [TotalDays] INT NULL, 
-    [BillReceiptNo] INT NULL, 
+    [AdvReceiptNo] INT NULL, 
     [PaidInForeignIndian] DECIMAL(15, 2) NULL, 
     [CGST] DECIMAL(12, 2) NULL, 
     [SGST] DECIMAL(12, 2) NULL, 
     [IGST] DECIMAL(12, 2) NULL, 
+    [TransactionDate] DATE NULL, 
     CONSTRAINT [FK_Bill_CustomerID] FOREIGN KEY ([CustomerID]) REFERENCES [Customer]([CustomerID]) 
   
    
