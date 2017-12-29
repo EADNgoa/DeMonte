@@ -11,7 +11,7 @@ AS
 	b.NoOfGuest, 1 as NoOfRooms,b.DateArrivalTime,b.DateDepartureTime,COALESCE(b.ChargesPerDay,0),b.RoomNo,COALESCE(b.TotalDays,1), COALESCE((b.TotalDays*b.ChargesPerDay),0), b.PaidInForeignIndian, b.EncashCertDetails, b.Remarks
 	from Customer c 
 	INNER Join Bill b ON c.CustomerID=b.CustomerID
-	Where b.DateArrivalTime between @StartDt and @EndDt
+	Where b.Canceled=0 and b.DateArrivalTime between @StartDt and @EndDt
 
 	--calc the GST
 	Update r SET r.GST = 

@@ -431,6 +431,7 @@
     <Content Include="Views\Shared\EditorTemplates\DateWithTime.cshtml" />
     <Content Include="Views\Export\PayRegRq.cshtml" />
     <Content Include="Views\Export\Manage.cshtml" />
+    <Content Include="Views\Bill\Cancel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

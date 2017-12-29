@@ -93,7 +93,8 @@ namespace DeMonte
         public int NoOfGuests { get; set; }
         public DateTime ArrivalDt { get; set; }
         public int TotalDays { get; set; }
-        public string RoomNo { get; set; }        
+        public string RoomNo { get; set; }
+        public bool Canceled { get; set; }
     }
 
    public partial class ExpSale

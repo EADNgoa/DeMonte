@@ -13,7 +13,7 @@ namespace DeMonte.Controllers
         {
             if (PropName?.Length > 0) page = 1;
             ViewBag.CustName = " ";
-            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo", "Bill b, Customer c where b.customerID=c.CustomerID order by BillID desc"));
+            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo, Canceled", "Bill b, Customer c where b.customerID=c.CustomerID order by BillID desc"));
         }
 
         public ActionResult CustBills(int? page, int CustID)
@@ -21,7 +21,7 @@ namespace DeMonte.Controllers
             page = 1;
             ViewBag.CustID = CustID;
             ViewBag.CustName = " of " + db.Single<string>("select Name from Customer where CustomerID=@0", CustID);
-            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo", "Bill b, Customer c where b.customerID=c.CustomerID and b.CustomerID =" + CustID + " order by BillID desc"));
+            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo, Canceled", "Bill b, Customer c where b.customerID=c.CustomerID and b.CustomerID =" + CustID + " order by BillID desc"));
         }
 
         // GET: Clients/Create
@@ -165,6 +165,27 @@ namespace DeMonte.Controllers
             ViewBag.AdvanceAmt = db.Single<decimal>("Select coalesce(sum(Amount),0) from Receipt where BillNo = @0", id);
 
             return View("Print", viewdata);
+        }
+
+        public ActionResult Cancel(int? id)
+        {
+            var viewdata = new BillScreen();
+
+            viewdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", id);
+            viewdata.Customer = db.FirstOrDefault<Customer>("where CustomerID=@0", viewdata.Bill.CustomerID);
+            viewdata.BillDetails = db.Fetch<BillDetail>("where BillID =@0  order by [Date]", viewdata.Bill.BillID);
+            ViewBag.Receipts = db.Query<Receipt>("Select * from Receipt where BillNo = @0", id);
+
+            return View("Cancel", viewdata);
+        }
+
+        [HttpPost]
+        public ActionResult Cancel(int id)
+        {
+            var kb = db.FirstOrDefault<Bill>("where BillID = @0", id);
+            kb.Canceled = true;
+            db.Update(kb);
+            return RedirectToAction("Index", "Bill");
         }
 
         protected override void Dispose(bool disposing)

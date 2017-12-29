@@ -16,6 +16,7 @@
     [CGST] DECIMAL(12, 2) NULL, 
     [SGST] DECIMAL(12, 2) NULL, 
     [IGST] DECIMAL(12, 2) NULL, 
+    [Canceled] BIT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_Bill_CustomerID] FOREIGN KEY ([CustomerID]) REFERENCES [Customer]([CustomerID]) 
   
    

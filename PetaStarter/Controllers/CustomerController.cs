@@ -51,9 +51,6 @@ namespace DeMonte.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Manage([Bind(Include = "CustomerID,Name,Address, PassportNo, DateIssue,DateExpiry,PhotographID,GSTNo, UploadedFile")] CustomerViewCls customer)
         {
-            if (customer.UploadedFile != null || customer.CustomerID > 0)
-
-            {
                 Customer res = new Customer
                 {
                     CustomerID = customer.CustomerID,
@@ -65,6 +62,8 @@ namespace DeMonte.Controllers
                     DateExpiry= customer.DateExpiry
                 };
 
+            if (customer.UploadedFile != null || customer.CustomerID > 0)
+            {
                 if (customer.UploadedFile != null)
                 {
                     string fn = customer.UploadedFile.FileName.Substring(customer.UploadedFile.FileName.LastIndexOf('\\') + 1);
@@ -81,10 +80,9 @@ namespace DeMonte.Controllers
                 else
                 {
                     res.PhotograghID = customer.PhotographID;
-                }
-                                
-                base.BaseSave<Customer>(res, res.CustomerID > 0);
+                }                                
             }
+            base.BaseSave<Customer>(res, res.CustomerID > 0);
 
             return RedirectToAction("Index");
 

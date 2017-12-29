@@ -23,7 +23,7 @@
         <th>Arrival Date</th>
         <th>Total Nights</th>
         <th>Room No</th>
-        
+        <th>Is Cancelled?</th>
         <th></th>
     </tr>
 
@@ -47,11 +47,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.RoomNo)
         </td>
-        
         <td>
-            @Html.ActionLink("Edit", "Manage", new { id = item.BillID }) |
-            @Html.ActionLink("Detail", "Details", "Bill", new { id = item.BillID }, null);
-            @Html.ActionLink("Receipts", "Index", "Receipt", new { BillID = item.BillID }, null);
+            @(item.Canceled ? "Cancelled" :  "" )
+        </td>
+        <td>
+           @if(!item.Canceled)
+           { 
+                @Html.ActionLink("Edit", "Manage", new { id = item.BillID }, null)   @:|               
+                @Html.ActionLink("Detail", "Details",  new { id = item.BillID }, null) @:|
+                @Html.ActionLink("Receipts", "Index", "Receipt", new { BillID = item.BillID }, null) @:|
+                @Html.ActionLink("Cancel", "Cancel", new { id = item.BillID }, null)
+            }
         </td>
         
     </tr>

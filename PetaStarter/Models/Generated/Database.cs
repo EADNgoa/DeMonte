@@ -506,6 +506,12 @@ namespace DeMonte
 
 
 
+
+
+		[Column] public bool Canceled { get; set; }
+
+
+
 	}
 
     

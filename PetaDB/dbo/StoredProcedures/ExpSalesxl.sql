@@ -10,7 +10,7 @@ AS
 	select b.BillID,b.BDate,c.GSTNo, c.Name, c.Address, COALESCE((b.TotalDays*b.ChargesPerDay),0)
 	from Customer c 
 	INNER Join Bill b ON c.CustomerID=b.CustomerID
-	Where MONTH(b.BDate)=@Mon and YEAR(b.BDate)=@Yr
+	Where b.Canceled=0 and MONTH(b.BDate)=@Mon and YEAR(b.BDate)=@Yr
 
 	--calc the Accomodation charges
 	Update r SET r.TotalValue= r.TotalValue +
