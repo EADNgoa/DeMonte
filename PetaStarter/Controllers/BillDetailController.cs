@@ -23,7 +23,10 @@ namespace DeMonte.Controllers
             ViewBag.BillID = BID;
             vwdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", BID);
             vwdata.Customer = db.FirstOrDefault<Customer>("where CustomerID=@0", vwdata.Bill.CustomerID);
+   //         vwdata.Receipt = db.FirstOrDefault<Receipt>("where ReceiptID=@0"));
             vwdata.BillDetail = db.Fetch<BillDetail>("where BillID =@0", vwdata.Bill.BillID);
+           
+
 
             return View(vwdata);
         }
@@ -33,11 +36,10 @@ namespace DeMonte.Controllers
         {
             //BillScreen Data = new BillScreen();
             var GetItem = db.FirstOrDefault<BillDetail>("select * from BillDetail where BillDetailID=@0 and BillID=@0", billdetail.BillDetailID,billdetail.BillID);
-             
-            if (GetItem==null)
+                     if (GetItem==null)
             {
                 var Billrec = db.FirstOrDefault<Bill>("where BillID = @0", billdetail.BillID);
-                var TaxableValue = Billrec.ChargesPerDay + billdetail.ExtraPerson;
+                var TaxableValue = (Billrec.ChargesPerDay ?? 0) + (billdetail.ExtraPerson ?? 0);
 
                 var igst = (TaxableValue * (Billrec.IGST ?? 0) / 100);
                 var cgst = (TaxableValue * (Billrec.CGST ?? 0) / 100);
@@ -50,12 +52,11 @@ namespace DeMonte.Controllers
                 var other4 = billdetail.Other4;
                 var gst = billdetail.GST;
                 var miscelleneous =  billdetail.Miscelleneous;
+                var chargesperday = (Billrec.ChargesPerDay ?? 0) * (billdetail.ExtraPerson ?? 0);
 
-                //billdetail.Total = billdetail.Other1 + billdetail.Other2+billdetail.Other3
-                //    +billdetail.Other4+billdetail.GST+billdetail.Miscelleneous;
-                var total = (other1 ?? 0)+ (other2 ?? 0)+ (other3??0) +( other4 ??0)+( gst ??0)+( miscelleneous ??0);
+                var total = (other1 ?? 0)+ (other2 ?? 0)+ (other3??0) +( other4 ??0)+( gst ??0)+( miscelleneous ??0)+(chargesperday);
                 billdetail.Total = total;
-                //ViewBag.Total = db.Fetch<BillDetail>("");
+               
                 base.BaseSave<BillDetail>(billdetail, billdetail.BillDetailID > 0);
             }
             else
@@ -72,7 +73,7 @@ namespace DeMonte.Controllers
                     Other2 = billdetail.Other2,
                     Other3 = billdetail.Other3,
                     Other4 = billdetail.Other4,
-                     Total = billdetail.GST + billdetail.Miscelleneous + billdetail.Other1 + billdetail.Other2 + billdetail.Other3 +billdetail.Other4+billdetail.Total}, GetItem.BillDetailID);
+                    Total = billdetail.GST + billdetail.Miscelleneous + billdetail.Other1 + billdetail.Other2 + billdetail.Other3 +billdetail.Other4+billdetail.Total}, GetItem.BillDetailID);
                 
             }
             return RedirectToAction("Details", new { BID = billdetail.BillID });
@@ -98,15 +99,23 @@ namespace DeMonte.Controllers
         public ActionResult Manage([Bind(Include = "BillDetailID,BillID,Date,ExtraPerson,GST,Miscelleneous,Other1,Other2,Other3,Other4,Total")] BillDetail billdetail)
         {
             var Billrec = db.FirstOrDefault<Bill>("where BillID = @0", billdetail.BillID);
-            var TaxableValue = Billrec.ChargesPerDay + billdetail.ExtraPerson;
+            var TaxableValue = (Billrec.ChargesPerDay ?? 0) + (billdetail.ExtraPerson ?? 0);
 
             var igst = (TaxableValue * (Billrec.IGST ?? 0) / 100);
             var cgst = (TaxableValue * (Billrec.CGST ?? 0) / 100);
             var sgst = (TaxableValue * (Billrec.SGST ?? 0) / 100);
             billdetail.GST = igst + cgst + sgst;
-           var total = billdetail.Other1 + billdetail.Other2 + billdetail.Other3
-                    + billdetail.Other4 + billdetail.GST + billdetail.Miscelleneous ;
+
+            var other1 = billdetail.Other1;
+            var other2 = billdetail.Other2;
+            var other3 = billdetail.Other3;
+            var other4 = billdetail.Other4;
+            var gst = billdetail.GST;
+            var miscelleneous = billdetail.Miscelleneous;
+            var chargesperday = (Billrec.ChargesPerDay ?? 0)*(billdetail.ExtraPerson ?? 0);
+            var total = (other1 ?? 0) + (other2 ?? 0) + (other3 ?? 0) + (other4 ?? 0) + (gst ?? 0) + (miscelleneous ?? 0)+(chargesperday );
             billdetail.Total = total;
+
             return base.BaseSave<BillDetail>(billdetail, billdetail.BillDetailID > 0);
         }
 
@@ -118,8 +127,8 @@ namespace DeMonte.Controllers
             vwdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", PID);
             vwdata.Customer = db.FirstOrDefault<Customer>("where CustomerID=@0", vwdata.Bill.CustomerID);
             vwdata.BillDetail = db.Fetch<BillDetail>("where BillID =@0", vwdata.Bill.BillID);
-           
 
+            ViewBag.AdvanceAmt = db.FirstOrDefault<decimal>("select sum(Amount) from Receipt where BillID=@0",PID);
             return View(vwdata);
         }
         protected override void Dispose(bool disposing)

@@ -24,10 +24,7 @@
         </div>
     }
 </center>
-
-<p>
-    @Html.ActionLink("Create New", "Manage")
-</p>
+</br>
 <table class="table">
     <tr>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().TDate)</th>
@@ -36,9 +33,9 @@
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChequeNo)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ChqDate)</th>
         <th>@Html.DisplayNameFor(model => model.FirstOrDefault().DrawnOn)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().RoomNo)</th>
-        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BillNo)</th>
-     <th>
+    
+        <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BillID)</th>
+         <th>
          </th>
         <th>
         </th>
@@ -65,16 +62,13 @@
             @Html.DisplayFor(modelItem => item.DrawnOn)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RoomNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BillNo)
+            @Html.DisplayFor(modelItem => item.BillID)
         </td>
         <td>
             @Html.ActionLink("Edit", "Manage", new { id = item.ReceiptID})
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id = item.ReceiptID })
+            @Html.ActionLink("Details", "Details", new { RID = item.ReceiptID })
 
         </td>
     </tr>

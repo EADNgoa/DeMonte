@@ -72,6 +72,7 @@ namespace DeMonte
         public Bill Bill { get; set; }
         public IEnumerable<BillDetail> BillDetail { get; set; }
         public BillDetail FrmEdit { get; set;  }
+        
     }
     //[MetadataType(typeof(ConfigMetadata))]
     //public partial class Config

@@ -215,7 +215,7 @@ namespace DeMonte
 		[Column] public DateTime? ChqDate { get; set; }
 		[Column] public string DrawnOn { get; set; }
 		[Column] public string RoomNo { get; set; }
-		[Column] public int? BillNo { get; set; }
+		[Column] public int? BillID { get; set; }
 		[Column] public int ReceiptTypeID { get; set; }
 	}
     

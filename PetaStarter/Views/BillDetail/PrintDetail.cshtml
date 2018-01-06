@@ -67,77 +67,78 @@
     <br />
     <table id="grid" width="100%">
         <tr>
-            <td style="text-align:left;">Date</td>
+            <td style="text-align:left; font-weight:bold;">Date</td>
             @foreach (var item in Model.BillDetail)
             {
                 <td style="font-weight:bold;">@(String.Format("{0:yyyy-MM-dd}", item.Date))</td>
             }
         </tr>
         <tr>
-            <td style="text-align:left;">Room Charges</td>
+            <td style="text-align:left;font-weight:bold;">Room Charges</td>
             @foreach (var item in Model.BillDetail)
             {
                 <td>@Model.Bill.ChargesPerDay</td>
             }
         </tr>
         <tr>
-            <td style="text-align:left;">Extra Person</td>
+            <td style="text-align:left;font-weight:bold;">Extra Person</td>
             @foreach (var item in Model.BillDetail)
             {
                 <td>@item.ExtraPerson</td>
             }
         </tr>
         <tr>
-            <td style="text-align:left;">GST</td>
+            <td style="text-align:left;font-weight:bold;">GST</td>
             @foreach (var item in Model.BillDetail)
             {
                 <td>@item.GST</td>
             }
         </tr>
         <tr>
-            <td style="text-align:left;">Miscellaneous</td>
+            <td style="text-align:left;font-weight:bold;">Miscellaneous</td>
             @foreach (var item in Model.BillDetail)
             {
                 <td>@item.Miscelleneous</td>
             }
         </tr>
         <tr>
-            <td style="text-align:left;">Others 1</td>
+            <td style="text-align:left;font-weight:bold;">Others 1</td>
             @foreach (var item in Model.BillDetail)
             {
                 <td>@item.Other1</td>
             }
         </tr>
         <tr>
-            <td style="text-align:left;">Others 2</td>
+            <td style="text-align:left;font-weight:bold;">Others 2</td>
             @foreach (var item in Model.BillDetail)
             {
                 <td>@item.Other2</td>
             }
         </tr>
         <tr>
-            <td style="text-align:left;">Others 3</td>
+            <td style="text-align:left;font-weight:bold;">Others 3</td>
             @foreach (var item in Model.BillDetail)
             {
                 <td>@item.Other3</td>
             }
         </tr>
         <tr>
-            <td style="text-align:left;">Others4</td>
+            <td style="text-align:left;font-weight:bold;">Others4</td>
             @foreach (var item in Model.BillDetail)
             {
                 <td>@item.Other4</td>
             }
         </tr>
         <tr>
-            <td style="text-align:left;">Total</td>
+            <td style="text-align:left;font-weight:bold;">Total</td>
             @{ decimal tot = 0;
                 decimal GTot = 0; }
             @foreach (var item in Model.BillDetail)
             {
-                tot = Model.Bill.ChargesPerDay.Value + Model.Bill.TotalDays.Value;
-                GTot += tot;
-                <td style="font-weight:bolder;">@(tot)</td>
+               // tot = Model.Bill.ChargesPerDay.Value + Model.Bill.TotalDays.Value;
+                GTot += item.Total ??0 ;
+               // <td style="font-weight:bolder;">@(tot)</td>
+                <td style="font-weight:bolder;">@item.Total</td>
             }
         </tr>
     </table>
@@ -147,13 +148,13 @@
             @{
                 var ctw = new ChangeNumbersToWords();
             }
-            <td style="text-align:left;" width="70%">Rupees @ctw.changeToWords(GTot.ToString())</td>
+            <td style="text-align:left; font-weight:bold;" width="70%">Rupees: @ctw.changeToWords(GTot.ToString())</td>
             <td width="10%">Advance</td>
             <td width="10%">@ViewBag.AdvanceAmt</td>
         </tr>
         <tr>
             <td width="70%"></td>
-            <td width="10%">Bal. to pay</td>
+            <td width="10%" style="font-weight:bold;">Bal. to pay</td>
             <td width="10%">@(GTot - (decimal)(ViewBag.AdvanceAmt ?? 0))</td>
         </tr>
     </table>

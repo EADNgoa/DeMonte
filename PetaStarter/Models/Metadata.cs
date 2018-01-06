@@ -101,7 +101,7 @@ namespace DeMonte
         public string RoomNo;
 
         [Display(Name = "Bill No.")]
-        public int BillNo;
+        public int BillID;
     }
     public class BillMetadata
     {
