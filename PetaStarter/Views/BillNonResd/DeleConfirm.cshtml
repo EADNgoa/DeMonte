@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DeMonte.BillDetail>
+
+@if (Model.Count() > 0)
+{
+    <div class="MastDet">
+        <center>
+            <h2 class="section-to-print"><b>Changing your dates will cause the following to be deleted. Continue?</b></h2>
+        </center>
+
+        <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Extra Person</th>
+                <th>GST</th>
+                <th>Miscelleneous</th>
+                <th>Other 1</th>
+                <th>Other 2</th>
+                <th>Other 3</th>
+                <th>Other 4</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExtraPerson)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GST)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Miscelleneous)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Other1)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Other2)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Other3)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Other4)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+}

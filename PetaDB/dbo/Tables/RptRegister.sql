@@ -17,4 +17,5 @@
     [GST] DECIMAL(12, 2) NULL, 
 	[EncashCertDetails] VARCHAR(100) NULL,
 	[Remarks] VARCHAR(100) NULL,
+	[RegisterNo] INT NULL, 
     )

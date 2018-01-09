@@ -512,6 +512,30 @@ namespace DeMonte
 
 
 
+
+
+		[Column] public int? RegisterNo { get; set; }
+
+
+
+
+
+		[Column] public string NonResdCust { get; set; }
+
+
+
+
+
+		[Column] public bool? GSTExport { get; set; }
+
+
+
+
+
+		[Column] public string NRCgst { get; set; }
+
+
+
 	}
 
     
@@ -1007,6 +1031,12 @@ namespace DeMonte
 
 
 		[Column] public string Remarks { get; set; }
+
+
+
+
+
+		[Column] public int? RegisterNo { get; set; }
 
 
 

@@ -77,14 +77,14 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td style="text-align:center;">@item.BillID</td>
+                <td style="text-align:center;">@item.RegisterNo</td>
                 <td style="text-align:left;">@item.Name</td>
                 <td style="text-align:left;">@item.Address</td>
                 <td style="text-align:left;">@item.PassportDet</td>
                 <td style="text-align:center;">@item.NoOfGuest</td>
                 <td style="text-align:center;">@item.NoOfRooms</td>
                 <td style="text-align:left;">@(String.Format("{0:dd-MM-yy HH:mm}", item.DateArrivalTime))</td>
-                <td style="text-align:left;">@(String.Format("{0:dd-MM-yy HH:mm}", item.DateArrivalTime))</td>
+                <td style="text-align:left;">@(String.Format("{0:dd-MM-yy HH:mm}", item.DateDepartureTime))</td>
                 <td style="text-align:right;">@item.ChargesPerDay</td>
                 <td style="text-align:center;">@item.RoomNo</td>
                 <td style="text-align:center;">@item.TotalDays</td>

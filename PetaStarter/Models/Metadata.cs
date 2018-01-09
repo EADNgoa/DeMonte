@@ -112,20 +112,17 @@ namespace DeMonte
         public int NoOfGuest;
 
 
-        [DataType(DataType.DateTime)]
-        [Required]
+        [DataType(DataType.DateTime)]        
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy HH:mm tt}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date Arrival Time")]
         public DateTime DateArrivalTime;
 
-        [DataType(DataType.DateTime)]
-        [Required]
+        [DataType(DataType.DateTime)]        
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy HH:mm tt}", ApplyFormatInEditMode = true)]
         [Display(Name = "Date Departure Time")]
         public DateTime DateDepartureTime;
 
-        [Display(Name = "Charges Per Day")]
-        [Required]
+        [Display(Name = "Charges Per Day")]        
         [Range(0.0, Double.MaxValue)]
         public decimal ChargesPerDay;
 
@@ -201,16 +198,7 @@ namespace DeMonte
 
        
     }
-    public class RegisterMetadata
-    {
-        [Display(Name = "Encashment Certificate")]
-        public String EncashmentCertificate;
-
-        [Display(Name = "Remarks")]
-        [Required]
-        public string Remarks;
-
-    }
+    
     //public class EmpTypeMetadata
     //{
     //    [Display(Name = "Employee Type")]

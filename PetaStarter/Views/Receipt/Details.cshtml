@@ -12,7 +12,7 @@
                 <td width="53%">No:   @Html.DisplayFor(model => model.ReceiptID)</td>
                 <td width="20%"></td>
                 <td>                   
-                    Date:   @Html.DisplayFor(model => model.TDate)
+                    Date:  @(String.Format("{0:dd-MMM-yyyy}", Model.TDate))
                 </td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
         
                     vide CASH/NEFT/RTGS/IMPS/UTR No.  &nbsp;       <u>   @Html.DisplayFor(model => model.ChequeNo)</u>, 
 
-                    dated &nbsp;  <u>    @Html.DisplayFor(model => model.ChqDate)</u>
+                    dated &nbsp;  <u>   @(String.Format("{0:dd-MMM-yyyy}",  Model.ChqDate))</u>
         
                     &nbsp; drawn On         &nbsp;   <u>  @Html.DisplayFor(model => model.DrawnOn)</u>
                     &nbsp; on account of @ViewBag.ReceiptTypeName

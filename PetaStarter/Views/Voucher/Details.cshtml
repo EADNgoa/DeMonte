@@ -12,7 +12,7 @@
         <tr>
             <td>No.:     @Html.DisplayFor(model => model.VoucherID) </td>
             <td width="30%"></td>
-            <td style="text-align:right;">Date:   @Html.DisplayFor(model => model.TDate)</td>
+            <td style="text-align:right;">Date:   @(String.Format("{0:dd-MMM-yyyy}", Model.TDate))</td>
         </tr>
         <tr>
             <td width="43%">&nbsp;</td>

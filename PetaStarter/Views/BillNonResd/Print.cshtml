@@ -31,7 +31,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3">Name: <u>@Model.Customer.Name</u></td>
+            <td colspan="3">Name: <u>@Model.Bill.NonResdCust</u></td>
         </tr>
         
     </table>
@@ -39,33 +39,33 @@
     <table width="100%">
         <tr>
             <td width="16%">Address:</td>
-            <td width="17%"><u>@Model.Customer.Address</u></td>
+            <td width="17%"><u></u></td>
             <td width="16%">&nbsp;</td>
             <td width="17%">&nbsp;</td>
             <td width="16%">Room Charges per day:</td>
-            <td width="17%"><u>@Model.Bill.ChargesPerDay</u></td>
+            <td width="17%"><u></u></td>
         </tr>
         <tr>
             <td width="16%">Date Of Arrival:</td>
-            <td width="17%"><u>@(String.Format("{0:dd-MMM-yyyy}", Model.Bill.DateArrivalTime.Value.Date))</u></td>
+            <td width="17%"><u></u></td>
             <td width="16%">Departure Date:</td>
-            <td width="17%"><u>@(String.Format("{0:dd-MMM-yyyy}", Model.Bill.DateDepartureTime.Value.Date))</u></td>
+            <td width="17%"><u></u></td>
             <td width="16%">Total Days:</td>
-            <td width="17%"><u>@Model.Bill.TotalDays</u></td>
+            <td width="17%"><u></u></td>
         </tr>
         <tr>
             <td width="16%">Check in Time:</td>
-            <td width="17%"><u>@Model.Bill.DateArrivalTime.Value.ToShortTimeString()</u></td>
+            <td width="17%"><u></u></td>
             <td width="16%">Check out Time:</td>
-            <td width="17%"><u>@Model.Bill.DateDepartureTime.Value.ToShortTimeString()</u></td>
+            <td width="17%"><u></u></td>
             <td width="16%">No of Persons:</td>
-            <td width="17%"><u>@Model.Bill.NoOfGuest</u></td>
+            <td width="17%"><u></u></td>
         </tr>
         <tr>
             <td width="16%">Register No:</td>
             <td width="17%"><u>@Model.Bill.BillID</u></td>
             <td width="16%">Room No.:</td>
-            <td width="17%"><u>@Model.Bill.RoomNo</u></td>
+            <td width="17%"><u></u></td>
             <td width="16%">Adv. Rcpt No.:</td>
             <td width="17%"><u>@Model.Bill.BillReceiptNo</u></td>
         </tr>
@@ -73,25 +73,28 @@
     <br />
     <table id ="grid" width="100%">
         <tr>
-            <td style="text-align:left;">Date</td>
+            <td width="15%" style="text-align:left;">Date</td>
             @foreach(var item in Model.BillDetails)
             {
-                <td style="font-weight:bold;">@(String.Format("{0:dd-MMM-yyyy}", item.Date))</td>
+                <td width="15%" style="font-weight:bold;">@(String.Format("{0:dd-MMM-yyyy}", item.Date))</td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:left;">Room Charges</td>
             @foreach (var item in Model.BillDetails)
             {
-                <td>@Model.Bill.ChargesPerDay</td>
+                <td></td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:left;">Extra Person</td>
             @foreach (var item in Model.BillDetails)
             {
-                <td>@item.ExtraPerson</td>
+                <td></td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:left;">GST</td>
@@ -99,6 +102,7 @@
             {
                 <td>@item.GST</td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:left;">Miscellaneous</td>
@@ -106,6 +110,7 @@
             {
                 <td>@item.Miscelleneous</td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:left;">Others 1</td>
@@ -113,6 +118,7 @@
             {
                 <td>@item.Other1</td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:left;">Others 2</td>
@@ -120,6 +126,7 @@
             {
                 <td>@item.Other2</td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:left;">Others 3</td>
@@ -127,6 +134,7 @@
             {
                 <td>@item.Other3</td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:left;">Others 4</td>
@@ -134,6 +142,7 @@
             {
                 <td>@item.Other4</td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
         <tr>
             <td style="text-align:left;">Total</td>
@@ -141,10 +150,11 @@
                decimal GTot=0; }
             @foreach (var item in Model.BillDetails)
             {
-                tot = Model.Bill.ChargesPerDay.Value + item.DayTotal;
+                tot = item.DayTotal;
                 GTot += tot;
                 <td style="font-weight:bolder;">@(tot)</td>
             }
+            <td width="70%" style="text-align:left;">&nbsp;</td>
         </tr>
     </table>
     <br />
@@ -174,7 +184,19 @@
             <td width="35%"></td>
         </tr>
         <tr>
-            <td width="20%"><img width="100%" src="~/IDs/@Model.Customer.PhotograghID" /></td>
+            <td width="20%">&nbsp;</td>
+            <td width="30%"></td>
+            <td width="15%"></td>
+            <td width="35%"></td>
+        </tr>
+        <tr>
+            <td width="20%">&nbsp;</td>
+            <td width="30%"></td>
+            <td width="15%"></td>
+            <td width="35%"></td>
+        </tr>
+        <tr>
+            <td width="20%">&nbsp;</td>
             <td width="30%"></td>
             <td width="15%"></td>
             <td width="35%"></td>

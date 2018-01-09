@@ -30,11 +30,7 @@ namespace DeMonte
     {
     }
 
-    [MetadataType(typeof(RegisterMetadata))]
-    public partial class Register
-    {
-       
-    }
+   
     [MetadataType(typeof(BillDetailMetadata))]
     public partial class BillDetail
     {
@@ -76,6 +72,7 @@ namespace DeMonte
         public decimal GST { get; set; }
         public string EncashCertDetails { get; set; }
         public string Remarks { get; set; }
+        public string RegisterNo { get; set; }
     }
     public class BillScreen
     {
@@ -95,6 +92,7 @@ namespace DeMonte
         public int TotalDays { get; set; }
         public string RoomNo { get; set; }
         public bool Canceled { get; set; }
+        public string NonResdCust { get; set; }
     }
 
    public partial class ExpSale

@@ -9,33 +9,14 @@
 <div class="MastDet cont">
     <dl class="dl-horizontal">
         <dt>Customer</dt>
-        <dd>@Model.Customer.Name</dd>
-
-        <dt>Customer ID Picture</dt>
-        <dd>@if (Model.Customer.PhotograghID != null)
-        { <img height="80px;" src="~/IDs/@Model.Customer.PhotograghID" /> }</dd>
-
+        <dd>@Model.Bill.NonResdCust</dd>
+                
         <dt>Bill Number</dt>
         <dd>@Model.Bill.BillID</dd>
 
         <dt>Advance Recpt. No.</dt>
         <dd>@Model.Bill.BillReceiptNo</dd>
-
-        <dt>Arrived On</dt>
-        <dd>@Model.Bill.DateArrivalTime</dd>
-
-        <dt>Total Days</dt>
-        <dd>@Model.Bill.TotalDays</dd>
-
-        <dt>No. Of Pax</dt>
-        <dd>@Model.Bill.NoOfGuest</dd>
-
-        <dt>Room No.</dt>
-        <dd>@Model.Bill.RoomNo</dd>
-
-        <dt>Charges/Day</dt>
-        <dd>@Model.Bill.ChargesPerDay</dd>
-
+                
         <dt>Bill Date</dt>
         <dd>@String.Format("{0:yyyy-MM-dd}", Model.Bill.BDate)</dd>
     </dl>
@@ -62,14 +43,6 @@
                 
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.FrmEdt.ExtraPerson, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <input value=@Model.FrmEdt.ExtraPerson name="ExtraPerson" class="form-control text-box single-line valid" id="ExtraPerson" aria-invalid="false" aria-describedby="billDetails_ExtraPerson-error" type="text" data-val-number="The field Extra Person must be a number." data-val="true" data-val-range-min="0" data-val-range-max="1.79769313486232E+308" data-val-range="The field Extra Person must be between 0 and 1.79769313486232E+308.">
-                    @Html.ValidationMessageFor(model => model.FrmEdt.ExtraPerson, "", new { @class = "text-danger" })
-                </div>
-            </div>
-            
             <div class="form-group">
                 @Html.LabelFor(model => model.FrmEdt.Miscelleneous, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -130,14 +103,13 @@
 <h2>Bill Details</h2>
 <table class="table">
     <tr>
-        <th>Date</th>
-        <th>Extra Person</th>
-        <th>GST</th>
+        <th>Date</th>        
         <th>Miscelleneous</th>
         <th>Other 1</th>
         <th>Other 2</th>
         <th>Other 3</th>
         <th>Other 4</th>
+        <th>GST</th>
         <th></th>
     </tr>
 
@@ -146,13 +118,7 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExtraPerson)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GST)
-            </td>
+            </td>            
             <td>
                 @Html.DisplayFor(modelItem => item.Miscelleneous)
             </td>
@@ -167,6 +133,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Other4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GST)
             </td>
             <td>
                 @Html.ActionLink("Manage","ManageDetails",new { id = item.BillDetailID})

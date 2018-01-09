@@ -1,0 +1,56 @@
+﻿@model PagedList.IPagedList<DeMonte.BillIndex>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Bills of Non Resident Customers";
+}
+
+    <center>
+        <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>    
+    </center>
+<p>
+    
+        @Html.ActionLink("Create New", "Manage")
+    
+</p>
+<table class="table">
+    <tr>       
+       <th>Bill No.</th>
+        <th>Customer</th>        
+        <th>Date</th>        
+        <th>Is Cancelled?</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>       
+        <td>
+            @Html.DisplayFor(modelItem => item.BillID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NonResdCust)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BDate)
+        </td>        
+        <td>
+            @(item.Canceled ? "Cancelled" :  "" )
+        </td>
+        <td>
+           @if(!item.Canceled)
+           { 
+                @Html.ActionLink("Edit", "Manage", new { id = item.BillID }, null)   @:|               
+                @Html.ActionLink("Detail", "Details",  new { id = item.BillID }, null) @:|
+                @Html.ActionLink("Receipts", "Index", "Receipt", new { BillID = item.BillID }, null) @:|
+                @Html.ActionLink("Cancel", "Cancel", new { id = item.BillID }, null)
+            }
+        </td>
+        
+    </tr>
+}
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -16,7 +16,7 @@ namespace DeMonte.Controllers
             ViewBag.BillNo = BillID;
 
             //Fetch the Bill details
-            var RmCosts = db.Single<decimal>("Select ChargesPerDay * TotalDays from Bill where BillID=@0", BillID);
+            var RmCosts = db.Single<decimal>("Select coalesce(ChargesPerDay * TotalDays,0) from Bill where BillID=@0", BillID);
             var detailCosts = db.Single<decimal>("Select sum(coalesce(ExtraPerson,0)+coalesce(GST,0)+coalesce(Miscelleneous,0)+coalesce(Other1,0)+coalesce(Other2,0)+coalesce(Other3,0)+coalesce(Other4,0)) from BillDetail where BillID=@0", BillID);
             ViewBag.BillTotal = RmCosts + detailCosts;
             return View("Index", base.BaseIndex<Receipt>(page, "Receipt where  BillNo =" + BillID  + " order by ReceiptID desc"));

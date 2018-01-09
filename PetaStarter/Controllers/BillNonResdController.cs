@@ -7,32 +7,20 @@ using System.Web.Mvc;
 namespace DeMonte.Controllers
 {
     [Authorize(Roles ="Boss,hr")]
-    public class BillController : EAController
+    public class BillNonResdController : EAController
     {                
         public ActionResult Index(int? page, string PropName)
         {
-            if (PropName?.Length > 0) page = 1;
-            ViewBag.CustName = " ";
-            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo, Canceled", "Bill b, Customer c where b.customerID=c.CustomerID order by BillID desc"));
+            if (PropName?.Length > 0) page = 1;            
+            return View("Index", base.BaseIndex<BillIndex>(page, "b.NonResdCust, b.BDate, b.BillID, Canceled", "Bill b where CustomerId is NULL order by BillID desc"));
         }
-
-        public ActionResult CustBills(int? page, int CustID)
-        {
-            page = 1;
-            ViewBag.CustID = CustID;
-            ViewBag.CustName = " of " + db.Single<string>("select Name from Customer where CustomerID=@0", CustID);
-            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo, Canceled", "Bill b, Customer c where b.customerID=c.CustomerID and b.CustomerID =" + CustID + " order by BillID desc"));
-        }
+        
 
         // GET: Clients/Create
-        public ActionResult Manage(int? id, int? CustID)
+        public ActionResult Manage(int? id)
         {
             var vwdata = base.BaseCreateEdit<Bill>(id, "BillID");
-            if (CustID.HasValue)                
-                ViewBag.CustomerID = CustID;
-            else            
-                ViewBag.CustomerID = vwdata.CustomerID;
-
+            
             return View(vwdata);
         }
         
@@ -41,7 +29,7 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "BillID,BDate,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,BillReceiptNo,PaidInForeignIndian,CGST,SGST,IGST,EncashCertDetails,Remarks, RegisterNo,GSTExport")] Bill bill)
+        public ActionResult Manage([Bind(Include = "BillID,BDate,BillReceiptNo,PaidInForeignIndian,CGST,SGST,IGST,EncashCertDetails,Remarks,GSTExport, NonResdCust,NRCgst")] Bill bill)
         {
             using (var transaction = db.GetTransaction())
             {
@@ -49,7 +37,7 @@ namespace DeMonte.Controllers
                 {
                     //Save the Bill record
                     int b;
-                    bill.TotalDays = ((DateTime)bill.DateDepartureTime.Value.Date - (DateTime)bill.DateArrivalTime.Value.Date).Days;
+                    bill.TotalDays = 0;
                     if (bill.BillID > 0)
                     {
                         db.Update(bill);
@@ -62,29 +50,15 @@ namespace DeMonte.Controllers
                     }
 
                     //Insert Placeholder BillDetail records, but first delete the orphans (if any)            
-                    var vwdata = db.Query<BillDetail>("where BillID=@0 and ((date< @1) or (date >= @2))", b, bill.DateArrivalTime.Value.Date, bill.DateDepartureTime.Value.Date);
+                    var vwdata = db.Query<BillDetail>("where BillID=@0", b);
                     var killbill = vwdata.ToArray();
                     foreach (var item in killbill)
                     {
                         db.Delete<BillDetail>(item.BillDetailID);
                     }
                                 
-                    if (bill.DateDepartureTime.HasValue && bill.DateArrivalTime.HasValue)
-                    {
-                        var existingDays = db.Query<BillDetail>("where BillID=@0 and ((date>= @1) and (date <= @2))", b, bill.DateArrivalTime.Value.Date, bill.DateDepartureTime.Value.Date);
-                        DateTime dt = (DateTime)bill.DateArrivalTime.Value.Date;
-                        for (int i = 0; i < bill.TotalDays; i++)
-                        {
-                            if (!existingDays.Any(bd => bd.Date == dt))//Insert the placeholders only if they dont exist already
-                            {
-                                //calc the GST
-                                var GSTdec = (bill.CGST ?? 0) + (bill.SGST ?? 0) + (bill.IGST ?? 0);
-                                GSTdec = bill.ChargesPerDay.Value * (GSTdec / 100);
-                                db.Insert(new BillDetail { BillID = b, Date = dt, GST = GSTdec });
-                            }
-                            dt = dt.AddDays(1);
-                        }
-                    }
+                    db.Insert(new BillDetail { BillID = b, Date = bill.BDate, GST = 0 });
+                            
 
                     transaction.Complete();
                     return RedirectToAction("Details", new { id = b });
@@ -98,17 +72,7 @@ namespace DeMonte.Controllers
 
         }
 
-
-        public ActionResult FetchEndangeredBillDets(int? BillID, DateTime? NewStart, DateTime? NewStop)
-        {
-            if (BillID.HasValue && NewStart.HasValue && NewStop.HasValue)
-            {
-                var vwdata = db.Query<BillDetail>("where BillID=@0 and ((date< @1) or (date > @2)) order by [Date]", BillID, NewStart.Value.Date, NewStop.Value.Date);
-                return PartialView("DeleConfirm", vwdata);
-            }
-            return null;
-        }
-
+        
 
         /// <summary>
         /// Create BillDetail records
@@ -118,8 +82,7 @@ namespace DeMonte.Controllers
         public ActionResult Details(int? id)
         {
             var viewdata = new BillScreen();
-            viewdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", id);
-            viewdata.Customer = db.FirstOrDefault<Customer>("where CustomerID=@0", viewdata.Bill.CustomerID);
+            viewdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", id);            
             viewdata.BillDetails = db.Fetch<BillDetail>("where BillID =@0  order by [Date]", viewdata.Bill.BillID);
             
             return View("BillandDetails", viewdata);
@@ -129,8 +92,7 @@ namespace DeMonte.Controllers
         {
             var viewdata = new BillScreen();
             viewdata.FrmEdt = BaseCreateEdit<BillDetail>(id, "BillDetailID");
-            viewdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", viewdata.FrmEdt.BillID);
-            viewdata.Customer = db.FirstOrDefault<Customer>("where CustomerID=@0", viewdata.Bill.CustomerID);
+            viewdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", viewdata.FrmEdt.BillID);            
             viewdata.BillDetails = db.Fetch<BillDetail>("where BillID =@0", viewdata.Bill.BillID);
 
             return View("BillandDetails", viewdata);
@@ -141,11 +103,10 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ManageDetails([Bind(Include = "BillDetailID,BillID,Date,ExtraPerson,Miscelleneous,Other1,Other2,Other3,Other4")] BillDetail billdetail)
-        {
-            
+        public ActionResult ManageDetails([Bind(Include = "BillDetailID,BillID,Date,Miscelleneous,Other1,Other2,Other3,Other4")] BillDetail billdetail)
+        {            
             var Billrec = db.FirstOrDefault<Bill>("where BillID = @0", billdetail.BillID);
-            var TaxableValue = Billrec.ChargesPerDay + (billdetail.ExtraPerson??0);
+            var TaxableValue = (billdetail.Miscelleneous ?? 0) + (billdetail.Other1 ?? 0) + (billdetail.Other2 ?? 0) + (billdetail.Other3 ?? 0) + (billdetail.Other4 ?? 0);
 
             var igst = (TaxableValue * (Billrec.IGST ?? 0) / 100);
             var cgst = (TaxableValue * (Billrec.CGST ?? 0) / 100);
@@ -159,8 +120,7 @@ namespace DeMonte.Controllers
         {
             var viewdata = new BillScreen();
                         
-            viewdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", id);
-            viewdata.Customer = db.FirstOrDefault<Customer>("where CustomerID=@0", viewdata.Bill.CustomerID);
+            viewdata.Bill = db.FirstOrDefault<Bill>("where BillID=@0", id);            
             viewdata.BillDetails = db.Fetch<BillDetail>("where BillID =@0  order by [Date]", viewdata.Bill.BillID);
             ViewBag.AdvanceAmt = db.Single<decimal>("Select coalesce(sum(Amount),0) from Receipt where BillNo = @0", id);
 

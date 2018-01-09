@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Print Bill";
-    Layout = "";
 }
 
 <style>
@@ -16,13 +15,31 @@
 
 </style>
 
-<div class="section-to-print" style="background-image: url('/Custom/BkGrnd.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; ">
+
+   
+<div class="section-to-print">
     @Html.Partial("_LetterHead")
     <br />
+
+    @using (Html.BeginForm("Cancel", "Bill", FormMethod.Post))
+    {
+        <div class="MastDet">
+            <div class="form-group">
+                @Html.Label("Are you sure you want to cancel this Bill and its associated receipts?", htmlAttributes: new { @class = "control-label col-md-8" })
+                <br />
+                <div class="col-md-4">
+                    @Html.Hidden("KillBill", (int)Model.Bill.BillID)
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                    <input type="button" onclick="window.history.go(-1); return false;" value="Dont Delete" class="btn btn-default" />
+                <br />
+                </div>
+            </div>
+        </div>
+    }
+
+    <br />
+
     <table width="100%">
-        <tr>
-            <td colspan="3">&nbsp;</td>
-        </tr>
         <tr>
             <td width="30%">No.: <u>@Model.Bill.BillID</u></td>
             <td style="text-align:right;" width="30%"><h2>INVOICE</h2></td>
@@ -33,23 +50,18 @@
         <tr>
             <td colspan="3">Name: <u>@Model.Customer.Name</u></td>
         </tr>
-        
+        <tr>
+            <td colspan="2">Address: <u>@Model.Customer.Address</u></td>
+            <td>Room Charges per day: <u>@Model.Bill.ChargesPerDay</u></td>
+        </tr>
     </table>
     <br />
     <table width="100%">
         <tr>
-            <td width="16%">Address:</td>
-            <td width="17%"><u>@Model.Customer.Address</u></td>
-            <td width="16%">&nbsp;</td>
-            <td width="17%">&nbsp;</td>
-            <td width="16%">Room Charges per day:</td>
-            <td width="17%"><u>@Model.Bill.ChargesPerDay</u></td>
-        </tr>
-        <tr>
             <td width="16%">Date Of Arrival:</td>
-            <td width="17%"><u>@(String.Format("{0:dd-MMM-yyyy}", Model.Bill.DateArrivalTime.Value.Date))</u></td>
+            <td width="17%"><u>@(String.Format("{0:yyyy-MM-dd}", Model.Bill.DateArrivalTime.Value.Date))</u></td>
             <td width="16%">Departure Date:</td>
-            <td width="17%"><u>@(String.Format("{0:dd-MMM-yyyy}", Model.Bill.DateDepartureTime.Value.Date))</u></td>
+            <td width="17%"><u>@(String.Format("{0:yyyy-MM-dd}", Model.Bill.DateDepartureTime.Value.Date))</u></td>
             <td width="16%">Total Days:</td>
             <td width="17%"><u>@Model.Bill.TotalDays</u></td>
         </tr>
@@ -76,7 +88,7 @@
             <td style="text-align:left;">Date</td>
             @foreach(var item in Model.BillDetails)
             {
-                <td style="font-weight:bold;">@(String.Format("{0:dd-MMM-yyyy}", item.Date))</td>
+                <td style="font-weight:bold;">@(String.Format("{0:yyyy-MM-dd}", item.Date))</td>
             }
         </tr>
         <tr>
@@ -129,7 +141,7 @@
             }
         </tr>
         <tr>
-            <td style="text-align:left;">Others 4</td>
+            <td style="text-align:left;">Others4</td>
             @foreach (var item in Model.BillDetails)
             {
                 <td>@item.Other4</td>
@@ -164,38 +176,44 @@
         </tr>
     </table>
 
-    
-    <br />
-    <table width="100%">  
-        <tr>
-            <td width="20%">&nbsp;</td>
-            <td width="30%" style="text-align:center;"><strong>VERIFIED AND ACCEPTED</strong></td>
-            <td width="15%"></td>
-            <td width="35%"></td>
-        </tr>
-        <tr>
-            <td width="20%"><img width="100%" src="~/IDs/@Model.Customer.PhotograghID" /></td>
-            <td width="30%"></td>
-            <td width="15%"></td>
-            <td width="35%"></td>
-        </tr>
-        <tr>
-            <td width="20%"></td>
-            <td width="30%" style="border-top: 3px solid; text-align:center;">GUESTS SIGNATURE</td>
-            <td width="15%"></td>
-            <td width="35%" style="border-top: 3px solid; text-align:center;">RECEPTIONIST'S SIGNATURE</td>
-        </tr>
-    </table>
-    <ul>
-        <li>CHECK IN/ CHECK OUT TIME 12 NOON</li>
-        <li>BILLS ARE PAYABLE ON PRESENTATION</li>
-        <li>CHEQUES ARE NOT ACCEPTABLE. INCONVENIENCE IS REGRETTED</li>
-        <li>PLEASE REMEMBER TO DEPOSIT THE KEY AT THE RECEPTION</li>
-    </ul>
+   
+   
     </div>
-    <p class="section-to-not-print">
+    
 
-        @Html.ActionLink("Back to List", "Index")
-        <input type="button" onclick="javascript:window.print();" value="Print" class="eabutton section-to-not-print" />
-    </p>
-
+<hr />
+<h1>Receipts</h1>
+<table class="table">    
+    <tr>                
+        <th>Receipt No.</th>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Drawn On</th>        
+    </tr>
+    @foreach (var item in (IEnumerable<Receipt>) ViewBag.Receipts)
+    {
+        <tr>            
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiptID)
+            </td>
+            <td>
+                @( (item.ReceiptTypeID == 1) ? "Full Amount" : (item.ReceiptTypeID == 2) ? "Advance" : "Balance")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DrawnOn)
+            </td>
+            
+            </tr>
+            }
+    </table>
