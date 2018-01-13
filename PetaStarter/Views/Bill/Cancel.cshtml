@@ -29,8 +29,8 @@
                 <br />
                 <div class="col-md-4">
                     @Html.Hidden("KillBill", (int)Model.Bill.BillID)
-                    <input type="submit" value="Delete" class="btn btn-default" />
-                    <input type="button" onclick="window.history.go(-1); return false;" value="Dont Delete" class="btn btn-default" />
+                    <input type="submit" value="Cancel" class="btn btn-default" />
+                    <input type="button" onclick="window.history.go(-1); return false;" value="Dont Cancel" class="btn btn-default" />
                 <br />
                 </div>
             </div>
@@ -75,7 +75,7 @@
         </tr>
         <tr>
             <td width="16%">Register No:</td>
-            <td width="17%"><u>@Model.Bill.BillID</u></td>
+            <td width="17%"><u>@Model.Bill.RegisterNo</u></td>
             <td width="16%">Room No.:</td>
             <td width="17%"><u>@Model.Bill.RoomNo</u></td>
             <td width="16%">Adv. Rcpt No.:</td>

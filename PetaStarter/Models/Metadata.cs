@@ -111,6 +111,10 @@ namespace DeMonte
         [Display(Name = "No of Guests")]
         public int NoOfGuest;
 
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Bill Date")]
+        public DateTime BDate;
 
         [DataType(DataType.DateTime)]        
         [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy HH:mm tt}", ApplyFormatInEditMode = true)]

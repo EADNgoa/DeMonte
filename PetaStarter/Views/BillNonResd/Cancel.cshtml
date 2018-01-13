@@ -21,7 +21,7 @@
     @Html.Partial("_LetterHead")
     <br />
 
-    @using (Html.BeginForm("Cancel", "Bill", FormMethod.Post))
+    @using (Html.BeginForm("Cancel", "BillNonResd", FormMethod.Post))
     {
         <div class="MastDet">
             <div class="form-group">
@@ -29,8 +29,8 @@
                 <br />
                 <div class="col-md-4">
                     @Html.Hidden("KillBill", (int)Model.Bill.BillID)
-                    <input type="submit" value="Delete" class="btn btn-default" />
-                    <input type="button" onclick="window.history.go(-1); return false;" value="Dont Delete" class="btn btn-default" />
+                    <input type="submit" value="Cancel" class="btn btn-default" />
+                    <input type="button" onclick="window.history.go(-1); return false;" value="Dont Cancel" class="btn btn-default" />
                 <br />
                 </div>
             </div>
@@ -48,10 +48,10 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3">Name: <u>@Model.Customer.Name</u></td>
+            <td colspan="3">Name: <u>@Model.Bill.NonResdCust</u></td>
         </tr>
         <tr>
-            <td colspan="2">Address: <u>@Model.Customer.Address</u></td>
+            <td colspan="2">Guest GST: <u>@Model.Bill.NRCgst</u></td>
             <td>Room Charges per day: <u>@Model.Bill.ChargesPerDay</u></td>
         </tr>
     </table>
@@ -59,25 +59,25 @@
     <table width="100%">
         <tr>
             <td width="16%">Date Of Arrival:</td>
-            <td width="17%"><u>@(String.Format("{0:yyyy-MM-dd}", Model.Bill.DateArrivalTime.Value.Date))</u></td>
+            <td width="17%"><u>&nbsp;</u></td>
             <td width="16%">Departure Date:</td>
-            <td width="17%"><u>@(String.Format("{0:yyyy-MM-dd}", Model.Bill.DateDepartureTime.Value.Date))</u></td>
+            <td width="17%"><u>&nbsp;</u></td>
             <td width="16%">Total Days:</td>
-            <td width="17%"><u>@Model.Bill.TotalDays</u></td>
+            <td width="17%"><u>&nbsp;</u></td>
         </tr>
         <tr>
             <td width="16%">Check in Time:</td>
-            <td width="17%"><u>@Model.Bill.DateArrivalTime.Value.ToShortTimeString()</u></td>
+            <td width="17%"><u>&nbsp;</u></td>
             <td width="16%">Check out Time:</td>
-            <td width="17%"><u>@Model.Bill.DateDepartureTime.Value.ToShortTimeString()</u></td>
+            <td width="17%"><u>&nbsp;</u></td>
             <td width="16%">No of Persons:</td>
-            <td width="17%"><u>@Model.Bill.NoOfGuest</u></td>
+            <td width="17%"><u>&nbsp;</u></td>
         </tr>
         <tr>
             <td width="16%">Register No:</td>
-            <td width="17%"><u>@Model.Bill.BillID</u></td>
+            <td width="17%"><u>@Model.Bill.RegisterNo</u></td>
             <td width="16%">Room No.:</td>
-            <td width="17%"><u>@Model.Bill.RoomNo</u></td>
+            <td width="17%"><u>&nbsp;</u></td>
             <td width="16%">Adv. Rcpt No.:</td>
             <td width="17%"><u>@Model.Bill.BillReceiptNo</u></td>
         </tr>
@@ -153,7 +153,7 @@
                decimal GTot=0; }
             @foreach (var item in Model.BillDetails)
             {
-                tot = Model.Bill.ChargesPerDay.Value + item.DayTotal;
+                tot = item.DayTotal;
                 GTot += tot;
                 <td style="font-weight:bolder;">@(tot)</td>
             }

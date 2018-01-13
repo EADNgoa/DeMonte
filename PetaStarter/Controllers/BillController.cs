@@ -56,8 +56,7 @@ namespace DeMonte.Controllers
                         b = bill.BillID;
                     }
                     else
-                    {
-                        bill.BDate = DateTime.Today.Date;
+                    {                        
                         b = (int)db.Insert(bill);                
                     }
 
@@ -180,9 +179,9 @@ namespace DeMonte.Controllers
         }
 
         [HttpPost]
-        public ActionResult Cancel(int id)
+        public ActionResult Cancel(int KillBill)
         {
-            var kb = db.FirstOrDefault<Bill>("where BillID = @0", id);
+            var kb = db.FirstOrDefault<Bill>("where BillID = @0", KillBill);
             kb.Canceled = true;
             db.Update(kb);
             return RedirectToAction("Index", "Bill");
