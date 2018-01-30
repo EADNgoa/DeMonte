@@ -30,8 +30,8 @@ namespace DeMonte
     {
     }
 
-    [MetadataType(typeof(RegisterMetadata))]
-    public partial class Register
+    [MetadataType(typeof(RptRegisterMetadata))]
+    public partial class RptRegister
     {
        
     }
@@ -55,16 +55,6 @@ namespace DeMonte
     }
 
 
-    [MetadataType(typeof(RegisterMetadata))]
-    public class RegisterViewCls
-    {
-        public int RegisterID { get; set; }
-        public int CustomerID { get; set; }
-
-        public int BillID { get; set; }
-        public int EncashmentCash { get; set; }
-        public int Remarks { get; set; }
-    }
     [MetadataType(typeof(BillDetailMetadata))]
     public class BillScreen
     {
@@ -72,7 +62,7 @@ namespace DeMonte
         public Bill Bill { get; set; }
         public IEnumerable<BillDetail> BillDetail { get; set; }
         public BillDetail FrmEdit { get; set;  }
-        
+        public IEnumerable<Register> Register { get; set; }
     }
     //[MetadataType(typeof(ConfigMetadata))]
     //public partial class Config

@@ -168,6 +168,10 @@ namespace DeMonte
 		[Column] public decimal? SGST { get; set; }
 		[Column] public decimal? IGST { get; set; }
 		[Column] public DateTime? TransactionDate { get; set; }
+		[Column] public string EncashCertDetails { get; set; }
+		[Column] public string Remarks { get; set; }
+		[Column] public int? RegisterNo { get; set; }
+		[Column] public bool? Canceled { get; set; }
 	}
     
 	[TableName("dbo.BillDetail")]
@@ -229,15 +233,53 @@ namespace DeMonte
 	}
     
 	[TableName("dbo.Register")]
-	[PrimaryKey("RegisterID", AutoIncrement=false)]
+	[PrimaryKey("RegisterID")]
 	[ExplicitColumns]
     public partial class Register  
     {
 		[Column] public int RegisterID { get; set; }
 		[Column] public int? CustomerID { get; set; }
+		[Column] public string Name { get; set; }
+		[Column] public string Address { get; set; }
+		[Column] public string PassportNo { get; set; }
+		[Column] public DateTime? DateIssue { get; set; }
+		[Column] public DateTime? DateExpiry { get; set; }
 		[Column] public int? BillID { get; set; }
-		[Column] public string EncashmentCertificate { get; set; }
+		[Column] public int? NoOfGuest { get; set; }
+		[Column] public DateTime? DateArrivalTime { get; set; }
+		[Column] public DateTime? DateDepartureTime { get; set; }
+		[Column] public decimal? ChargesPerDay { get; set; }
+		[Column] public int? RoomNo { get; set; }
+		[Column] public decimal? TotalDays { get; set; }
+		[Column] public decimal? PaidInForeignIndian { get; set; }
+		[Column] public int? AdvReceiptNo { get; set; }
+		[Column] public decimal? TotalAccomodation { get; set; }
+		[Column] public decimal? ExtraPerson { get; set; }
+	}
+    
+	[TableName("dbo.RptRegister")]
+	[PrimaryKey("BillID", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class RptRegister  
+    {
+		[Column] public int BillID { get; set; }
+		[Column] public string Name { get; set; }
+		[Column] public string Address { get; set; }
+		[Column] public string PassportDet { get; set; }
+		[Column] public int? NoOfGuest { get; set; }
+		[Column] public int? NoOfRooms { get; set; }
+		[Column] public DateTime? DateArrivalTime { get; set; }
+		[Column] public DateTime? DateDepartureTime { get; set; }
+		[Column] public decimal? ChargesPerDay { get; set; }
+		[Column] public string RoomNo { get; set; }
+		[Column] public int? TotalDays { get; set; }
+		[Column] public decimal? TotalCharges { get; set; }
+		[Column] public decimal? PaidInForeignIndian { get; set; }
+		[Column] public string BillReceiptNo { get; set; }
+		[Column] public decimal? GST { get; set; }
+		[Column] public string EncashCertDetails { get; set; }
 		[Column] public string Remarks { get; set; }
+		[Column] public int? RegisterNo { get; set; }
 	}
     
 	[TableName("dbo.Voucher")]

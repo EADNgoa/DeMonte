@@ -126,4 +126,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="BillID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="a9e4aa63-e7d4-46eb-9679-580c5829bb1a" ChangeDateTime="01/15/2018 06:54:33">
+    <Property Name="ElementName" Value="[dbo].[Register].[Total]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Register]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TotalDays" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="90f9ea6f-d4fa-4970-a934-7377bfbcf62f" ChangeDateTime="01/23/2018 09:33:23">
+    <Property Name="ElementName" Value="[dbo].[Register].[TotalAccomodamation]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Register]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TotalAccomodation" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6f84b530-6ff4-4b40-bf7c-c10e0dd00933" ChangeDateTime="01/27/2018 14:44:34">
+    <Property Name="ElementName" Value="[dbo].[Bill].[caneled]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Bill]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Canceled" />
+  </Operation>
 </Operations>

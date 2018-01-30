@@ -42,7 +42,7 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "BillID,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays,AdvReceiptNo,PaidInForeignIndian,CGST,SGST,IGST,TransactionDate")] Bill bill)
+        public ActionResult Manage([Bind(Include = "BillID,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays,AdvReceiptNo,PaidInForeignIndian,CGST,SGST,IGST,TransactionDate,EncashCertDetails,Remarks,RegisterNo,Canceled")] Bill bill)
         {
         
             if (bill.DateDepartureTime.HasValue && bill.DateArrivalTime.HasValue)

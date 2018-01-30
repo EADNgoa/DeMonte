@@ -1,0 +1,78 @@
+﻿@model DeMonte.RptRegister
+@{
+    ViewBag.Title = "Details";
+    Layout = "";
+}
+<div class="section-to-print" style="background-image: url('/Custom/BkGrnd.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; ">
+    @Html.Partial("_LetterHead")
+
+    <table border="1px">
+        <tr>
+           
+            <th>Name of Guest</th>
+            <th>Full Address India/Abroad</th>
+            <th>Passport No date of Issue and expiry</th>
+            <th>No. Guest</th>
+            <th>No. Rooms</th>
+            <th>Date of Arrival and time</th>
+            <th>Date of Departure and time</th>
+            <th>Accomodations charges per day</th>
+            <th>Room No</th>
+            <th>Sign of Guest during arrival</th>
+            <th>Period to stay(Total days)</th>
+            <th>Total amount charges on accomodation</th>
+            <th>Charges paid in Foreign/Indian Currency</th>
+            <th>Bill/Receipt No</th>
+            <th>Sign. of receptionist or manager on duty</th>
+            <th>GST</th>
+            <th>Particulars of encashment with date</th>
+            <th>Sign of Guest during departure</th>
+            <th>Remarks</th>
+        </tr>
+
+        <tr>
+        
+        <td>@Html.DisplayFor(model => model.Name)</td>
+        <td>@Html.DisplayFor(model => model.Address)</td>
+        <td>@Html.DisplayFor(model => model.PassportDet)</td>
+        <td>@Html.DisplayFor(model => model.NoOfGuest)</td>
+        <td>@Html.DisplayFor(model => model.NoOfRooms)</td>
+        <td>@Html.DisplayFor(model => model.DateArrivalTime)</td>
+        <td>@Html.DisplayFor(model => model.DateDepartureTime)</td>
+        <td>@Html.DisplayFor(model => model.ChargesPerDay)</td>
+        <td>@Html.DisplayFor(model => model.RoomNo)</td>
+        <td></td>                     
+        <td>@Html.DisplayFor(model => model.TotalDays)</td>
+        <td>@Html.DisplayFor(model => model.TotalCharges)</td>
+        <td>@Html.DisplayFor(model => model.PaidInForeignIndian)</td>
+        <td>@Html.DisplayFor(model => model.BillReceiptNo)</td>
+        <td></td>                     
+        <td>@Html.DisplayFor(model => model.GST)</td>
+        <td>@Html.DisplayFor(model => model.EncashCertDetails)</td>
+        <td></td>                     
+        <td>@Html.DisplayFor(model => model.Remarks)</td>
+        </tr>
+        
+        
+    </table>
+
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+    &nbsp;
+
+<p class="section-to-not-print">
+    <input type="button" onclick="javascript:window.print();" value="Print" class="eabutton section-to-not-print" />
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
