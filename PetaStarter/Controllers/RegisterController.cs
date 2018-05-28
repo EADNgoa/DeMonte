@@ -8,44 +8,34 @@ namespace DeMonte.Controllers
 {
     public class RegisterController : EAController
     {
-        // GET: Clients
-        public ActionResult Index(int? page, string PropName)
+
+        public ActionResult Index()
         {
-            if (PropName?.Length > 0) page = 1;
-            return View("Index", base.BaseIndex<RegisterViewCls>(page, "Register where CustomerID like '%" + PropName + "%'"));
+           
+            return View("");
         }
 
-        public ActionResult ViewRegister(DateTime FromDt, DateTime ToDt)
-        {
-            return View("Index", db.Query<RegisterViewCls>("Select* from Customer b inner join Bill c on b.customerID=c.customerID where b.checkinDt= @0 and b.checkoutDt = @1", FromDt, ToDt));
-
-        }
-
-
-        // GET: Clients/Create
-        public ActionResult Manage(int? id)
-        {
-            return View(base.BaseCreateEdit<RegisterViewCls>(id, "RegisterID"));
-        }
-
-        // POST: Customer/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "RegisterID,CustomerID,BillID,EncashmentCertificate,Remarks")] RegisterViewCls register)
+        public ActionResult Index(DateTime fromdate, DateTime todate)
         {
-            return base.BaseSave<RegisterViewCls>(register,register.RegisterID > 0);
+            if (fromdate == null || todate == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            else
+            {
+                var exesp = db.Execute("exec GetRegister @0,@1", fromdate, todate);
+                var vwData = db.Query<RptRegister>("Select * from RptRegister");
+                return View("RegisterScreen", vwData);
+            }
         }
 
-        // GET: Vouchers/Details
-        public ActionResult Details(int? id)
+
+        public ActionResult Details(int? BID)
         {
 
-            return View(base.BaseCreateEdit<Register>(id, "RegisterID"));
+            var viewdata = base.BaseCreateEdit<RptRegister>(BID, "BillID");
+            return View(viewdata);
         }
-
-       
 
         protected override void Dispose(bool disposing)
         {

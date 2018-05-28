@@ -418,13 +418,14 @@
     <Content Include="Views\Receipt\Details.cshtml" />
     <Content Include="Views\Bill\Index.cshtml" />
     <Content Include="Views\Bill\Manage.cshtml" />
-    <Content Include="Views\Register\Manage.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\BillDetail\Index.cshtml" />
     <Content Include="Views\BillDetail\Manage.cshtml" />
     <Content Include="Views\Shared\_LetterHead.cshtml" />
     <Content Include="Views\BillDetail\Details.cshtml" />
-
+    <Content Include="Views\BillDetail\PrintDetail.cshtml" />
+    <Content Include="Views\Register\RegisterScreen.cshtml" />
+    <Content Include="Views\Register\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

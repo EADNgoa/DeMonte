@@ -23,6 +23,7 @@ namespace DeMonte.Controllers
         // GET: Clients/Create
         public ActionResult Manage(int? id, int? CustID)
         {
+            
             var vwdata = base.BaseCreateEdit<Bill>(id, "BillID");
             if (CustID.HasValue)                
                 ViewBag.CustomerID = CustID;
@@ -41,7 +42,7 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "BillID,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays,BillReceiptNo,PaidInForeignIndian,CGST,SGST,IGST")] Bill bill)
+        public ActionResult Manage([Bind(Include = "BillID,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays,AdvReceiptNo,PaidInForeignIndian,CGST,SGST,IGST,TransactionDate,EncashCertDetails,Remarks,RegisterNo,Canceled")] Bill bill)
         {
         
             if (bill.DateDepartureTime.HasValue && bill.DateArrivalTime.HasValue)

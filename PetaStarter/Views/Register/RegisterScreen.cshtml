@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DeMonte.RptRegister>
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2> TOURIST REGISTER</h2>
+<style>
+    #arrange th{
+        text-align:center;
+    }
+</style>
+<div class="section-to-print" style="background-image: url('/Custom/BkGrnd.png'); background-repeat: no-repeat; background-attachment: fixed; background-position: center; ">
+    @Html.Partial("_LetterHead")
+    </br>
+    <table id ="arrange" border="1px">
+        <tr>
+            <th>Sr No</th>
+            <th>Name of Guest</th>
+            <th>Full Address India/Abroad</th>
+            <th>Passport No date of Issue and expiry</th>
+            <th>No. Guest</th>
+            <th>No. Rooms</th>
+            <th>Date of Arrival and time</th>
+            <th>Date of Departure and time</th>
+            <th >Accomodations charges per day</th>
+            <th >Room No</th>
+            <th>Sign of Guest during arrival</th>
+            <th >Period to stay(Total days)</th>
+            <th >Total amount charges on accomodation</th>
+            <th >Charges paid in Foreign/Indian Currency</th>
+            <th >Bill/Receipt No</th>
+            <th>Sign. of receptionist or manager on duty</th>
+            <th>GST</th>
+            <th>Particulars of encashment with date</th>
+            <th>Sign of Guest during departure</th>
+            <th>Remarks</th>
+            <th></th>
+        </tr>
+        
+                      @{int i = 1;   }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PassportDet)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NoOfGuest)</td>
+                            <td>@Html.DisplayFor(modelItem => item.NoOfRooms)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DateArrivalTime)</td>
+                            <td>@Html.DisplayFor(modelItem => item.DateDepartureTime)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ChargesPerDay)</td>
+                            <td>@Html.DisplayFor(modelItem => item.RoomNo)</td>
+                            <td></td>
+                            <td>@Html.DisplayFor(modelItem => item.TotalDays)</td>
+                            <td>@Html.DisplayFor(modelItem => item.TotalCharges)</td>
+                            <td>@Html.DisplayFor(modelItem => item.PaidInForeignIndian)</td>
+                            <td>@Html.DisplayFor(modelItem => item.BillReceiptNo)</td>
+                            <td></td>
+                            <td>@Html.DisplayFor(modelItem => item.GST)</td>
+                            <td>@Html.DisplayFor(modelItem => item.EncashCertDetails)</td>
+                            <td></td>
+                            <td>@Html.DisplayFor(modelItem => item.Remarks)</td>
+                            <td> @Html.ActionLink("Details", "Details", new { BID = item.BillID })</td>
+                        </tr>
+                        i++;
+                    }
+    </table>
+</div>
+</br>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

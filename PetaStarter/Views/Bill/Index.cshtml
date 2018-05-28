@@ -28,29 +28,30 @@
 
 <table class="table">
     <tr>
-       
-       
+        <th>Bill No</th>
         <th>No Of Guest</th>
-       <th>Date Of Arrival</th>
+        <th>Date Of Arrival</th>
         <th>Date Of Departure</th>
         <th>Charges Per Day</th>
         <th>Room No</th>
-        <th>Total Days</th>
-      
-        <th>Bill/Receipt No</th>
+        <th>Advance/Receipt No</th>
         <th>Paid In Foreign/Indian</th>
-        
-       <th>CGST</th>
-        <th>SGST</th>
-        <th>IGST</th>
+        <th>Register No</th>
+        <th>Encashment Certificate</th>
+        <th>Remarks</th>
+        <th>Cancelled</th>
 
+        <th></th>
+        <th></th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-       
-       
+        <td>    
+            @Html.DisplayFor(modelItem =>item.BillID)
+        </td>
+      
         <td>
             @Html.DisplayFor(modelItem => item.NoOfGuest)
         </td>
@@ -66,38 +67,45 @@
         <td>
             @Html.DisplayFor(modelItem => item.RoomNo)
         </td>
-          
+         
     <td>
-        @Html.DisplayFor(modelItem => item.TotalDays)
-    </td>
-       
-   
-    <td>
-        @Html.DisplayFor(modelItem => item.BillReceiptNo)
+        @Html.DisplayFor(modelItem => item.AdvReceiptNo)
     </td>
        
     <td>
         @Html.DisplayFor(modelItem => item.PaidInForeignIndian)
     </td>
-
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.CGST)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SGST)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IGST)
-        </td>
       
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisterNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EncashCertDetails)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>
+        <td>
+            @if(item.Canceled == true)
+            {
+                @:true
+            }
+            else
+            {
+                @:false
+            }
+        </td>
         <td>
             @Html.ActionLink("Edit", "Manage", new { id = item.BillID })
 
         </td>
         <td>
-            @Html.ActionLink("Detail","Manage", "BillDetail", new { BID = item.BillID }, null);
+            @Html.ActionLink("Detail","Details", "BillDetail", new { BID = item.BillID }, null);
         </td>
+           
+        <td>
+          @Html.ActionLink("Receipt", "Manage", "Receipt", new { RID = item.BillID }, null);
+         </td>
     </tr>
 }
 

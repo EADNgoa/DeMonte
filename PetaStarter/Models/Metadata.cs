@@ -101,7 +101,7 @@ namespace DeMonte
         public string RoomNo;
 
         [Display(Name = "Bill No.")]
-        public int BillNo;
+        public int BillID;
     }
     public class BillMetadata
     {
@@ -128,12 +128,11 @@ namespace DeMonte
         public int RoomNo;
 
         [Display(Name = "Total Days")]
-        [Required]
         public int TotalDays;
 
 
-        [Display(Name = "Bill/Receipt No")]
-        public int BillReceiptNo;
+        [Display(Name = "Advance/Receipt No")]
+        public int AdvReceiptNo;
 
 
         [Display(Name = "Charges Paid Foreign/Indian")]
@@ -155,6 +154,26 @@ namespace DeMonte
         [Range(0.0, Double.MaxValue)]
         public decimal IGST;
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Transaction Date")]
+        public DateTime TransactionDate;
+
+        [Display(Name = "Encashment Certificate")]
+        [Required]
+        public String EncashCertDetails;
+
+        [Display(Name = "Remarks")]
+        [Required]
+        public String Remarks;
+
+        [Display(Name = "Register No")]
+        [Required]
+        public int RegisterNo;
+
+        [Display(Name = "Cancelled")]
+        [Required]
+        public bool Canceled;
     }
     public class BillDetailMetadata
     {
@@ -163,49 +182,97 @@ namespace DeMonte
         [Display(Name = "Date")]
         public DateTime Date;
 
-        [Display(Name = "Extra Person")]
-        [Required]
-        public string ExtraPerson;
+        [Display(Name = "Extra Person")]    
+        public decimal ExtraPerson;
 
-        [Display(Name = "GST")]
-        [Required]
+        [Display(Name = "Miscelleneous")]
+        [Range(0.0, Double.MaxValue)]
+        public decimal Miscelleneous;
+
+        [Display(Name = "GST")]        
         [Range(0.0, Double.MaxValue)]
         public decimal GST;
 
-        [Display(Name = "Others 1")]
-        [Required]
+        [Display(Name = "Others 1")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other1;
 
-        [Display(Name = "Other2")]
-        [Required]
+        [Display(Name = "Others 2")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other2;
 
-        [Display(Name = "Other3")]
-        [Required]
+        [Display(Name = "Others 3")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other3;
 
-        [Display(Name = "Other4")]
-        [Required]
+        [Display(Name = "Others 4")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Other4;
 
-        [Display(Name = "Total")]
-        [Required]
+        [Display(Name = "Total")]        
         [Range(0.0, Double.MaxValue)]
         public decimal Total;
     }
-    public class RegisterMetadata
+    public class RptRegisterMetadata
     {
+        [Display(Name = "Name")]
+        public string Name;
+
+        [Display(Name = "Address")]
+        public string Address;
+
+        [Display(Name = "Passport Details")]
+        public string PassportDet;
+
+        [Display(Name = "No of Guest")]
+        public int NoOfGuest;
+
+        [Display(Name = "No of Rooms")]
+        public int NoOfRooms;
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy HH:mm tt}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date Arrival Time")]
+        public DateTime DateArrivalTime;
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy HH:mm tt}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Date Departure Time")]
+        public DateTime DateDepartureTime;
+
+        [Display(Name = "Charges Per Day")]
+        [Range(0.0, Double.MaxValue)]
+        public decimal ChargesPerDay;
+
+        [Display(Name = "Room No")]
+        public int RoomNo;
+
+        [Display(Name = "Total Days")]
+        public int TotalDays;
+
+        [Display(Name = "Total Charges")]
+        [Range(0.0, Double.MaxValue)]
+        public decimal TotalCharges;
+
+        [Display(Name = "Charges Paid Foreign/Indian")]
+        [Range(0.0, Double.MaxValue)]
+        public decimal PaidInForeignIndian;
+
+        [Display(Name = "Bill/Receipt No")]
+        public string BillReceiptNo;
+        
+        [Display(Name = "GST")]
+        [Range(0.0, Double.MaxValue)]
+        public decimal GST;
+
         [Display(Name = "Encashment Certificate")]
-        public String EncashmentCertificate;
+        public String EncashCertDetails;
 
         [Display(Name = "Remarks")]
-        [Required]
-        public string Remarks;
+        public String Remarks;
 
+        [Display(Name = "Register No")]
+        public int RegisterNo;
     }
     //public class EmpTypeMetadata
     //{

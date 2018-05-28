@@ -1,51 +1,39 @@
-﻿@model PagedList.IPagedList<RegisterViewCls>
+﻿@model PagedList.IPagedList<RptRegister>
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "Register";
 }
 
 <center>
-    <h2 class="section-to-print"><b>@ViewBag.Title</b></h2>
+    <h2 class="section-to-print"><b>Search for Customer records</b></h2>
     
-    @using (Html.BeginForm("Index", "Register", FormMethod.Get))
-    {        
-        <div class="row section-to-Not-print">
-            <div>
-                <table>
-                    <tr style="text-align:center">
-                        <td>&nbsp; customer Name:</td>
-                        <td> @Html.TextBox("PropName", ViewBag.CurrentFilter as string, new { @class = "form-control" })</td>
+    @using (Html.BeginForm("Index", "Register", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
 
-                        <td class="col-lg-1"></td>
-                        <td><input type="submit" value="Search" class="btn btn-default" /></td>
-                    </tr>
-                </table>
+
+        <div class="form-group">
+            @Html.Label("From Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input name="fromdate" type="date" class="form-control text-box single-line valid" id="fromdate" aria-invalid="false" aria-describedby="Date-error" type="text" data-val-number="The field Others 1 must be a number." data-val="true" data-val-range-min="0" data-val-range-max="1.79769313486232E+308" data-val-range="The field Others 1 must be between 0 and 1.79769313486232E+308.">
+             
+            </div>
+        </div>
+        <br></br>
+        <div class="form-group">
+            @Html.Label("To Date", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input name="todate" type="date" class="form-control text-box single-line valid" id="todate" aria-invalid="false" aria-describedby="Date-error" type="text" data-val-number="The field Others 1 must be a number." data-val="true" data-val-range-min="0" data-val-range-max="1.79769313486232E+308" data-val-range="The field Others 1 must be between 0 and 1.79769313486232E+308.">
+
+            </div>
+        </div>
+        <br></br>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
             </div>
         </div>
     }
 </center>
 
-<p>
-    @Html.ActionLink("Create New", "Manage")
-</p>
-<table class="table">
-    <tr>
-        <th>Customer Name</th>
-        <th>Address</th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        
-        <th></th>
-    </tr>
 
-        
-     
-}
-
-</table>
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

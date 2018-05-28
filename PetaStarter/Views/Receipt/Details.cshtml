@@ -35,8 +35,8 @@
                     &nbsp; drawn On         &nbsp;   <u>  @Html.DisplayFor(model => model.DrawnOn)</u>
                     &nbsp; on account of @ViewBag.ReceiptTypeName
         
-                    towards Room Charges for Room No. &nbsp;   <u>     @Html.DisplayFor(model => model.RoomNo)</u> &nbsp; /
-                    &nbsp;   Bill No.   &nbsp; <u>    @Html.DisplayFor(model => model.BillNo)</u>
+                    towards Room Charges for Room No. &nbsp;   <u>     @ViewBag.RoomNo</u> &nbsp; /
+                    &nbsp;   Bill No.   &nbsp; <u>    @Html.DisplayFor(model => model.BillID)</u>
                 </td>
             </tr>
             <tr>
