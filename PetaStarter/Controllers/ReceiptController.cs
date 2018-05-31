@@ -13,7 +13,7 @@ namespace DeMonte.Controllers
         public ActionResult Index(int? page, int BillID)
         {
             page = 1;
-            ViewBag.BillNo = BillID;
+            ViewBag.BillNo = db.Single<Bill>(BillID).BillNo;
 
             //Fetch the Bill details
             var RmCosts = db.Single<decimal>("Select coalesce(ChargesPerDay * TotalDays,0) from Bill where BillID=@0", BillID);

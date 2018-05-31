@@ -418,6 +418,12 @@ namespace DeMonte
 
 
 
+		[Column] public string BillNo { get; set; }
+
+
+
+
+
 		[Column] public DateTime BDate { get; set; }
 
 
@@ -699,6 +705,12 @@ namespace DeMonte
 
 
 		[Column] public int BillID { get; set; }
+
+
+
+
+
+		[Column] public string BillNo { get; set; }
 
 
 

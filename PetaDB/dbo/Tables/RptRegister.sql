@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[RptRegister]
 (
     [BillID] INT NOT NULL PRIMARY KEY, 	
+	[BillNo] varCHAR(10) NULL, 
 	[Name] varCHAR(150) NULL, 
     [Address] varCHAR(350) NULL, 
     [PassportDet] varCHAR(100) NULL,     

@@ -13,7 +13,7 @@ namespace DeMonte.Controllers
         {
             if (PropName?.Length > 0) page = 1;
             ViewBag.CustName = " ";
-            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo, Canceled", "Bill b, Customer c where b.customerID=c.CustomerID order by BillID desc"));
+            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID,b.BillNo, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo, Canceled", "Bill b, Customer c where b.customerID=c.CustomerID order by BillID desc"));
         }
 
         public ActionResult CustBills(int? page, int CustID)
@@ -21,7 +21,7 @@ namespace DeMonte.Controllers
             page = 1;
             ViewBag.CustID = CustID;
             ViewBag.CustName = " of " + db.Single<string>("select Name from Customer where CustomerID=@0", CustID);
-            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo, Canceled", "Bill b, Customer c where b.customerID=c.CustomerID and b.CustomerID =" + CustID + " order by BillID desc"));
+            return View("Index", base.BaseIndex<BillIndex>(page, "b.BillID,b.BillNo, c.Name as Customer,b.NoOfGuest as NoOfGuests, b.DateArrivalTime as ArrivalDt, TotalDays, RoomNo, Canceled", "Bill b, Customer c where b.customerID=c.CustomerID and b.CustomerID =" + CustID + " order by BillID desc"));
         }
 
         // GET: Clients/Create
@@ -41,7 +41,7 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "BillID,BDate,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,BillReceiptNo,PaidInForeignIndian,CGST,SGST,IGST,EncashCertDetails,Remarks, RegisterNo,GSTExport")] Bill bill)
+        public ActionResult Manage([Bind(Include = "BillID,BillNo, BDate,CustomerID,NoOfGuest,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,BillReceiptNo,PaidInForeignIndian,CGST,SGST,IGST,EncashCertDetails,Remarks, RegisterNo,GSTExport")] Bill bill)
         {
             using (var transaction = db.GetTransaction())
             {

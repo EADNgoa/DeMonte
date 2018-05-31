@@ -6,8 +6,8 @@ AS
 	Truncate table RptRegister
 
 	--Fill in the part that can be done with a fast join
-	insert Into RptRegister(BillID,Name,Address,PassportDet,NoOfGuest,NoOfRooms,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays, TotalCharges, PaidInForeignIndian,EncashCertDetails,Remarks,RegisterNo)
-	select b.BillID, c.Name, c.Address, CONCAT(c.PassportNo,' I: ',c.DateIssue,', E: ',c.DateExpiry) as PassportDet,
+	insert Into RptRegister(BillID,BillNo, Name,Address,PassportDet,NoOfGuest,NoOfRooms,DateArrivalTime,DateDepartureTime,ChargesPerDay,RoomNo,TotalDays, TotalCharges, PaidInForeignIndian,EncashCertDetails,Remarks,RegisterNo)
+	select b.BillID, b.BillNo,c.Name, c.Address, CONCAT(c.PassportNo,' I: ',c.DateIssue,', E: ',c.DateExpiry) as PassportDet,
 	b.NoOfGuest, 1 as NoOfRooms,b.DateArrivalTime,b.DateDepartureTime,COALESCE(b.ChargesPerDay,0),b.RoomNo,COALESCE(b.TotalDays,1), COALESCE((b.TotalDays*b.ChargesPerDay),0), b.PaidInForeignIndian, b.EncashCertDetails, b.Remarks, b.RegisterNo
 	from Customer c 
 	INNER Join Bill b ON c.CustomerID=b.CustomerID

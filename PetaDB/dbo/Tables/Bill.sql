@@ -1,7 +1,8 @@
 ﻿CREATE TABLE [dbo].[Bill]
 (
 	[BillID] INT NOT NULL PRIMARY KEY Identity, 
-    [BDate] DATE NOT NULL,
+    [BillNo] varchar(10) NULL,
+	[BDate] DATE NOT NULL,
 	[CustomerID] INT NULL, 
 	[NoOfGuest] INT NULL, 
 	[DateArrivalTime] DATETIME NULL, 

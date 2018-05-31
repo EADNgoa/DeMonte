@@ -92,7 +92,7 @@ namespace DeMonte.Controllers
             Response.ClearContent();
             Response.AddHeader("content-disposition", "attachment;filename=GST Sales " + monyr + ".xls");
             Response.AddHeader("Content-Type", "application/vnd.ms-excel");
-            WriteTsv(ExpData.Select(r => new { r.TDate,r.GSTNo,r.Name,r.Address,r.BillID,r.TaxableSales,r.IGST,r.CGST,r.SGST,r.TotalValue,r.GST }), Response.Output);
+            WriteTsv(ExpData.Select(r => new { r.TDate,r.GSTNo,r.Name,r.Address,r.BillNo,r.TaxableSales,r.IGST,r.CGST,r.SGST,r.TotalValue,r.GST }), Response.Output);
             Response.End();
 
             return RedirectToAction("Index", "Home");

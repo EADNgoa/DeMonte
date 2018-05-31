@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[ExpSales]
 (
     [BillID] INT NOT NULL PRIMARY KEY, 	
+	[BillNo] VARCHAR(10) NULL, 
 	[TDate] DATE NULL, 
 	[GSTNo] VARCHAR(30) NULL, 
 	[Name] varCHAR(150) NULL, 

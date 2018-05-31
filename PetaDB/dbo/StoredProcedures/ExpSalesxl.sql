@@ -6,15 +6,15 @@ AS
 	Truncate table ExpSales
 
 	--Fill in the part that can be done with a fast join: for resident custoemrs
-	insert Into ExpSales(BillID,TDate, GSTNo, Name,AddLineBreaks, TotalValue)
-	select b.BillID,b.BDate,c.GSTNo, c.Name, c.Address, COALESCE((b.TotalDays*b.ChargesPerDay),0)
+	insert Into ExpSales(BillID,BillNo,TDate, GSTNo, Name,AddLineBreaks, TotalValue)
+	select b.BillID, b.BillNo,b.BDate,c.GSTNo, c.Name, c.Address, COALESCE((b.TotalDays*b.ChargesPerDay),0)
 	from Customer c 
 	INNER Join Bill b ON c.CustomerID=b.CustomerID
 	Where b.GSTExport = 1 and b.Canceled=0 and MONTH(b.BDate)=@Mon and YEAR(b.BDate)=@Yr
 
 	--Fill in the part that can be done with a fast join: for Non-resident custoemrs
-	insert Into ExpSales(BillID,TDate, GSTNo, Name,AddLineBreaks, TotalValue)
-	select b.BillID,b.BDate, b.NRCgst,b.NonResdCust,'',  0
+	insert Into ExpSales(BillID,BillNo, TDate, GSTNo, Name,AddLineBreaks, TotalValue)
+	select b.BillID,b.BillNo,b.BDate, b.NRCgst,b.NonResdCust,'',  0
 	from Bill b 
 	Where b.GSTExport = 1 and b.Canceled=0 and MONTH(b.BDate)=@Mon and YEAR(b.BDate)=@Yr and CustomerID IS NULL
 

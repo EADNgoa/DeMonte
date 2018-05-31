@@ -85,6 +85,7 @@ namespace DeMonte
     public class BillIndex
     {
         public int BillID { get; set; }
+        public string BillNo { get; set; }
         public DateTime BDate { get; set; }
         public string Customer { get; set; }
         public int NoOfGuests { get; set; }

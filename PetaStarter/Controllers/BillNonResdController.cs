@@ -12,7 +12,7 @@ namespace DeMonte.Controllers
         public ActionResult Index(int? page, string PropName)
         {
             if (PropName?.Length > 0) page = 1;            
-            return View("Index", base.BaseIndex<BillIndex>(page, "b.NonResdCust, b.BDate, b.BillID, Canceled", "Bill b where CustomerId is NULL order by BillID desc"));
+            return View("Index", base.BaseIndex<BillIndex>(page, "b.NonResdCust, b.BDate, b.BillID, b.BillNo, Canceled", "Bill b where CustomerId is NULL order by BillID desc"));
         }
         
 
@@ -29,7 +29,7 @@ namespace DeMonte.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Manage([Bind(Include = "BillID,BDate,BillReceiptNo,PaidInForeignIndian,CGST,SGST,IGST,EncashCertDetails,Remarks,GSTExport, NonResdCust,NRCgst")] Bill bill)
+        public ActionResult Manage([Bind(Include = "BillID,BillNo,BDate,BillReceiptNo,PaidInForeignIndian,CGST,SGST,IGST,EncashCertDetails,Remarks,GSTExport, NonResdCust,NRCgst")] Bill bill)
         {
             using (var transaction = db.GetTransaction())
             {
