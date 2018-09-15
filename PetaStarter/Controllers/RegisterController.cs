@@ -26,7 +26,7 @@ namespace DeMonte.Controllers
         public ActionResult ViewRegister(DateTime FromDt, DateTime ToDt)
         {
             db.Execute("exec GetRegister @0, @1", FromDt, ToDt);
-            var vwData = db.Fetch<RegisterViewCls>("Select * from RptRegister");
+            var vwData = db.Fetch<RegisterViewCls>("Select * from RptRegister order by RegisterNo");
             
             return View(vwData);
         }
