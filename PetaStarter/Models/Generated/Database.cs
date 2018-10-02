@@ -520,7 +520,7 @@ namespace DeMonte
 
 
 
-		[Column] public int? RegisterNo { get; set; }
+		[Column] public decimal? RegisterNo { get; set; }
 
 
 
@@ -952,6 +952,12 @@ namespace DeMonte
 
 
 
+		[Column] public string BillNo { get; set; }
+
+
+
+
+
 		[Column] public string Name { get; set; }
 
 
@@ -1048,7 +1054,7 @@ namespace DeMonte
 
 
 
-		[Column] public int? RegisterNo { get; set; }
+		[Column] public decimal? RegisterNo { get; set; }
 
 
 

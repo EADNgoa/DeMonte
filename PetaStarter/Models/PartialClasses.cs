@@ -72,7 +72,7 @@ namespace DeMonte
         public decimal GST { get; set; }
         public string EncashCertDetails { get; set; }
         public string Remarks { get; set; }
-        public string RegisterNo { get; set; }
+        public decimal RegisterNo { get; set; }
     }
     public class BillScreen
     {

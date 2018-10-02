@@ -18,7 +18,7 @@
     [SGST] DECIMAL(12, 2) NULL, 
     [IGST] DECIMAL(12, 2) NULL, 
     [Canceled] BIT NOT NULL DEFAULT 0, 
-	[RegisterNo] INT NULL, 
+	[RegisterNo] VARCHAR(15) NULL, 
     [NonResdCust] VARCHAR(150) NULL, 
     [GSTExport] BIT NULL DEFAULT 1, 
     [NRCgst] VARCHAR(30) NULL, 
