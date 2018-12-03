@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td colspan="3">
-                Pay to:  &nbsp;<u>  @Html.DisplayFor(model => model.PayTo)</u>
+                Paid to:  &nbsp;<u>  @Html.DisplayFor(model => model.PayTo)</u>
                 Rupees:  &nbsp;<u>@ViewBag.vouAmt</u>
                 on account of:  &nbsp;        <u>  @Html.DisplayFor(model => model.OnAccountOf)</u>
                 CASH/CHEQUE:        &nbsp; <u>    @Html.DisplayFor(model => model.ChequeNo)</u>
@@ -41,7 +41,8 @@
             <td width="43%">
                 <h3>Rs. &nbsp; <u>@Html.DisplayFor(model => model.Amount)</u></h3>                
             </td>
-            <td style="border-bottom:3px solid; padding-right:18px;" width="30%"></td>
+            <td style="border-bottom:3px solid; padding-right:18px;" width="30%" height=150 >
+            </td>
             <td style="border-bottom:3px solid;">&nbsp;</td>
         </tr>
         <tr>
